@@ -34,7 +34,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd soap
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 
 # Создаём пользователя и группу www для приложения Laravel

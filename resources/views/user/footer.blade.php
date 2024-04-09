@@ -8,7 +8,7 @@
 
                             <div class="footer-logo">
                                 <a href="#">
-                                    <img src={{asset("images/site/logo-footer.png")}}s alt="лого"
+                                    <img src={{asset("images/site/logo-footer.png")}} s alt="лого"
                                          data-retinasrc="/images/site/logo2x-footer.png">
                                 </a>
                             </div>

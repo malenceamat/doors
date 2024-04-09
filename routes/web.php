@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,13 +15,36 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('user.general');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
 
-require __DIR__.'/auth.php';
+
+
+    Route::get('/slider',[SliderController::class,'index']);
+
+    Route::get('/admin',[AdminController::class,'index']);
+
+
+});
+
+Route::get('/', [UserController::class, 'index']);
+
+
+
+
+
+
+
+Route::prefix('/dashboard')->group(function () {
+    Route::get('/', [UserController::class, 'index']);
+});
+require __DIR__ . '/auth.php';
+
+
+
+
+
+
+

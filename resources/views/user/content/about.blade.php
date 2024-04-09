@@ -1,0 +1,43 @@
+<div class="about-section">
+    <div class="push80"></div>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-6 col-lg-5 col-sm-push-6 col-lg-push-7 index-about-img-wrapper">
+
+
+                <div class="index-about-img">
+                    <img src={{asset("images/categories/dveri-gluxaya-i-so-steklom-v-interere.jpg")}}  s alt="">
+                </div>
+                <div class="dots-bg"><img src={{asset("assets/template/images/mask-group-9.png")}} s alt="qw"></div>
+
+
+                <div class="push50 visible-xs"></div>
+            </div>
+
+            <div class="col-sm-6 col-lg-7 col-sm-pull-6 col-lg-pull-5">
+                <div class="content">
+                    <h1 class="line"><strong>ГОТОВЫЙ САЙТ ПО ПРОДАЖЕ ДВЕРЕЙ DOORS SHOP</strong></h1>
+                    <p>Мы предлагаем Вам купить готовый сайт по продаже дверей и аксессуаров. Если ваша компания
+                        продает межкомнатные и входные двери различных брендов или у вас собственное производство -
+                        наш шаблон сайта интернет-магазина дверей, точно для вас! Наши разработчики позаботились о
+                        том, чтоб управлять нашим сайтом было удобно и просто, вам не нужно быть программистом - мы
+                        все сделали для вас!</p>
+                    <h2><strong>Интернет магазин дверей за 2 дня!</strong></h2>
+                    <p><strong>Полностью готовый к запуску шаблон интернет-магазина разработан специалистами команды
+                            ULTRON</strong>. Покупая сайт у нас вы гарантированно получаете высококлассный продукт и
+                        нашу поддержку.</p>
+                    <p>Адаптивный дизайн и профессиональный дизайн, удобное управление и все необходимые компоненты
+                        для современного магазина уже собраны и готовы к запуску. остается разместить сайт на
+
+                        хостинге, обновить информацию и начать принимать заказы!<br/><br/><em>С нами строить бизнес
+                            - просто!</em></p>
+                </div>
+                <a class="button" href="#">Подробнее</a>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="push50"></div>
+</div>
