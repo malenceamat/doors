@@ -27,7 +27,8 @@
 
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
-                <a href="#home" data-bs-toggle="collapse" aria-expanded="{{ (request()->is('slider')) ? 'true' : 'false'}}" class="dropdown-toggle collapsed">
+                <a href="#home" data-bs-toggle="collapse"
+                   aria-expanded="{{ (request()->is('slider')) ? 'true' : 'false'}}" class="dropdown-toggle collapsed">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -47,32 +48,24 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ (request()->is('slider')) ? 'show' : ''}} " id="home" data-bs-parent="#accordionExample">
-                    <li class="{{ (request()->is('slider')) ? 'active' : ''}}">
-                        <a href="/slider"> Слайдер </a>
-                    </li>
+                <ul class="collapse submenu list-unstyled {{ (request()->is('slider')) ? 'show' : ''}} " id="home"
+                    data-bs-parent="#accordionExample">
                     <li>
-                        <a href="javascript:void(0);"> Level 2b </a>
-                    </li>
-
-                    <li>
-                        <a href="#level-three" data-bs-toggle="collapse" aria-expanded="false"
-                           class="dropdown-toggle collapsed"> Level 2c
+                        <a href="#level-three" data-bs-toggle="collapse" aria-expanded="{{ (request()->is('slider')) ? 'true' : 'false'}}"
+                           class="dropdown-toggle collapsed"> Слайдер
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                  stroke-linejoin="round" class="feather feather-chevron-right">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </a>
-                        <ul class="collapse list-unstyled sub-submenu" id="level-three" data-bs-parent="#pages">
-                            <li>
-                                <a href="javascript:void(0);"> Level 3a </a>
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('slider')) ? 'show' : ''}}" id="level-three" data-bs-parent="#pages">
+                            <li class="{{ (request()->is('slider')) ? 'active' : ''}}">
+
+                            <a href="/slider"> Создание </a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0);"> Level 3b </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"> Level 3c </a>
+                            <li {{--class="{{ (request()->is('slider')) ? 'active' : ''}}"--}}>
+                                <a href="javascript:void(0);"> Обзор </a>
                             </li>
                         </ul>
                     </li>

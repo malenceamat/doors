@@ -20,7 +20,7 @@
     <link rel="stylesheet" href={{asset("croppie.css")}} />
 
     <div class="profile-image">
-        <form action="#" method="POST" enctype="multipart/form-data" id="save">
+        <form action="/slider_create" method="POST" enctype="multipart/form-data" id="save">
             @csrf
             <div class="col-md-12">
                 <div class="mb-3">

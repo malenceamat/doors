@@ -36,15 +36,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-4 footer-top-last text-right-sm">
-                        <div class="title">Получить консультацию</div>
-                        <a href="#" class="button fancyboxModal">Заказать звонок</a>
-                        <div class="push10"></div>
-                        <div class="element-description">
-                            Остались вопросы?
-                            Закажите звонок и мы перезвоним Вам.
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -53,10 +45,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    © 2010 – 2023 г. Шаблон интернет магазина дверей
+                    ©2024г.
                 </div>
                 <div class="col-sm-6 text-right-sm">
-                    Разработано в <a href="https://ultron.pro/" target="_blank">ultron.pro</a>
+                    Разработано в <a href="https://it-pskov.ru/" target="_blank">IT Nova</a>
                 </div>
             </div>
         </div>

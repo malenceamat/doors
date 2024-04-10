@@ -20,12 +20,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 Route::middleware(['auth'])->group(function () {
 
-
-
     Route::get('/slider',[SliderController::class,'index']);
 
     Route::get('/admin',[AdminController::class,'index']);
 
+    Route::post('/slider_create',[SliderController::class,'create']);
 
 });
 

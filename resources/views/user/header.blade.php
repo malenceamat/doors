@@ -72,11 +72,6 @@
                                 <a href="tel:+73217778899">+7 (321) 777-88-99</a>
                             </div>
 
-                            <div class="callback-link-wrap text-right-sm">
-                                <div class="push5 visible-xs"></div>
-                                <a href="index.html#callback" class="fancyboxModal callback-link">Заказать звонок</a>
-                            </div>
-                            <div class="push15 visible-xs"></div>
                         </div>
                     </div>
                 </div>
