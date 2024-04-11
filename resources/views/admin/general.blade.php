@@ -64,6 +64,7 @@
                         @endif
                         <div class="widget-content widget-content-area">
                             @yield('slider')
+                            @yield('slider_show')
                         </div>
                     </div>
                 </div>

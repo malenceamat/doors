@@ -5,12 +5,12 @@
         <div class="navbar-nav theme-brand flex-row  text-center">
             <div class="nav-logo">
                 <div class="nav-item theme-logo">
-                    <a href="index.html">
+                    <a href="{{route('home')}}">
                         <img src="../../src/assets/img/logo.svg" class="navbar-logo" alt="logo">
                     </a>
                 </div>
                 <div class="nav-item theme-text">
-                    <a href="index.html" class="nav-link">Torex</a>
+                    <a href="{{route('home')}}" class="nav-link">Torex</a>
                 </div>
             </div>
             <div class="nav-item sidebar-toggle">
@@ -28,7 +28,7 @@
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
                 <a href="#home" data-bs-toggle="collapse"
-                   aria-expanded="{{ (request()->is('slider')) ? 'true' : 'false'}}" class="dropdown-toggle collapsed">
+                   aria-expanded="{{ (request()->is('slider','slider_show')) ? 'true' : 'false'}}" class="dropdown-toggle collapsed">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -48,10 +48,10 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ (request()->is('slider')) ? 'show' : ''}} " id="home"
+                <ul class="collapse submenu list-unstyled {{ (request()->is('slider','slider_show')) ? 'show' : ''}} " id="home"
                     data-bs-parent="#accordionExample">
                     <li>
-                        <a href="#level-three" data-bs-toggle="collapse" aria-expanded="{{ (request()->is('slider')) ? 'true' : 'false'}}"
+                        <a href="#level-three" data-bs-toggle="collapse" aria-expanded="{{ (request()->is('slider','slider_show')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Слайдер
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -59,13 +59,13 @@
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </a>
-                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('slider')) ? 'show' : ''}}" id="level-three" data-bs-parent="#pages">
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('slider','slider_show')) ? 'show' : ''}}" id="level-three" data-bs-parent="#pages">
                             <li class="{{ (request()->is('slider')) ? 'active' : ''}}">
 
-                            <a href="/slider"> Создание </a>
+                            <a href="{{route('slider')}}"> Создание </a>
                             </li>
-                            <li {{--class="{{ (request()->is('slider')) ? 'active' : ''}}"--}}>
-                                <a href="javascript:void(0);"> Обзор </a>
+                            <li class="{{ (request()->is('slider_show')) ? 'active' : ''}}">
+                                <a href="{{route('slider_show')}}"> Обзор </a>
                             </li>
                         </ul>
                     </li>

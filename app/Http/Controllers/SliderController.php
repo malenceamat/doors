@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
 {
-    public function index()
+    public function index($id = null)
     {
-        return view('admin.content.slider.slider_create');
+        $slider = $id ? Slider::find($id) : new Slider();
+        return view('admin.content.slider.slider_create',compact('slider'));
     }
     public function create(SliderRequest $req)
     {
@@ -22,7 +23,19 @@ class SliderController extends Controller
     }
     public function show()
     {
-        $slider = Slider::get();
-        return view('admin.content.slider.slider_show', compact('slider'));
+        $sliders = Slider::orderBy('created_at')->get();
+        return view('admin.content.slider.slider_show', compact('sliders'));
+    }
+    public function update(Request $req)
+    {
+        $helper = new BaseHelperController();
+
+        $slider = Slider::find($req['id']);
+        if (!empty($slider) && $req['image'] != null) {
+            Storage::disk('public')->delete('image', $slider['image']);
+            $slider['image']  = $helper->store_base64_image($req['image']);
+        }
+        $slider->fill($req->only('title', 'subtitle', 'button_text', 'button_link'))->save();
+        return redirect(route('slider_show'));
     }
 }
