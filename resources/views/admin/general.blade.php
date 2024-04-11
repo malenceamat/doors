@@ -65,6 +65,8 @@
                         <div class="widget-content widget-content-area">
                             @yield('slider')
                             @yield('slider_show')
+                            @yield('info_create_update')
+                            @yield('info_show')
                         </div>
                     </div>
                 </div>

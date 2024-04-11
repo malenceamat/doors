@@ -1,5 +1,6 @@
 @extends('admin.general')
-@section('slider')
+@section('info_create_update')
+
     <link rel="stylesheet" type="text/css" href={{asset("../src/assets/css/light/elements/alert.css")}}>
     <link rel="stylesheet" type="text/css" href={{asset("../src/assets/css/dark/elements/alert.css")}}>
     <link rel="stylesheet" href={{asset("../src/plugins/src/filepond/filepond.min.css")}}>
@@ -19,18 +20,18 @@
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
     <link rel="stylesheet" href={{asset("croppie.css")}} />
 
+
+
+
     <div class="profile-image">
-        <form @if (isset($slider->id)) action="{{route('slider_edit')}}" @else action="{{route('slider_create')}}" @endif method="POST" enctype="multipart/form-data" id="save">
+        <form  action="{{route('info_create_update')}}"  method="POST" enctype="multipart/form-data" id="save">
             @csrf
-            @if($slider->id)
-                @method('POST')
-            @endif
             <div class="col-md-12">
                 <div class="mb-3">
                     <div class="col-lg-10 col-sm-12 mt-3 pl-0">
                         <input id="itn-croppie-result-i" type="text" hidden value=""
                                name="image">
-                        <img id="itn-croppie-result" src="{{asset('/storage/'.$slider['image'])}}"
+                        <img id="itn-croppie-result" src=""
                              class="col-lg-6 col-sm-12 pl-0">
                         <input id="croppie-input" type="file" style="color: #3b3f5c"
                                class="form-control-file d-block mt-3">
@@ -54,7 +55,7 @@
                                     <div class="container">
                                         <div class="form-group">
                                             <label for="title">Основной заголовок</label>
-                                            <input id="title" type="text" name="title" value="{{$slider['title']}}"
+                                            <input id="title" type="text" name="title" value=""
                                                    placeholder="Основной заголовок" class="form-control">
 
                                         </div>
@@ -65,26 +66,7 @@
                                             <input type="text" class="form-control mb-3"
                                                    placeholder="Дополнительный текст"
                                                    id="subtitle" name="subtitle"
-                                                   value="{{$slider['subtitle']}}">
-                                        </div>
-                                    </div>
-
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <label for="button_text">Текст на кнопке</label>
-                                            <input type="text" class="form-control mb-3"
-                                                   placeholder="Текст на кнопке"
-                                                   id="button_text" name="button_text"
-                                                   value="{{$slider['button_text']}}">
-                                        </div>
-                                    </div>
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <label for="button_link">Ссылка в кнопке</label>
-                                            <input type="text" class="form-control mb-3"
-                                                   placeholder="Ссылка в кнопке"
-                                                   id="button_link" name="button_link"
-                                                   value="{{$slider['button_link']}}">
+                                                   value="">
                                         </div>
                                     </div>
                                 </div>
@@ -98,8 +80,6 @@
             </div>
         </form>
     </div>
-
-
 
 
 
@@ -163,7 +143,4 @@
             });
         });
     </script>
-
-
-
 @endsection
