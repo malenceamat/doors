@@ -93,10 +93,25 @@
                     </div>
                 </div>
             </div>
-            <div class="container mt-5">
-                <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Сохранить</button>
-            </div>
+            @if(isset($slider->id))
+                <div class="container">
+                    <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Редактировать</button>
+                </div>
+            @else
+                <div class="container">
+                    <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Создать</button>
+                </div>
+            @endif
         </form>
+        @if(isset($slider->id))
+            <div class="" style="float: right;height: auto">
+                <form method="POST" action="/slider_delete/{{$slider->id}}">
+                    @csrf
+                    {{method_field('DELETE')}}
+                    <button class="btn btn-danger mb-2 me-4">Удалить</button>
+                </form>
+            </div>
+        @endif
     </div>
 
 

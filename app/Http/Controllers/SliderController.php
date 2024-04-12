@@ -38,4 +38,11 @@ class SliderController extends Controller
         $slider->fill($req->only('title', 'subtitle', 'button_text', 'button_link'))->save();
         return redirect(route('slider_show'));
     }
+    public function delete($id)
+    {
+        $delete = Slider::find($id);
+        Storage::disk('public')->delete('image', $delete['image']);
+        $delete->delete();
+        return redirect(route('slider_show'));
+    }
 }

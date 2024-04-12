@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/slider_create',[SliderController::class,'create'])->name('slider_create');
     Route::get('/slider_show',[SliderController::class,'show'])->name('slider_show');
     Route::post('/slider_edit',[SliderController::class,'update'])->name('slider_edit');
+    Route::delete('/slider_delete/{id}',[SliderController::class,'delete']);
 
     Route::get('/info_create_update',[InfoBlockController::class,'index'])->name('info_create_update');
     Route::post('/info_create_update',[InfoBlockController::class,'create'])->name('info_create');
