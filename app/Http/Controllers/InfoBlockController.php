@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Helpers\BaseHelperController;
+use App\Http\Requests\InfoBlockRequest;
 use App\Models\Info_Block;
-use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class InfoBlockController extends Controller
 {
-    public function index()
+    public function index($id = null)
     {
-        return view('admin.content.info_block.info_create_update');
+        $info = $id ? Info_Block::find($id) : new Info_Block;
+        return view('admin.content.info_block.info_create_update',compact('info'));
     }
-    public function create(Request $req)
+    public function create(InfoBlockRequest $req)
     {
         $helper = new BaseHelperController();
         Info_Block::create(array_merge($req->all(),['image' => $helper->store_base64_image($req['image'])]) );
@@ -21,7 +22,11 @@ class InfoBlockController extends Controller
     }
     public function show()
     {
-        return view('admin.content.info_block.info_show');
+        $info = Info_Block::get();
+        return view('admin.content.info_block.info_show',compact('info'));
+    }
+    public function update(Request $req)
+    {
+
     }
 }
-🤑

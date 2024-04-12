@@ -31,7 +31,7 @@ class SliderController extends Controller
         $helper = new BaseHelperController();
 
         $slider = Slider::find($req['id']);
-        if (!empty($slider) && $req['image'] != null) {
+        if (!empty($slider) && $req['image'] != $slider['image']) {
             Storage::disk('public')->delete('image', $slider['image']);
             $slider['image']  = $helper->store_base64_image($req['image']);
         }

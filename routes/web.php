@@ -20,17 +20,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 Route::middleware(['auth'])->group(function () {
+    Route::get('/admin',[AdminController::class,'index']);
 
     Route::get('/slider/{id?}',[SliderController::class,'index'])->name('slider');
-    Route::get('/admin',[AdminController::class,'index']);
     Route::post('/slider_create',[SliderController::class,'create'])->name('slider_create');
     Route::get('/slider_show',[SliderController::class,'show'])->name('slider_show');
     Route::post('/slider_edit',[SliderController::class,'update'])->name('slider_edit');
     Route::delete('/slider_delete/{id}',[SliderController::class,'delete']);
 
-    Route::get('/info_create_update',[InfoBlockController::class,'index'])->name('info_create_update');
+    Route::get('/info_create_update/{id?}',[InfoBlockController::class,'index'])->name('info_create_update');
     Route::post('/info_create_update',[InfoBlockController::class,'create'])->name('info_create');
     ROute::get('/info_show',[InfoBlockController::class,'show'])->name('info_show');
+    Route::post('/info_edit',[InfoBlockController::class,'update'])->name('info_edit');
 });
 
 Route::get('/', [UserController::class, 'index'])->name('home');

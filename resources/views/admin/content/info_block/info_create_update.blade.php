@@ -21,17 +21,18 @@
     <link rel="stylesheet" href={{asset("croppie.css")}} />
 
 
-
-
     <div class="profile-image">
-        <form  action="{{route('info_create_update')}}"  method="POST" enctype="multipart/form-data" id="save">
+        <form @if(isset($info->id)) action="{{route('info_edit')}}" @else action="{{route('info_create_update')}}" @endif method="POST" enctype="multipart/form-data" id="save">
             @csrf
+            @if($info->id)
+                @method('POST')
+            @endif
             <div class="col-md-12">
                 <div class="mb-3">
                     <div class="col-lg-10 col-sm-12 mt-3 pl-0">
                         <input id="itn-croppie-result-i" type="text" hidden value=""
                                name="image">
-                        <img id="itn-croppie-result" src=""
+                        <img id="itn-croppie-result" src="{{asset('/storage/'.$info['image'])}}"
                              class="col-lg-6 col-sm-12 pl-0">
                         <input id="croppie-input" type="file" style="color: #3b3f5c"
                                class="form-control-file d-block mt-3">
@@ -55,7 +56,7 @@
                                     <div class="container">
                                         <div class="form-group">
                                             <label for="title">Основной заголовок</label>
-                                            <input id="title" type="text" name="title" value=""
+                                            <input id="title" type="text" name="title" value="{{$info['title']}}"
                                                    placeholder="Основной заголовок" class="form-control">
 
                                         </div>
@@ -66,9 +67,10 @@
                                             <input type="text" class="form-control mb-3"
                                                    placeholder="Дополнительный текст"
                                                    id="subtitle" name="subtitle"
-                                                   value="">
+                                                   value="{{$info['subtitle']}}">
                                         </div>
                                     </div>
+                                    <input type="hidden" name="id" value="{{$info['id']}}">
                                 </div>
                             </div>
                         </div>
@@ -80,9 +82,6 @@
             </div>
         </form>
     </div>
-
-
-
 
     <script src={{asset("croppie.js")}}></script>
     <script>

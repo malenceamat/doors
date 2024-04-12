@@ -28,7 +28,7 @@
             <div class="col-md-12">
                 <div class="mb-3">
                     <div class="col-lg-10 col-sm-12 mt-3 pl-0">
-                        <input id="itn-croppie-result-i" type="text" hidden value=""
+                        <input id="itn-croppie-result-i" type="text" hidden value="{{$slider['image']}}"
                                name="image">
                         <img id="itn-croppie-result" src="{{asset('/storage/'.$slider['image'])}}"
                              class="col-lg-6 col-sm-12 pl-0">

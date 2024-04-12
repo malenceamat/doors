@@ -1,17 +1,21 @@
 @extends('admin.general')
 @section('info_show')
-    <div class="col-sm-3" style="padding: 10px">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">йцу</h4>
-            </div>
-            <div class="card-footer">
-                <p class="mb-0">1</p>
-            </div>
-            <form method="get" action="/stages/3">
-                @csrf
-                <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Редактировать</button>
-            </form>
+    <div class="col-xxl-12">
+        <div class="row">
+            @foreach($info as $data)
+                <div class="col-sm-3" style="padding: 10px">
+                    <div class="card">
+                        <img src="{{asset('/storage/'. $data['image'])}}" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">{{$data['title']}}</h5>
+                        </div>
+                        <a href="/info_create_update/{{$data['id']}}">
+                            <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Редактировать
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection

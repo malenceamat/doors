@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class InfoBlockRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class InfoBlockRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +25,17 @@ class InfoBlockRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => ['required'],
+            'title' => ['required','string','max:255'],
+            'subtitle' => ['required', 'string','max:255'],
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'image.required' => 'Изображение обязательно',
+            'title.required' => 'Основной текст обязателен',
+            'subtitle.required' => 'Дополнительный текст обязателен'
         ];
     }
 }
