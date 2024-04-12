@@ -19,7 +19,7 @@ class SliderController extends Controller
     {
         $helper = new BaseHelperController();
         Slider::create(array_merge($req->all(),['image' => $helper->store_base64_image($req['image'])]) );
-        return back();
+        return redirect()->route('slider_show');
     }
     public function show()
     {

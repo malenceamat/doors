@@ -13,7 +13,7 @@ class CreateInfoBlocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('info__blocks', function (Blueprint $table) {
+        Schema::create('info_blocks', function (Blueprint $table) {
             $table->id();
             $table->string('image');
             $table->string('title');

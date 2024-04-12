@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Helpers\BaseHelperController;
 use App\Models\Info_Block;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class InfoBlockController extends Controller
@@ -13,12 +15,13 @@ class InfoBlockController extends Controller
     }
     public function create(Request $req)
     {
-        dd($req->all());
-        Info_Block::create($req->all());
-        return redirect()->route('admin.content.info_block.info_create');
+        $helper = new BaseHelperController();
+        Info_Block::create(array_merge($req->all(),['image' => $helper->store_base64_image($req['image'])]) );
+        return redirect()->route('info_show');
     }
     public function show()
     {
         return view('admin.content.info_block.info_show');
     }
 }
+🤑
