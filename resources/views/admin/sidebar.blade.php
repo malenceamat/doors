@@ -1,7 +1,5 @@
 <div class="sidebar-wrapper sidebar-theme">
-
     <nav id="sidebar">
-
         <div class="navbar-nav theme-brand flex-row  text-center">
             <div class="nav-logo">
                 <div class="nav-item theme-logo">
@@ -24,7 +22,6 @@
                 </div>
             </div>
         </div>
-
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
                 <a href="#home" data-bs-toggle="collapse"
@@ -69,7 +66,6 @@
                             </li>
                         </ul>
                     </li>
-
                     <li>
                         <a href="#level-three_info" data-bs-toggle="collapse" aria-expanded="{{ (request()->is('info_create_update','info_show')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Инфоблок
@@ -88,21 +84,8 @@
                             </li>
                         </ul>
                     </li>
-
-
-
-
-
-
-
-
-
-
                 </ul>
             </li>
-
         </ul>
-
     </nav>
-
 </div>
