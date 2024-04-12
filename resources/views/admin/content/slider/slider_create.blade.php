@@ -87,6 +87,7 @@
                                                    value="{{$slider['button_link']}}">
                                         </div>
                                     </div>
+                                    <input type="hidden" name="id" value="{{$slider['id']}}">
                                 </div>
                             </div>
                         </div>
