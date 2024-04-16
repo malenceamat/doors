@@ -6,6 +6,7 @@ use App\Http\Controllers\Helpers\BaseHelperController;
 use App\Http\Requests\InfoBlockRequest;
 use App\Models\Info_Block;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class InfoBlockController extends Controller
 {
@@ -27,6 +28,13 @@ class InfoBlockController extends Controller
     }
     public function update(Request $req)
     {
-
+        $helper = new BaseHelperController();
+        $info = Info_Block::find($req['id']);
+        if (!empty($info) && $req['image'] != $info['image']) {
+            Storage::disk('public')->delete('image', $info['image']);
+            $info['image']  = $helper->store_base64_image($req['image']);
+        }
+        $info->fill($req->only('title', 'subtitle'))->save();
+        return redirect()->route('info_show');
     }
 }

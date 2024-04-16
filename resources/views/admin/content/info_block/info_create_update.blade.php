@@ -22,7 +22,8 @@
 
 
     <div class="profile-image">
-        <form @if(isset($info->id)) action="{{route('info_edit')}}" @else action="{{route('info_create_update')}}" @endif method="POST" enctype="multipart/form-data" id="save">
+        <form @if(isset($info->id)) action="{{route('info_edit')}}" @else action="{{route('info_create_update')}}"
+              @endif method="POST" enctype="multipart/form-data" id="save">
             @csrf
             @if($info->id)
                 @method('POST')
@@ -30,7 +31,7 @@
             <div class="col-md-12">
                 <div class="mb-3">
                     <div class="col-lg-10 col-sm-12 mt-3 pl-0">
-                        <input id="itn-croppie-result-i" type="text" hidden value=""
+                        <input id="itn-croppie-result-i" type="text" hidden value="{{$info['image']}}"
                                name="image">
                         <img id="itn-croppie-result" src="{{asset('/storage/'.$info['image'])}}"
                              class="col-lg-6 col-sm-12 pl-0">
@@ -58,7 +59,6 @@
                                             <label for="title">Основной заголовок</label>
                                             <input id="title" type="text" name="title" value="{{$info['title']}}"
                                                    placeholder="Основной заголовок" class="form-control">
-
                                         </div>
                                     </div>
                                     <div class="container">
