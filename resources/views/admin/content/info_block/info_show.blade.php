@@ -9,7 +9,7 @@
                         <div class="card-body">
                             <h5 class="card-title mb-3">{{$data['title']}}</h5>
                         </div>
-                        <a href="/info_create_update/{{$data['id']}}">
+                        <a href="{{route('info_create_update', ['id' => $data['id']])}}" >
                             <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Редактировать
                             </button>
                         </a>

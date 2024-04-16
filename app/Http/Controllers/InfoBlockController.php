@@ -37,4 +37,11 @@ class InfoBlockController extends Controller
         $info->fill($req->only('title', 'subtitle'))->save();
         return redirect()->route('info_show');
     }
+    public function delete($id)
+    {
+        $delete = Info_Block::find($id);
+        Storage::disk('public')->delete('image', $delete['image']);
+        $delete->delete();
+        return redirect()->route('info_show');
+    }
 }

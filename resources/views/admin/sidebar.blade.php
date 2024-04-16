@@ -25,7 +25,7 @@
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
                 <a href="#home" data-bs-toggle="collapse"
-                   aria-expanded="{{ (request()->is('slider','slider_show','info_create_update','info_show')) ? 'true' : 'false'}}"
+                   aria-expanded="{{ (request()->routeIs('slider','slider_show','info_create_update','info_show')) ? 'true' : 'false'}}"
                    class="dropdown-toggle collapsed">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -46,12 +46,12 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ (request()->is('slider','slider_show','info_create_update','info_show')) ? 'show' : ''}} "
+                <ul class="collapse submenu list-unstyled {{ (request()->routeIs('slider','slider_show','info_create_update','info_show','banner')) ? 'show' : ''}} "
                     id="home"
                     data-bs-parent="#accordionExample">
                     <li>
                         <a href="#level-three" data-bs-toggle="collapse"
-                           aria-expanded="{{ (request()->is('slider','slider_show')) ? 'true' : 'false'}}"
+                           aria-expanded="{{ (request()->routeIs('slider','slider_show')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Слайдер
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -59,20 +59,20 @@
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </a>
-                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('slider','slider_show')) ? 'show' : ''}}"
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('slider','slider_show')) ? 'show' : ''}}"
                             id="level-three" data-bs-parent="#pages">
-                            <li class="{{ (request()->is('slider')) ? 'active' : ''}}">
+                            <li class="{{ (request()->routeIs('slider')) ? 'active' : ''}}">
 
                                 <a href="{{route('slider')}}"> Создание </a>
                             </li>
-                            <li class="{{ (request()->is('slider_show')) ? 'active' : ''}}">
+                            <li class="{{ (request()->routeIs('slider_show')) ? 'active' : ''}}">
                                 <a href="{{route('slider_show')}}"> Обзор </a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="#level-three_info" data-bs-toggle="collapse"
-                           aria-expanded="{{ (request()->is('info_create_update','info_show')) ? 'true' : 'false'}}"
+                           aria-expanded="{{ (request()->routeIs('info_create_update','info_show')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Инфоблок
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -80,19 +80,19 @@
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </a>
-                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('info_create_update','info_show')) ? 'show' : ''}}"
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('info_create_update','info_show')) ? 'show' : ''}}"
                             id="level-three_info" data-bs-parent="#pages">
-                            <li class="{{ (request()->is('info_create_update')) ? 'active' : ''}}">
+                            <li class="{{ (request()->routeIs('info_create_update')) ? 'active' : ''}}">
                                 <a href="{{route('info_create_update')}}"> Создание </a>
                             </li>
-                            <li class="{{ (request()->is('info_show')) ? 'active' : ''}}">
+                            <li class="{{ (request()->routeIs('info_show')) ? 'active' : ''}}">
                                 <a href="{{route('info_show')}}"> Обзор </a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="#level-three_discount" data-bs-toggle="collapse"
-                           aria-expanded="{{ (request()->is('qwe')) ? 'true' : 'false'}}"
+                           aria-expanded="{{ (request()->routeIs('qwe')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Новинки/Акции
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -100,19 +100,16 @@
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </a>
-                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('qwe')) ? 'show' : ''}}"
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('qwe')) ? 'show' : ''}}"
                             id="level-three_discount" data-bs-parent="#pages">
-                            <li class="{{ (request()->is('qwe')) ? 'active' : ''}}">
-                                <a href="{{route('info_create_update')}}"> Создание </a>
-                            </li>
-                            <li class="{{ (request()->is('qwe')) ? 'active' : ''}}">
+                            <li class="{{ (request()->routeIs('qwe')) ? 'active' : ''}}">
                                 <a href="{{route('info_show')}}"> Обзор </a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="#level-three_banner" data-bs-toggle="collapse"
-                           aria-expanded="{{ (request()->is('qwe')) ? 'true' : 'false'}}"
+                           aria-expanded="{{ (request()->routeIs('banner')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Баннер
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -120,33 +117,33 @@
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </a>
-                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('qwe')) ? 'show' : ''}}"
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('banner')) ? 'show' : ''}}"
                             id="level-three_banner" data-bs-parent="#pages">
-                            <li class="{{ (request()->is('qwe')) ? 'active' : ''}}">
-                                <a href="{{route('info_create_update')}}"> Создание </a>
+                            <li class="{{ (request()->routeIs('banner')) ? 'active' : ''}}">
+                                <a href="{{route('banner')}}"> Создание </a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="#level-three_text" data-bs-toggle="collapse"
-                           aria-expanded="{{ (request()->is('qwe')) ? 'true' : 'false'}}"
-                           class="dropdown-toggle collapsed"> Инфо-Блог
+                           aria-expanded="{{ (request()->routeIs('qwe')) ? 'true' : 'false'}}"
+                           class="dropdown-toggle collapsed"> Блог
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                  stroke-linejoin="round" class="feather feather-chevron-right">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </a>
-                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('qwe')) ? 'show' : ''}}"
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('qwe')) ? 'show' : ''}}"
                             id="level-three_text" data-bs-parent="#pages">
-                            <li class="{{ (request()->is('qwe')) ? 'active' : ''}}">
+                            <li class="{{ (request()->routeIs('qwe')) ? 'active' : ''}}">
                                 <a href="{{route('info_create_update')}}"> Создание </a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="#level-three_news" data-bs-toggle="collapse"
-                           aria-expanded="{{ (request()->is('qwe')) ? 'true' : 'false'}}"
+                           aria-expanded="{{ (request()->routeIs('qwe')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Новости
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -154,16 +151,16 @@
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </a>
-                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('qwe')) ? 'show' : ''}}"
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('qwe')) ? 'show' : ''}}"
                             id="level-three_news" data-bs-parent="#pages">
-                            <li class="{{ (request()->is('qwe')) ? 'active' : ''}}">
+                            <li class="{{ (request()->routeIs('qwe')) ? 'active' : ''}}">
                                 <a href="{{route('info_create_update')}}"> Обзор </a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="#level-three_partners" data-bs-toggle="collapse"
-                           aria-expanded="{{ (request()->is('qwe')) ? 'true' : 'false'}}"
+                           aria-expanded="{{ (request()->routeIs('qwe')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Партнеры
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -171,12 +168,12 @@
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </a>
-                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('qwe')) ? 'show' : ''}}"
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('qwe')) ? 'show' : ''}}"
                             id="level-three_partners" data-bs-parent="#pages">
-                            <li class="{{ (request()->is('qwe')) ? 'active' : ''}}">
+                            <li class="{{ (request()->routeIs('qwe')) ? 'active' : ''}}">
                                 <a href="{{route('info_create_update')}}"> Создать </a>
                             </li>
-                            <li class="{{ (request()->is('qwe')) ? 'active' : ''}}">
+                            <li class="{{ (request()->routeIs('qwe')) ? 'active' : ''}}">
                                 <a href="{{route('info_create_update')}}"> Обзор </a>
                             </li>
                         </ul>

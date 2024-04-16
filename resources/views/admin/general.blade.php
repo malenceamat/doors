@@ -49,9 +49,9 @@
     <div class="search-overlay"></div>
     @include('admin.sidebar')
     <div id="content" class="main-content">
-        <div class="container">
+        <div class="container" style="display: block;">
             <div class="row layout-top-spacing">
-                <div id="fuSingleFile" class="col-lg-12 layout-spacing">
+                <div id="fuSingleFile" class="col-lg-12 layout-spacing" >
                     <div class="statbox widget box box-shadow">
                         @if ($errors->any())
                             <div class="alert alert-danger mt-1 mb-1">
@@ -67,6 +67,7 @@
                             @yield('slider_show')
                             @yield('info_create_update')
                             @yield('info_show')
+                            @yield('banner')
                         </div>
                     </div>
                 </div>

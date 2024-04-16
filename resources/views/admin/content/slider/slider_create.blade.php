@@ -106,7 +106,7 @@
         </form>
         @if(isset($slider->id))
             <div class="" style="float: right;height: auto">
-                <form method="POST" action="/slider_delete/{{$slider->id}}">
+                <form method="POST" action="{{route('delete_slider', ['id' => $slider['id']])}}">
                     @csrf
                     {{method_field('DELETE')}}
                     <button class="btn btn-danger mb-2 me-4">Удалить</button>

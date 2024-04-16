@@ -1,6 +1,5 @@
 @extends('admin.general')
-@section('info_create_update')
-
+@section('banner')
     <link rel="stylesheet" type="text/css" href={{asset("../src/assets/css/light/elements/alert.css")}}>
     <link rel="stylesheet" type="text/css" href={{asset("../src/assets/css/dark/elements/alert.css")}}>
     <link rel="stylesheet" href={{asset("../src/plugins/src/filepond/filepond.min.css")}}>
@@ -20,20 +19,16 @@
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
     <link rel="stylesheet" href={{asset("croppie.css")}} />
 
-
     <div class="profile-image">
-        <form @if(isset($info->id)) action="{{route('info_edit')}}" @else action="{{route('info_create_update')}}"
-              @endif method="POST" enctype="multipart/form-data" id="save">
+        <form action="{{route('banner_create')}}"
+              method="POST" enctype="multipart/form-data" id="save">
             @csrf
-            @if($info->id)
-                @method('POST')
-            @endif
             <div class="col-md-12">
-                <div class="mb-3">
-                    <div class="col-lg-10 col-sm-12 mt-3 pl-0">
-                        <input id="itn-croppie-result-i" type="text" hidden value="{{$info['image']}}"
+                <div class="mb-12">
+                    <div class="col-lg-10 col-sm-12 mt-2 pl-0">
+                        <input id="itn-croppie-result-i" type="text" hidden value="{{$banner['image']}}"
                                name="image">
-                        <img id="itn-croppie-result" src="{{asset('/storage/'.$info['image'])}}"
+                        <img id="itn-croppie-result" src="{{asset('/storage/'.$banner['image'])}}"
                              class="col-lg-6 col-sm-12 pl-0">
                         <input id="croppie-input" type="file" style="color: #3b3f5c"
                                class="form-control-file d-block mt-3">
@@ -46,57 +41,16 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="id" value="">
 
-            <div class="tab-content" id="animateLineContent-4">
-                <div class="tab-pane fade show active" id="animated-underline-home" role="tabpanel"
-                     aria-labelledby="animated-underline-home-tab">
-                    <div class="row">
-                        <div class="container">
-                            <div class="form">
-                                <div class="row">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <label for="title">Основной заголовок</label>
-                                            <input id="title" type="text" name="title" value="{{$info['title']}}"
-                                                   placeholder="Основной заголовок" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <label for="subtitle">Дополнительный текст</label>
-                                            <input type="text" class="form-control mb-3"
-                                                   placeholder="Дополнительный текст"
-                                                   id="subtitle" name="subtitle"
-                                                   value="{{$info['subtitle']}}">
-                                        </div>
-                                    </div>
-                                    <input type="hidden" name="id" value="{{$info['id']}}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="container mt-5">
+                <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Сохранить</button>
             </div>
-            @if(isset($info->id))
-                <div class="container">
-                    <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Редактировать</button>
-                </div>
-            @else
-                <div class="container">
-                    <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Создать</button>
-                </div>
-            @endif
         </form>
-        @if(isset($info->id))
-            <div class="" style="float: right;height: auto">
-                <form method="POST" action="{{route('delete_info', ['id' => $info['id']])}}">
-                    @csrf
-                    {{method_field('DELETE')}}
-                    <button class="btn btn-danger mb-2 me-4">Удалить</button>
-                </form>
-            </div>
-        @endif
     </div>
+
+
 
     <script src={{asset("croppie.js")}}></script>
     <script>
@@ -158,3 +112,4 @@
         });
     </script>
 @endsection
+
