@@ -4,7 +4,7 @@
             <div class="nav-logo">
                 <div class="nav-item theme-logo">
                     <a href="{{route('home')}}">
-                        <img src="../../src/assets/img/logo.svg" class="navbar-logo" alt="logo">
+                        <img src={{asset("src/assets/img/logo.svg")}} class="navbar-logo" alt="logo">
                     </a>
                 </div>
                 <div class="nav-item theme-text">
@@ -25,7 +25,7 @@
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
                 <a href="#home" data-bs-toggle="collapse"
-                   aria-expanded="{{ (request()->routeIs('slider','slider_show','info_create_update','info_show')) ? 'true' : 'false'}}"
+                   aria-expanded="{{ (request()->routeIs('slider','slider_show','info_create_update','info_show','blog')) ? 'true' : 'false'}}"
                    class="dropdown-toggle collapsed">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -46,7 +46,7 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ (request()->routeIs('slider','slider_show','info_create_update','info_show','banner')) ? 'show' : ''}} "
+                <ul class="collapse submenu list-unstyled {{ (request()->routeIs('slider','slider_show','info_create_update','info_show','banner','blog')) ? 'show' : ''}} "
                     id="home"
                     data-bs-parent="#accordionExample">
                     <li>
@@ -126,7 +126,7 @@
                     </li>
                     <li>
                         <a href="#level-three_text" data-bs-toggle="collapse"
-                           aria-expanded="{{ (request()->routeIs('qwe')) ? 'true' : 'false'}}"
+                           aria-expanded="{{ (request()->routeIs('blog')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Блог
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -134,10 +134,10 @@
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </a>
-                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('qwe')) ? 'show' : ''}}"
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('blog')) ? 'show' : ''}}"
                             id="level-three_text" data-bs-parent="#pages">
-                            <li class="{{ (request()->routeIs('qwe')) ? 'active' : ''}}">
-                                <a href="{{route('info_create_update')}}"> Создание </a>
+                            <li class="{{ (request()->routeIs('blog')) ? 'active' : ''}}">
+                                <a href="{{route('blog')}}"> Создание </a>
                             </li>
                         </ul>
                     </li>

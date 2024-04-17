@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InfoBlockController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UserController;
@@ -39,6 +40,11 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/banner',[BannerController::class,'index'])->name('banner');
         Route::post('/banner_create',[BannerController::class,'create'])->name('banner_create');
+
+        Route::get('/blog',[BlogController::class,'index'])->name('blog');
+        Route::post('/blog_create',[BlogController::class,'create'])->name('blog_create');
+
+
 
     });
 

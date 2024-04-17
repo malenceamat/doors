@@ -70,6 +70,7 @@
                             @yield('info_create_update')
                             @yield('info_show')
                             @yield('banner')
+                            @yield('blog')
                         </div>
                     </div>
                 </div>
