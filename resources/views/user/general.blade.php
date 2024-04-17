@@ -75,6 +75,7 @@
 <div class="main-wrapper">
     @include('user.header')
     @yield('content')
+    @yield('pay_delivery')
 </div>
 
 @include('user.footer')

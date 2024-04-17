@@ -71,6 +71,7 @@
                             @yield('info_show')
                             @yield('banner')
                             @yield('blog')
+                            @yield('pay_delivery_create')
                         </div>
                     </div>
                 </div>

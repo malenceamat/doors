@@ -1,3 +1,8 @@
+{{--<style>--}}
+{{--    #sidebar ul.menu-categories.ps {--}}
+{{--        height: 100px !important;--}}
+{{--    }--}}
+{{--</style>--}}
 <div class="sidebar-wrapper sidebar-theme">
     <nav id="sidebar">
         <div class="navbar-nav theme-brand flex-row  text-center">
@@ -142,23 +147,6 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#level-three_news" data-bs-toggle="collapse"
-                           aria-expanded="{{ (request()->routeIs('qwe')) ? 'true' : 'false'}}"
-                           class="dropdown-toggle collapsed"> Новости
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" class="feather feather-chevron-right">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                        </a>
-                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('qwe')) ? 'show' : ''}}"
-                            id="level-three_news" data-bs-parent="#pages">
-                            <li class="{{ (request()->routeIs('qwe')) ? 'active' : ''}}">
-                                <a href="{{route('info_create_update')}}"> Обзор </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
                         <a href="#level-three_partners" data-bs-toggle="collapse"
                            aria-expanded="{{ (request()->routeIs('qwe')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Партнеры
@@ -181,5 +169,40 @@
                 </ul>
             </li>
         </ul>
+
+
+        <ul class="list-unstyled menu-categories" id="accordionExample2">
+            <li class="menu">
+                <a href="#pay_delivery" data-bs-toggle="collapse"
+                   aria-expanded="{{ (request()->routeIs('pay_delivery_index')) ? 'true' : 'false'}}"
+                   class="dropdown-toggle collapsed">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                             stroke-linejoin="round" class="feather feather-hash">
+                            <line x1="4" y1="9" x2="20" y2="9"></line>
+                            <line x1="4" y1="15" x2="20" y2="15"></line>
+                            <line x1="10" y1="3" x2="8" y2="21"></line>
+                            <line x1="16" y1="3" x2="14" y2="21"></line>
+                        </svg>
+                        <span> Оплата / Доставка </span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                             stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled {{ (request()->routeIs('pay_delivery_index')) ? 'show' : ''}} "
+                    id="pay_delivery" data-bs-parent="#accordionExample2">
+                    <li class="{{ (request()->routeIs('pay_delivery_index')) ? 'active' : ''}}">
+                        <a href="{{route('pay_delivery_index')}}"> Настройка страницы </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
     </nav>
 </div>
