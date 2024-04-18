@@ -1,8 +1,8 @@
-{{--<style>--}}
-{{--    #sidebar ul.menu-categories.ps {--}}
-{{--        height: 100px !important;--}}
-{{--    }--}}
-{{--</style>--}}
+<style>
+    #sidebar ul.menu-categories.ps {
+        height: auto !important;
+    }
+</style>
 <div class="sidebar-wrapper sidebar-theme">
     <nav id="sidebar">
         <div class="navbar-nav theme-brand flex-row  text-center">
@@ -170,39 +170,37 @@
             </li>
         </ul>
 
-
-        <ul class="list-unstyled menu-categories" id="accordionExample2">
+        <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
-                <a href="#pay_delivery" data-bs-toggle="collapse"
+                <a href="#layouts" data-bs-toggle="collapse"
                    aria-expanded="{{ (request()->routeIs('pay_delivery_index')) ? 'true' : 'false'}}"
-                   class="dropdown-toggle collapsed">
+                   class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" class="feather feather-hash">
-                            <line x1="4" y1="9" x2="20" y2="9"></line>
-                            <line x1="4" y1="15" x2="20" y2="15"></line>
-                            <line x1="10" y1="3" x2="8" y2="21"></line>
-                            <line x1="16" y1="3" x2="14" y2="21"></line>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-terminal">
+                            <polyline points="4 17 10 11 4 5"></polyline>
+                            <line x1="12" y1="19" x2="20" y2="19"></line>
                         </svg>
                         <span> Оплата / Доставка </span>
                     </div>
                     <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" class="feather feather-chevron-right">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="feather feather-chevron-right">
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ (request()->routeIs('pay_delivery_index')) ? 'show' : ''}} "
-                    id="pay_delivery" data-bs-parent="#accordionExample2">
-                    <li class="{{ (request()->routeIs('pay_delivery_index')) ? 'active' : ''}}">
+                <ul class="collapse submenu list-unstyled {{ (request()->routeIs('pay_delivery_index')) ? 'show' : ''}}"
+                    id="layouts" data-bs-parent="#accordionExample">
+                    <li class="{{ (request()->routeIs('pay_delivery_index')) ? 'active' : '' }}">
                         <a href="{{route('pay_delivery_index')}}"> Настройка страницы </a>
                     </li>
                 </ul>
             </li>
         </ul>
+
 
     </nav>
 </div>
