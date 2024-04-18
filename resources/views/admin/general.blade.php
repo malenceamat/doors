@@ -75,6 +75,8 @@
                             @yield('partners_create')
                             @yield('partners_show')
                             @yield('about')
+                            @yield('news')
+                            @yield('news_show')
                         </div>
                     </div>
                 </div>

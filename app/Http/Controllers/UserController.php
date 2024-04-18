@@ -17,4 +17,8 @@ class UserController extends Controller
     {
         return view('user.about.about');
     }
+    public function news_index()
+    {
+        return view('user.news.news');
+    }
 }

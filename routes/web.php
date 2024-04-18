@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InfoBlockController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PartnersController;
 use App\Http\Controllers\PayDeliveryController;
 use App\Http\Controllers\SliderController;
@@ -59,6 +60,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/about', [AboutController::class,'index'])->name('about_show');
         Route::post('/about_create', [AboutController::class,'create'])->name('about_create');
 
+        Route::get('/news/{id?}', [NewsController::class,'index'])->name('news_index');
+        Route::post('/news_create', [NewsController::class,'create'])->name('news_create');
+        Route::get('/news_show', [NewsController::class,'show'])->name('news_show');
+        Route::post('/news_edit', [NewsController::class,'update'])->name('news_edit');
+        Route::delete('/news_delete/{id}', [NewsController::class,'delete'])->name('news_delete');
+
     });
 
 
@@ -67,7 +74,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', [UserController::class, 'index'])->name('home');
 Route::get('/pay_delivery', [UserController::class,'index_pay_delivery'])->name('pay_delivery');
 Route::get('/about', [UserController::class,'about_index'])->name('about_index');
-
+Route::get('/news', [UserController::class,'news_index'])->name('news');
 
 require __DIR__ . '/auth.php';
 

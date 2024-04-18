@@ -77,6 +77,7 @@
     @yield('content')
     @yield('pay_delivery')
     @yield('about')
+    @yield('news')
 </div>
 
 @include('user.footer')

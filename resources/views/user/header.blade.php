@@ -215,7 +215,9 @@
                         <li class="{{request()->routeIs('about_index') ? 'active' : ''}}">
                             <a href="{{route('about_index')}}"><span>О нас</span></a>
                         </li>
-                        <li><a href="novosti/index.html"><span>Новости</span></a></li>
+                        <li class="{{request()->routeIs('news') ? 'active' : ''}}">
+                            <a href="{{route('news')}}"><span>Новости</span></a>
+                        </li>
                         <li><a href="otzyivyi.html"><span>Отзывы</span></a></li>
                         <li class="last"><a href="kontaktyi.html"><span>Контакты</span></a></li>
                     </ul>
@@ -300,7 +302,9 @@
                         <li class="{{request()->routeIs('about_index') ? 'active' : ''}}">
                             <a href="{{route('about_index')}}"><span>О нас</span></a>
                         </li>
-                        <li><a href="novosti/index.html"><span>Новости</span></a></li>
+                        <li class="{{request()->routeIs('news') ? 'active' : ''}}">
+                            <a href="{{route('news')}}"><span>Новости</span></a>
+                        </li>
                         <li><a href="otzyivyi.html"><span>Отзывы</span></a></li>
                         <li class="last"><a href="kontaktyi.html"><span>Контакты</span></a></li>
                     </ul>
