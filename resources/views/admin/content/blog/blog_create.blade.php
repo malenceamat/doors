@@ -5,8 +5,6 @@
     <link rel="stylesheet" type="text/css" href={{asset("src/plugins/css/dark/editors/quill/quill.snow.css")}}>
     <link rel="stylesheet" href={{asset("croppie.css")}} />
 
-
-
     <div class="profile-image">
         <form action="{{route('blog_create')}}" method="post" enctype="multipart/form-data" id="save">
             @csrf

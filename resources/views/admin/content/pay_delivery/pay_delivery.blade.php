@@ -4,10 +4,6 @@
     <link rel="stylesheet" type="text/css" href={{asset("src/plugins/css/light/editors/quill/quill.snow.css")}}>
     <link rel="stylesheet" type="text/css" href={{asset("src/plugins/css/dark/editors/quill/quill.snow.css")}}>
 
-
-
-
-
     <div class="container">
         <form action="{{route('pay_delivery_create')}}" method="post" enctype="multipart/form-data" id="save">
             @csrf

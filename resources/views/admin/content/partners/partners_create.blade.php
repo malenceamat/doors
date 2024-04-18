@@ -28,7 +28,6 @@
                     </div>
                 </div>
                 <input type="hidden" value="{{$partners['id']}}" name="id">
-
             </div>
 
             @if(isset($partners->id))
