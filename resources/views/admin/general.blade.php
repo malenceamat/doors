@@ -72,6 +72,8 @@
                             @yield('banner')
                             @yield('blog')
                             @yield('pay_delivery_create')
+                            @yield('partners_create')
+                            @yield('partners_show')
                         </div>
                     </div>
                 </div>

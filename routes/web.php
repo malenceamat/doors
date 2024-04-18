@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InfoBlockController;
+use App\Http\Controllers\PartnersController;
 use App\Http\Controllers\PayDeliveryController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UserController;
@@ -47,6 +48,12 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/pay_delivery_index', [PayDeliveryController::class, 'index'])->name('pay_delivery_index');
         Route::post('/pay_delivery_create', [PayDeliveryController::class,'create'])->name('pay_delivery_create');
+
+        Route::get('/partners/{id?}', [PartnersController::class,'index'])->name('partners');
+        Route::post('/partners_create', [PartnersController::class,'create'])->name('partners_create');
+        Route::get('/partners_show', [PartnersController::class,'show'])->name('partners_show');
+        Route::post('/partners_edit', [PartnersController::class,'update'])->name('partners_edit');
+        Route::delete('partners_delete/{id}', [PartnersController::class,'delete'])->name('partners_delete');
 
     });
 
