@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Helpers\BaseHelperController;
 use App\Http\Requests\InfoBlockRequest;
 use App\Models\Info_Block;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class InfoBlockController extends Controller
@@ -26,7 +25,7 @@ class InfoBlockController extends Controller
         $info = Info_Block::get();
         return view('admin.content.info_block.info_show',compact('info'));
     }
-    public function update(Request $req)
+    public function update(InfoBlockRequest $req)
     {
         $helper = new BaseHelperController();
         $info = Info_Block::find($req['id']);

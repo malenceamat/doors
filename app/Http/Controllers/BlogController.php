@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Helpers\BaseHelperController;
 use App\Http\Requests\BlogRequest;
 use App\Models\Blog;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
@@ -15,7 +14,7 @@ class BlogController extends Controller
         $blog = Blog::firstOrCreate();
         return view('admin.content.blog.blog_create', compact('blog'));
     }
-    public function create(Request $req)
+    public function create(BlogRequest $req)
     {
         $helper = new BaseHelperController();
         $blog = Blog::find(1);

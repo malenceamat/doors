@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class BlogRequest extends FormRequest
+class PayDeliveryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,17 +25,13 @@ class BlogRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => ['required'],
-            'title' => ['required','string','max:255'],
-            'subtitle' => ['required'],
+            'text' => ['required']
         ];
     }
     public function messages()
     {
         return [
-            'image.required' => 'Изображение обязательно',
-            'title.required' => 'Заголовок обязателен',
-            'subtitle.required' => 'Основной текст обязателен',
+            'text.required' => 'Основной текст обязателен'
         ];
     }
 }

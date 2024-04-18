@@ -195,7 +195,7 @@
                 <ul class="collapse submenu list-unstyled {{ (request()->routeIs('pay_delivery_index')) ? 'show' : ''}}"
                     id="layouts" data-bs-parent="#accordionExample">
                     <li class="{{ (request()->routeIs('pay_delivery_index')) ? 'active' : '' }}">
-                        <a href="{{route('pay_delivery_index')}}"> Настройка страницы </a>
+                        <a href="{{route('pay_delivery_index')}}"> Настройка контента </a>
                     </li>
                 </ul>
             </li>

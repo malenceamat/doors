@@ -15,6 +15,7 @@ class CreatePayDeliveriesTable extends Migration
     {
         Schema::create('pay_deliveries', function (Blueprint $table) {
             $table->id();
+            $table->text('text')->nullable();
             $table->timestamps();
         });
     }

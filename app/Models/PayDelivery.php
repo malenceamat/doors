@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PayDelivery extends Model
 {
     use HasFactory;
+
+    protected $table = 'pay_deliveries';
+
+    protected $fillable = ['text'];
 }

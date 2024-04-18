@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/blog_create', [BlogController::class, 'create'])->name('blog_create');
 
         Route::get('/pay_delivery_index', [PayDeliveryController::class, 'index'])->name('pay_delivery_index');
+        Route::post('/pay_delivery_create', [PayDeliveryController::class,'create'])->name('pay_delivery_create');
 
     });
 

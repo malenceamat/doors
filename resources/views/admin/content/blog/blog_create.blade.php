@@ -1,9 +1,8 @@
 @extends('admin.general')
 @section('blog')
-    <script src={{asset("https://code.jquery.com/jquery-3.5.1.min.js")}}></script>
     <script src={{asset("https://code.jquery.com/jquery-3.6.0.min.js")}}></script>
-    <link rel="stylesheet" type="text/css" href={{asset("../src/plugins/css/light/editors/quill/quill.snow.css")}}>
-    <link rel="stylesheet" type="text/css" href={{asset("../src/plugins/css/dark/editors/quill/quill.snow.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("src/plugins/css/light/editors/quill/quill.snow.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("src/plugins/css/dark/editors/quill/quill.snow.css")}}>
     <link rel="stylesheet" href={{asset("croppie.css")}} />
 
 
@@ -56,7 +55,7 @@
                                                 <div class="widget-header">
                                                     <div class="row">
                                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                            <h4> Текст в кнопке "Подробнее" </h4>
+                                                            <h4> Текст </h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -91,8 +90,8 @@
 
 
 
-    <script src={{asset("../src/assets/js/scrollspyNav.js")}}></script>
-    <script src={{asset("../src/plugins/src/editors/quill/quill.js")}}></script>
+    <script src={{asset("src/assets/js/scrollspyNav.js")}}></script>
+    <script src={{asset("src/plugins/src/editors/quill/quill.js")}}></script>
     <script> quill = new Quill('#editor-container', {
             modules: {
                 toolbar: [

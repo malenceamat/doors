@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Helpers\BaseHelperController;
 use App\Http\Requests\SliderRequest;
 use App\Models\Slider;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
@@ -26,7 +25,7 @@ class SliderController extends Controller
         $sliders = Slider::orderBy('created_at')->get();
         return view('admin.content.slider.slider_show', compact('sliders'));
     }
-    public function update(Request $req)
+    public function update(SliderRequest $req)
     {
         $helper = new BaseHelperController();
 
