@@ -13,4 +13,8 @@ class UserController extends Controller
     {
         return view('user.pay_delivery.pay_delivery');
     }
+    public function about_index()
+    {
+        return view('user.about.about');
+    }
 }

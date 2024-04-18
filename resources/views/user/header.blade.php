@@ -212,40 +212,8 @@
                         <li class="{{request()->routeIs('pay_delivery') ? 'active' : '' }}">
                             <a href="{{route('pay_delivery')}}"><span>Оплата и доставка</span></a>
                         </li>
-                        <li><a href="o-nas.html"><span>О нас</span></a></li>
-                        <li class="down"><a href="uslugi/index.html"><span>Услуги</span></a><span
-                                class="dropdown-button"></span>
-                            <ul class="">
-                                <li class="first"><a
-                                        href="uslugi/demontazh-dverej/index.html"><span>Демонтаж дверей</span></a></li>
-                                <li><a href="uslugi/remont.html"><span>Изготовление дверей и ключей</span></a></li>
-                                <li><a href="uslugi/montazh.html"><span>Монтаж дверей, ручек, фурнитуры</span></a></li>
-                                <li><a href="uslugi/arenda.html"><span>Установка дверей и их составляющих</span></a>
-                                </li>
-                                <li><a href="uslugi/xranenie.html"><span>Замена замков</span></a></li>
-                                <li class="last down"><a
-                                        href="uslugi/vyiezd-speczialista.html"><span>Прочие услуги</span></a><span
-                                        class="dropdown-button"></span>
-                                    <ul class="">
-                                        <li class="first"><a
-                                                href="uslugi/vyiezd-speczialista/zvukoizolyacziya-dverej.html"><span>Звукоизоляция дверей</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="uslugi/vyiezd-speczialista/obshit-dver.html"><span>Обшить дверь</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="uslugi/vyiezd-speczialista/otregulirovat-dvernyie-petli.html"><span>Отрегулировать дверные петли</span></a>
-                                        </li>
-                                        <li><a href="uslugi/vyiezd-speczialista/podpilivanie-dveri.html"><span>Подпиливание двери</span></a>
-                                        </li>
-                                        <li><a href="uslugi/vyiezd-speczialista/pokrasit-dver.html"><span>Покрасить дверь</span></a>
-                                        </li>
-                                        <li class="last"><a
-                                                href="uslugi/vyiezd-speczialista/rasshirenie-dvernogo-proema.html"><span>Расширение дверного проема</span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <li class="{{request()->routeIs('about_index') ? 'active' : ''}}">
+                            <a href="{{route('about_index')}}"><span>О нас</span></a>
                         </li>
                         <li><a href="novosti/index.html"><span>Новости</span></a></li>
                         <li><a href="otzyivyi.html"><span>Отзывы</span></a></li>
@@ -329,38 +297,8 @@
                         <li class="{{request()->routeIs('pay_delivery') ? 'active' : '' }}">
                             <a href="{{route('pay_delivery')}}"><span>Оплата и доставка</span></a>
                         </li>
-                        <li><a href="o-nas.html"><span>О нас</span></a></li>
-                        <li class="down"><a href="uslugi/index.html"><span>Услуги</span></a>
-                            <ul class="">
-                                <li class="first"><a
-                                        href="uslugi/demontazh-dverej/index.html"><span>Демонтаж дверей</span></a></li>
-                                <li><a href="uslugi/remont.html"><span>Изготовление дверей и ключей</span></a></li>
-                                <li><a href="uslugi/montazh.html"><span>Монтаж дверей, ручек, фурнитуры</span></a></li>
-                                <li><a href="uslugi/arenda.html"><span>Установка дверей и их составляющих</span></a>
-                                </li>
-                                <li><a href="uslugi/xranenie.html"><span>Замена замков</span></a></li>
-                                <li class="last down"><a
-                                        href="uslugi/vyiezd-speczialista.html"><span>Прочие услуги</span></a>
-                                    <ul class="">
-                                        <li class="first"><a
-                                                href="uslugi/vyiezd-speczialista/zvukoizolyacziya-dverej.html"><span>Звукоизоляция дверей</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="uslugi/vyiezd-speczialista/obshit-dver.html"><span>Обшить дверь</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="uslugi/vyiezd-speczialista/otregulirovat-dvernyie-petli.html"><span>Отрегулировать дверные петли</span></a>
-                                        </li>
-                                        <li><a href="uslugi/vyiezd-speczialista/podpilivanie-dveri.html"><span>Подпиливание двери</span></a>
-                                        </li>
-                                        <li><a href="uslugi/vyiezd-speczialista/pokrasit-dver.html"><span>Покрасить дверь</span></a>
-                                        </li>
-                                        <li class="last"><a
-                                                href="uslugi/vyiezd-speczialista/rasshirenie-dvernogo-proema.html"><span>Расширение дверного проема</span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <li class="{{request()->routeIs('about_index') ? 'active' : ''}}">
+                            <a href="{{route('about_index')}}"><span>О нас</span></a>
                         </li>
                         <li><a href="novosti/index.html"><span>Новости</span></a></li>
                         <li><a href="otzyivyi.html"><span>Отзывы</span></a></li>

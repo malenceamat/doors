@@ -74,6 +74,7 @@
                             @yield('pay_delivery_create')
                             @yield('partners_create')
                             @yield('partners_show')
+                            @yield('about')
                         </div>
                     </div>
                 </div>

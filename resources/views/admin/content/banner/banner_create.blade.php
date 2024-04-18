@@ -25,9 +25,7 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="id" value="">
-
-
+            <input type="hidden" name="id" value="{{$banner['id']}}">
             <div class="container mt-5">
                 <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Сохранить</button>
             </div>

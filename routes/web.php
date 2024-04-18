@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
@@ -55,6 +56,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/partners_edit', [PartnersController::class,'update'])->name('partners_edit');
         Route::delete('partners_delete/{id}', [PartnersController::class,'delete'])->name('partners_delete');
 
+        Route::get('/about', [AboutController::class,'index'])->name('about_show');
+        Route::post('/about_create', [AboutController::class,'create'])->name('about_create');
+
     });
 
 
@@ -62,6 +66,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/', [UserController::class, 'index'])->name('home');
 Route::get('/pay_delivery', [UserController::class,'index_pay_delivery'])->name('pay_delivery');
+Route::get('/about', [UserController::class,'about_index'])->name('about_index');
 
 
 require __DIR__ . '/auth.php';
