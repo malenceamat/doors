@@ -10,11 +10,13 @@ class PayDeliveryController extends Controller
     public function index()
     {
         $pay_delivery = PayDelivery::firstOrCreate();
+
         return view('admin.content.pay_delivery.pay_delivery',compact('pay_delivery'));
     }
     public function create(PayDeliveryRequest $req)
     {
-        PayDelivery::find(1)->update($req->all());
+        PayDelivery::first()->update($req->all());
+
         return redirect()->route('pay_delivery_index');
     }
 }

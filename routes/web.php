@@ -75,6 +75,7 @@ Route::get('/', [UserController::class, 'index'])->name('home');
 Route::get('/pay_delivery', [UserController::class,'index_pay_delivery'])->name('pay_delivery');
 Route::get('/about', [UserController::class,'about_index'])->name('about_index');
 Route::get('/news', [UserController::class,'news_index'])->name('news');
+Route::get('/news_show/{id}', [UserController::class,'news_index_id'])->name('news_index_id');
 
 require __DIR__ . '/auth.php';
 

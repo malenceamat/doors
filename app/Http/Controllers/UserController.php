@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\News;
+
 class UserController extends Controller
 {
     public function index()
@@ -19,6 +21,13 @@ class UserController extends Controller
     }
     public function news_index()
     {
-        return view('user.news.news');
+        return view('user.news.news', ['news' => News::get()]);
+    }
+    public function news_index_id($id)
+    {
+        $data = News::get();
+        $news = News::find($id);
+
+        return view('user.news.news_index', ['id' => $id],compact('news','data'));
     }
 }
