@@ -30,4 +30,8 @@ class UserController extends Controller
 
         return view('user.news.news_index', ['id' => $id],compact('news','data'));
     }
+    public function contacts_index()
+    {
+        return view('user.contacts.contacts');
+    }
 }

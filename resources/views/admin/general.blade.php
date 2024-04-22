@@ -77,6 +77,7 @@
                             @yield('about')
                             @yield('news')
                             @yield('news_show')
+                            @yield('contacts')
                         </div>
                     </div>
                 </div>

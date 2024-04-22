@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InfoBlockController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PartnersController;
@@ -66,9 +67,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/news_edit', [NewsController::class,'update'])->name('news_edit');
         Route::delete('/news_delete/{id}', [NewsController::class,'delete'])->name('news_delete');
 
+        Route::get('/contact_index', [ContactController::class,'index'])->name('contact_index');
+        Route::post('/contact_create', [ContactController::class,'create'])->name('contact_create');
     });
-
-
 });
 
 Route::get('/', [UserController::class, 'index'])->name('home');
@@ -76,6 +77,7 @@ Route::get('/pay_delivery', [UserController::class,'index_pay_delivery'])->name(
 Route::get('/about', [UserController::class,'about_index'])->name('about_index');
 Route::get('/news', [UserController::class,'news_index'])->name('news');
 Route::get('/news_show/{id}', [UserController::class,'news_index_id'])->name('news_index_id');
+Route::get('/contacts', [UserController::class,'contacts_index'])->name('contacts');
 
 require __DIR__ . '/auth.php';
 

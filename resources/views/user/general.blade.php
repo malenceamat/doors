@@ -79,6 +79,7 @@
     @yield('about')
     @yield('news')
     @yield('news_index')
+    @yield('contacts')
 </div>
 
 @include('user.footer')
