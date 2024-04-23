@@ -10,6 +10,7 @@ class ContactController extends Controller
     public function index()
     {
         $contact = Contact::firstOrCreate();
+
         return view('admin.content.contacts.contacts', compact('contact'));
     }
     public function create(ContactRequest $req)
