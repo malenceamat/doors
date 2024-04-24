@@ -132,25 +132,20 @@
 
                 <nav class="mobile-menu">
                     <ul class="">
-                        <li class="first down"><a href="katalog-tovarov/index.html" class="catalog-link"><span>Каталог товаров</span></a><span
-                                class="dropdown-button"></span>
+                        <li class="first down">
+                            <a href="{{route('catalog')}}" class="catalog-link">
+                                <span>Каталог товаров</span>
+                            </a>
+                            <span class="dropdown-button"></span>
                             <ul class="">
                                 <li class="first down"><a href="katalog-tovarov/vxodnyie-dveri/index.html"><span>Входные двери</span></a><span
                                         class="dropdown-button"></span>
                                     <ul class="">
-                                        <li class="first"><a
-                                                href="katalog-tovarov/vxodnyie-dveri/dlya-kvartiryi/index.html"><span>Для квартиры</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="katalog-tovarov/vxodnyie-dveri/dlya-doma/index.html"><span>Для дома</span></a>
-                                        </li>
-                                        <li><a href="katalog-tovarov/vxodnyie-dveri/texnicheskie/index.html"><span>Технические</span></a>
-                                        </li>
-                                        <li><a href="katalog-tovarov/vxodnyie-dveri/metallicheskie/index.html"><span>Металлические</span></a>
-                                        </li>
-                                        <li class="last"><a
-                                                href="katalog-tovarov/vxodnyie-dveri/derevyannyie/index.html"><span>Деревянные</span></a>
-                                        </li>
+                                        @foreach($category as $data)
+                                            <li class="first"><a
+                                                    href="katalog-tovarov/vxodnyie-dveri/dlya-kvartiryi/index.html"><span>{{$data['name']}}</span></a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li class="down"><a href="katalog-tovarov/mezhkomnatnyie-dveri/index.html"><span>Межкомнатные двери</span></a><span
@@ -225,12 +220,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="otzyivyi.html">
+                            <a href="#">
                                 <span>Отзывы</span>
                             </a>
                         </li>
                         <li class="{{request()->routeIs('contacts') ? 'active' : ''}}">
-                        <a href="{{route('contacts')}}">
+                            <a href="{{route('contacts')}}">
                                 <span>Контакты</span>
                             </a>
                         </li>
@@ -238,76 +233,31 @@
                 </nav>
                 <div class="top-menu">
                     <ul class="">
-                        <li class="first down"><a href="katalog-tovarov/index.html" class="catalog-link"><span>Каталог товаров</span></a>
+                        <li class="first down">
+                            <a href="{{route('catalog')}}" class="catalog-link">
+                                <span>Каталог товаров</span>
+                            </a>
                             <ul class="">
-                                <li class="first down"><a href="katalog-tovarov/vxodnyie-dveri/index.html"><span>Входные двери</span></a>
-                                    <ul class="">
-                                        <li class="first"><a
-                                                href="katalog-tovarov/vxodnyie-dveri/dlya-kvartiryi/index.html"><span>Для квартиры</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="katalog-tovarov/vxodnyie-dveri/dlya-doma/index.html"><span>Для дома</span></a>
-                                        </li>
-                                        <li><a href="katalog-tovarov/vxodnyie-dveri/texnicheskie/index.html"><span>Технические</span></a>
-                                        </li>
-                                        <li><a href="katalog-tovarov/vxodnyie-dveri/metallicheskie/index.html"><span>Металлические</span></a>
-                                        </li>
-                                        <li class="last"><a
-                                                href="katalog-tovarov/vxodnyie-dveri/derevyannyie/index.html"><span>Деревянные</span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="down"><a href="katalog-tovarov/mezhkomnatnyie-dveri/index.html"><span>Межкомнатные двери</span></a>
-                                    <ul class="">
-                                        <li class="first"><a
-                                                href="katalog-tovarov/mezhkomnatnyie-dveri/iz-massiva/index.html"><span>Из массива</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="katalog-tovarov/mezhkomnatnyie-dveri/shponirovannyie/index.html"><span>Шпонированные</span></a>
-                                        </li>
-                                        <li><a href="katalog-tovarov/mezhkomnatnyie-dveri/dlya-vannoj/index.html"><span>Для ванной</span></a>
-                                        </li>
-                                        <li class="last"><a
-                                                href="katalog-tovarov/mezhkomnatnyie-dveri/dveri-so-steklom/index.html"><span>Двери со стеклом</span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="down"><a
-                                        href="katalog-tovarov/dvernyie-korobki-nalichniki-i-doboryi/index.html"><span>Дверные коробки, наличники и доборы</span></a>
-                                    <ul class="">
-                                        <li class="first"><a
-                                                href="katalog-tovarov/dvernyie-korobki-nalichniki-i-doboryi/dvernyie-korobki/index.html"><span>Дверные коробки</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="katalog-tovarov/dvernyie-korobki-nalichniki-i-doboryi/nalichniki-dvernyie/index.html"><span>Наличники дверные</span></a>
-                                        </li>
-                                        <li class="last"><a
-                                                href="katalog-tovarov/dvernyie-korobki-nalichniki-i-doboryi/doboryi/index.html"><span>Доборы</span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="last down"><a
-                                        href="katalog-tovarov/prochee/index.html"><span>Прочее</span></a>
-                                    <ul class="">
-                                        <li class="first"><a href="katalog-tovarov/prochee/balkonnyie-dveri/index.html"><span>Балконные двери</span></a>
-                                        </li>
-                                        <li><a href="katalog-tovarov/prochee/arki-mezhkomnatnyie/index.html"><span>Арки межкомнатные</span></a>
-                                        </li>
-                                        <li><a href="katalog-tovarov/prochee/dveri-dlya-saunyi/index.html"><span>Двери для сауны</span></a>
-                                        </li>
-                                        <li><a href="katalog-tovarov/prochee/razdvizhnyie-dveri-pvx/index.html"><span>Раздвижные двери ПВХ</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="katalog-tovarov/prochee/mexanizmyi-dlya-razdvizhnyix-dverej/index.html"><span>Механизмы для раздвижных дверей</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="katalog-tovarov/prochee/kozyirki-k-vxodnyim-dveryam/index.html"><span>Козырьки к входным дверям</span></a>
-                                        </li>
-                                        <li class="last"><a
-                                                href="katalog-tovarov/prochee/aksessuaryi-dlya-dverej/index.html"><span>Аксессуары для дверей</span></a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                @foreach($category as $cat)
+                                    <li @if(isset($cat->sub_category[0])) class="first down" @endif>
+                                        @if(($cat->parent_id == null))
+                                            <a href="{{route('products_filters_list', ['name' => $cat['name'], 'id' => $cat['id']])}}">
+                                            <span>{{$cat['name']}}</span>
+                                            </a>
+                                            @if(isset($cat->sub_category[0]))
+                                                <ul>
+                                                    @foreach($cat->sub_category as $data)
+                                                        <li>
+                                                            <a href="{{route('product', ['name' => $cat['name'], 'sub_name' => $data['name'], 'id' => $cat['id']])}}">
+                                                                <span>{{$data->name}}</span>
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        @endif
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="{{request()->routeIs('pay_delivery') ? 'active' : '' }}">
@@ -326,12 +276,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="otzyivyi.html">
+                            <a href="#">
                                 <span>Отзывы</span>
                             </a>
                         </li>
                         <li class="{{request()->routeIs('contacts') ? 'active' : ''}}">
-                        <a href="{{route('contacts')}}">
+                            <a href="{{route('contacts')}}">
                                 <span>Контакты</span>
                             </a>
                         </li>

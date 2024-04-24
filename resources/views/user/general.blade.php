@@ -80,6 +80,8 @@
     @yield('news')
     @yield('news_index')
     @yield('contacts')
+    @yield('catalog')
+    @yield('products_filters_list')
 </div>
 
 @include('user.footer')

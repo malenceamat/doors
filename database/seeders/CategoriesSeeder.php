@@ -14,10 +14,10 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        Category::factory(5)->create();
+       $create = Category::factory(4)->create();
 
-        Category::factory()->count(5)->create()->each(function ($category) {
-            $category->parent()->associate(Category::inRandomOrder()->first());
+        Category::factory()->count(4)->create()->each(function ($category) use ($create) {
+            $category->parent()->associate($create->random());
             $category->save();
         });
     }

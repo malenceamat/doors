@@ -78,12 +78,8 @@ Route::get('/about', [UserController::class,'about_index'])->name('about_index')
 Route::get('/news', [UserController::class,'news_index'])->name('news');
 Route::get('/news_show/{id}', [UserController::class,'news_index_id'])->name('news_index_id');
 Route::get('/contacts', [UserController::class,'contacts_index'])->name('contacts');
+Route::get('/catalog', [UserController::class,'catalog_index'])->name('catalog');
+Route::get('/catalog/{name}', [UserController::class, 'products_filters_list'])->name('products_filters_list');
+Route::get('/catalog/{name}/{sub_name}', [UserController::class, 'product'])->name('product');
 
 require __DIR__ . '/auth.php';
-
-
-
-
-
-
-
