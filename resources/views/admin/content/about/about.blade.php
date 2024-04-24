@@ -35,14 +35,6 @@
                         <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
                             <div class="form">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="title">Заголовок</label>
-                                            <input type="text" class="form-control mb-3"
-                                                   placeholder="Заголовок" id="title" name="title"
-                                                   value="{{$about['title']}}">
-                                        </div>
-                                    </div>
                                     <input type="hidden" name="id" value="{{$about['id']}}">
                                     <div id="basic" class="row layout-spacing layout-top-spacing">
                                         <div class="col-lg-12">
@@ -57,7 +49,7 @@
                                                 <div class="widget-content widget-content-area">
 
                                                     <div id="editor-container">
-                                                        <label for="hiddenArea">{!! $about['subtitle'] !!}</label>
+                                                        <label for="hiddenArea">{!! $about['text'] !!}</label>
                                                         <textarea name="text" style="display:none"
                                                                   id="hiddenArea"></textarea>
                                                     </div>

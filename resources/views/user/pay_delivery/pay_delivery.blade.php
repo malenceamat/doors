@@ -5,7 +5,7 @@
             <br>
             <h1 class="pagetitle">Оплата и доставка</h1>
             <div class="content">
-               123
+                {!! $pay_delivery['text'] !!}
             <div class="push20"></div>
         </div>
     </div>

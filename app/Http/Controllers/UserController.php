@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\About;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\PayDelivery;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -18,14 +20,15 @@ class UserController extends Controller
     public function index_pay_delivery()
     {
         $category = Category::with('parent')->get();
+        $pay_delivery = PayDelivery::first();
 
-        return view('user.pay_delivery.pay_delivery', compact('category'));
+        return view('user.pay_delivery.pay_delivery', compact('category','pay_delivery'));
     }
     public function about_index()
     {
         $category = Category::with('parent')->get();
-
-        return view('user.about.about', compact('category'));
+        $about = About::first();
+        return view('user.about.about', compact('category','about'));
     }
     public function news_index()
     {
