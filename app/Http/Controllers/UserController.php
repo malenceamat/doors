@@ -57,7 +57,6 @@ class UserController extends Controller
     {
         $category = Category::with('parent')->get();
         $category_show = Category::with('sub_category')->where('name', 'like', '%'. $req->name)->first();
-
         return view('user.catalog.products_filters_list', compact('category','category_show'));
     }
     public function product()

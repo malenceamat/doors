@@ -14,9 +14,8 @@
     <meta name="modxru" content="f9b7dcac4f8e7a3ce24034278ce72477"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href={{asset("images/site/favicon.png")}}/>
-    <link
-        href={{asset("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap")}} s
-        rel="stylesheet">
+    <link href={{asset("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap")}} s
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href={{asset("assets/template/css/font-awesome.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/bootstrap.css")}} rel="stylesheet">

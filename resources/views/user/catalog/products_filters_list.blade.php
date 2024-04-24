@@ -9,9 +9,8 @@
                         <nav class="aside-menu hidden-xs hidden-sm">
                             <ul>
                                 @foreach($category as $data)
-                                    @if($data->parent_id == null)
-{{--                                        {{$data['id']}} / {{$category_show['id']}}--}}
-                                        <li @if($category_show['id'] == $data['id']) class="active down" @endif>
+                                    @if($data->parent == null)
+                                        <li @if(count($data->sub_category) > 0 ) class="active down" @endif>
                                             <a href="{{route('products_filters_list', ['name' => $data['name']])}}">{{$data['name']}}</a>
                                             <ul>
                                                 @foreach($data->sub_category as $cat)
@@ -308,7 +307,7 @@
 
                                             <div class="img-wrapper">
                                                 <img class="element-img  active "
-                                                     src="../../assets/images/products/203/253x192/49f7fc298ab3c6f211898182f56460806a55fc49.jpg"
+                                                     src={{asset("assets/images/products/203/253x192/49f7fc298ab3c6f211898182f56460806a55fc49.jpg")}} s
                                                      alt=""
                                                      data-retinasrc="/assets/images/products/203/506x384/49f7fc298ab3c6f211898182f56460806a55fc49.jpg"/>
 
