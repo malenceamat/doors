@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Items;
 use Illuminate\Database\Seeder;
 
 class CategoriesSeeder extends Seeder

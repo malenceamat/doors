@@ -248,7 +248,7 @@
                                                 <ul>
                                                     @foreach($cat->sub_category as $data)
                                                         <li>
-                                                            <a href="{{route('product', ['name' => $cat['name'], 'sub_name' => $data['name'], 'id' => $cat['id']])}}">
+                                                            <a href="{{route('product_sub_category', ['name' => $cat['name'], 'sub_name' => $data['name']])}}">
                                                                 <span>{{$data->name}}</span>
                                                             </a>
                                                         </li>

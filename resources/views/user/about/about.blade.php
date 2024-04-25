@@ -1,5 +1,6 @@
 @extends('user.general')
 @section('about')
+    @if(isset($about))
     <br>
     <div class="middle">
         <div class="container">
@@ -20,5 +21,5 @@
             </div>
             <div class="push30"></div>
         </div>
-
+    @endif
 @endsection

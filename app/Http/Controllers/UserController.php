@@ -58,14 +58,16 @@ class UserController extends Controller
     }
     public function products_filters_list(Request $req)
     {
-        $category = Category::with('parent')->get();
-        $category_show = Category::with('sub_category')->where('name', 'like', '%'. $req->name)->first();
-        return view('user.catalog.products_filters_list', compact('category','category_show'));
+        $category = Category::with('parent','items')->get();
+        $category_current = Category::with('sub_category','items')->where('name', 'like', '%'. $req->name)->first();
+
+        return view('user.catalog.products_filters_list', compact('category','category_current'));
     }
-    public function product()
+    public function product(Request $req)
     {
         $category = Category::with('parent')->get();
+        $category_current = Category::with('sub_category')->where('name', 'like', '%'. $req->sub_name)->first();
 
-        return view('', compact('category'));
+        return view('user.catalog.products_filters_list', compact('category','category_current'));
     }
 }

@@ -80,6 +80,6 @@ Route::get('/news_show/{id}', [UserController::class,'news_index_id'])->name('ne
 Route::get('/contacts', [UserController::class,'contacts_index'])->name('contacts');
 Route::get('/catalog', [UserController::class,'catalog_index'])->name('catalog');
 Route::get('/catalog/{name}', [UserController::class, 'products_filters_list'])->name('products_filters_list');
-Route::get('/catalog/{name}/{sub_name}', [UserController::class, 'product'])->name('product');
+Route::get('/catalog/{name}/{sub_name}', [UserController::class, 'product'])->name('product_sub_category');
 
 require __DIR__ . '/auth.php';

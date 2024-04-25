@@ -31,7 +31,7 @@
                                                         @if(isset($cat->sub_category[0]))
                                                             @foreach($cat->sub_category as $data)
                                                                 <div>
-                                                                    <a href="{{route('product', ['name' => $cat['name'], 'sub_name' => $data['name'], 'id' => $cat['id']])}}"
+                                                                    <a href="{{route('product_sub_category', ['name' => $cat['name'], 'sub_name' => $data['name'], 'id' => $cat['id']])}}"
                                                                        title="{{$data['name']}}"> {{$data['name']}}
                                                                     </a>
                                                                 </div>
