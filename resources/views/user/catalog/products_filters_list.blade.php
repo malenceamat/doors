@@ -1,5 +1,18 @@
 @extends('user.general')
 @section('products_filters_list')
+    {{--<script src={{asset("https://code.jquery.com/jquery-3.6.0.min.js")}}></script>--}}
+    <style>
+        .btn-new {
+            border-radius: 10px;
+            color: white;
+            transition: .2s linear;
+            background: #493939;
+        }
+        .btn-new:hover {
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #493939;
+        }
+    </style>
+
     <div class="middle" id="middlesection">
         <div class="container">
             <h1 class="pagetitle" style="margin-top: 20px"> {{$category_current['name']}} </h1>
@@ -28,195 +41,211 @@
                             <div class="filters-form-title-xs visible-xs visible-sm">
                                 Фильтры
                             </div>
-                            <form class="filters-form" method="post" id="mse2_filters">
-                                <div class="aside-filters-block-inner">
-                                    <div class="filter-item active">
-                                        <div class="filter-item-title">
-                                            <div class="table">
-                                                <div class="table-cell">
-                                                    Цена
+                            <form action="{{route('filter')}}" class="filters-form" method="post" id="filter">
+                                @csrf
+                                    <div class="aside-filters-block-inner">
+
+                                        <!-- Фильтр цены -->
+                                        <div class="filter-item active">
+                                            <div class="filter-item-title">
+                                                <div class="table">
+                                                    <div class="table-cell">
+                                                        Цена
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="item-dropdown">
-                                            <fieldset id="mse2_ms|price">
-                                                <div class="number_slider_wrapper">
-                                                    <div class="mse2_number_slider"></div>
-                                                </div>
-                                                <div class="push10"></div>
-                                                <div class="mse2_number_inputs row min">
-                                                    <div class="col-xs-6">
-                                                        <div class="form-group relative">
-                                                            <label for="mse2_ms|price_0">От</label>
-                                                            <input type="text" name="ms|price" id="mse2_ms|price_0"
-                                                                   value="0" class="form-control"/>
+                                            <div class="item-dropdown">
+                                                <fieldset id="mse2_ms|price">
+                                                    <div class="number_slider_wrapper">
+                                                        <div class="mse2_number_slider"></div>
+                                                    </div>
+                                                    <div class="push10"></div>
+                                                    <div class="mse2_number_inputs row min">
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group relative">
+                                                                <label for="min_price">От</label>
+                                                                <input type="text" name="min_price" id="min_price"
+                                                                       value="0" class="form-control"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group relative">
+                                                                <label for="max_price">До</label>
+                                                                <input type="text" name="max_price" id="max_price"
+                                                                       value="24661" class="form-control"/>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-xs-6">
-                                                        <div class="form-group relative">
-                                                            <label for="mse2_ms|price_1">До</label>
-                                                            <input type="text" name="ms|price" id="mse2_ms|price_1"
-                                                                   value="24661" class="form-control"/>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <!-- Конец фильтра цены -->
+
+                                        <!-- Фильтр высоты -->
+                                        <div class="filter-item active">
+                                            <div class="filter-item-title">
+                                                <div class="table">
+                                                    <div class="table-cell">
+                                                        Общая высота, см
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item-dropdown">
+                                                <div class="item-dropdown-inner">
+                                                    <div class="filter-customcheck-wrap" id="mse2_msoption|height_general">
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|height_general"
+                                                                   id="mse2_msoption|height_general_0" value="180"/>
+                                                            <label for="mse2_msoption|height_general_0" class="">180</label>
+                                                        </div>
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|height_general"
+                                                                   id="mse2_msoption|height_general_1" value="200"/>
+                                                            <label for="mse2_msoption|height_general_1" class="">200</label>
+                                                        </div>
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|height_general"
+                                                                   id="mse2_msoption|height_general_2" value="205"/>
+                                                            <label for="mse2_msoption|height_general_2" class="">205</label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </fieldset>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <!-- Конец фильтра высоты -->
 
-                                    <div class="filter-item active">
-                                        <div class="filter-item-title">
-                                            <div class="table">
-                                                <div class="table-cell">
-                                                    Общая высота, см
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-dropdown">
-                                            <div class="item-dropdown-inner">
-                                                <div class="filter-customcheck-wrap" id="mse2_msoption|height_general">
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|height_general"
-                                                               id="mse2_msoption|height_general_0" value="180"/>
-                                                        <label for="mse2_msoption|height_general_0" class="">180</label>
-                                                    </div>
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|height_general"
-                                                               id="mse2_msoption|height_general_1" value="200"/>
-                                                        <label for="mse2_msoption|height_general_1" class="">200</label>
-                                                    </div>
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|height_general"
-                                                               id="mse2_msoption|height_general_2" value="205"/>
-                                                        <label for="mse2_msoption|height_general_2" class="">205</label>
+                                        <!-- Фильтр ширины -->
+                                        <div class="filter-item active">
+                                            <div class="filter-item-title">
+                                                <div class="table">
+                                                    <div class="table-cell">
+                                                        Общая ширина, см
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="item-dropdown">
+                                                <div class="item-dropdown-inner">
+                                                    <div class="filter-customcheck-wrap" id="mse2_msoption|width_general">
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|width_general"
+                                                                   id="mse2_msoption|width_general_0" value="80"/>
+                                                            <label for="mse2_msoption|width_general_0" class="">80</label>
+                                                        </div>
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|width_general"
+                                                                   id="mse2_msoption|width_general_1" value="86"/>
+                                                            <label for="mse2_msoption|width_general_1" class="">86</label>
+                                                        </div>
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|width_general"
+                                                                   id="mse2_msoption|width_general_2" value="96"/>
+                                                            <label for="mse2_msoption|width_general_2" class="">96</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <!-- Конец фильтра ширины -->
 
-                                    <div class="filter-item active">
-                                        <div class="filter-item-title">
-                                            <div class="table">
-                                                <div class="table-cell">
-                                                    Общая ширина, см
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-dropdown">
-                                            <div class="item-dropdown-inner">
-                                                <div class="filter-customcheck-wrap" id="mse2_msoption|width_general">
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|width_general"
-                                                               id="mse2_msoption|width_general_0" value="80"/>
-                                                        <label for="mse2_msoption|width_general_0" class="">80</label>
-                                                    </div>
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|width_general"
-                                                               id="mse2_msoption|width_general_1" value="86"/>
-                                                        <label for="mse2_msoption|width_general_1" class="">86</label>
-                                                    </div>
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|width_general"
-                                                               id="mse2_msoption|width_general_2" value="96"/>
-                                                        <label for="mse2_msoption|width_general_2" class="">96</label>
+                                        <!-- Фильтр толщины -->
+                                        <div class="filter-item active">
+                                            <div class="filter-item-title">
+                                                <div class="table">
+                                                    <div class="table-cell">
+                                                        Общая толщина, см
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="item-dropdown">
+                                                <div class="item-dropdown-inner">
+                                                    <div class="filter-customcheck-wrap" id="mse2_msoption|fatness_general">
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|fatness_general"
+                                                                   id="mse2_msoption|fatness_general_0" value="4.2"/>
+                                                            <label for="mse2_msoption|fatness_general_0"
+                                                                   class="">4.2</label>
+                                                        </div>
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|fatness_general"
+                                                                   id="mse2_msoption|fatness_general_1" value="5.2"/>
+                                                            <label for="mse2_msoption|fatness_general_1"
+                                                                   class="">5.2</label>
+                                                        </div>
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|fatness_general"
+                                                                   id="mse2_msoption|fatness_general_2" value="10.5"/>
+                                                            <label for="mse2_msoption|fatness_general_2"
+                                                                   class="">10.5</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <!-- Конец филтра толщины -->
 
-                                    <div class="filter-item active">
-                                        <div class="filter-item-title">
-                                            <div class="table">
-                                                <div class="table-cell">
-                                                    Общая толщина, см
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-dropdown">
-                                            <div class="item-dropdown-inner">
-                                                <div class="filter-customcheck-wrap" id="mse2_msoption|fatness_general">
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|fatness_general"
-                                                               id="mse2_msoption|fatness_general_0" value="4.2"/>
-                                                        <label for="mse2_msoption|fatness_general_0"
-                                                               class="">4.2</label>
-                                                    </div>
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|fatness_general"
-                                                               id="mse2_msoption|fatness_general_1" value="5.2"/>
-                                                        <label for="mse2_msoption|fatness_general_1"
-                                                               class="">5.2</label>
-                                                    </div>
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|fatness_general"
-                                                               id="mse2_msoption|fatness_general_2" value="10.5"/>
-                                                        <label for="mse2_msoption|fatness_general_2"
-                                                               class="">10.5</label>
+                                        <!-- Фильтр материала покрытия -->
+                                        <div class="filter-item active">
+                                            <div class="filter-item-title">
+                                                <div class="table">
+                                                    <div class="table-cell">
+                                                        Покрытие
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="item-dropdown">
+                                                <div class="item-dropdown-inner">
+                                                    <div class="filter-customcheck-wrap" id="mse2_msoption|coating">
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|coating"
+                                                                   id="mse2_msoption|coating_0" value="Металл"/>
+                                                            <label for="mse2_msoption|coating_0" class="">Металл</label>
+                                                        </div>
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|coating"
+                                                                   id="mse2_msoption|coating_1" value="Панель МДФ"/>
+                                                            <label for="mse2_msoption|coating_1" class="">Панель МДФ</label>
+                                                        </div>
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|coating"
+                                                                   id="mse2_msoption|coating_2" value="Сосна"/>
+                                                            <label for="mse2_msoption|coating_2" class="">Сосна</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <!-- Конец фильтра материала покрытия -->
 
-                                    <div class="filter-item active">
-                                        <div class="filter-item-title">
-                                            <div class="table">
-                                                <div class="table-cell">
-                                                    Покрытие
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-dropdown">
-                                            <div class="item-dropdown-inner">
-                                                <div class="filter-customcheck-wrap" id="mse2_msoption|coating">
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|coating"
-                                                               id="mse2_msoption|coating_0" value="Металл"/>
-                                                        <label for="mse2_msoption|coating_0" class="">Металл</label>
-                                                    </div>
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|coating"
-                                                               id="mse2_msoption|coating_1" value="Панель МДФ"/>
-                                                        <label for="mse2_msoption|coating_1" class="">Панель МДФ</label>
-                                                    </div>
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|coating"
-                                                               id="mse2_msoption|coating_2" value="Сосна"/>
-                                                        <label for="mse2_msoption|coating_2" class="">Сосна</label>
+                                        <!-- Фильтр направления открывая-->
+                                        <div class="filter-item active">
+                                            <div class="filter-item-title">
+                                                <div class="table">
+                                                    <div class="table-cell">
+                                                        Направление открывания
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="item-dropdown">
+                                                <div class="item-dropdown-inner">
+                                                    <div class="filter-customcheck-wrap" id="mse2_msoption|direction">
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|direction"
+                                                                   id="mse2_msoption|direction_0" value="Левый"/>
+                                                            <label for="mse2_msoption|direction_0" class="">Левый</label>
+                                                        </div>
+                                                        <div class="filter-customcheck">
+                                                            <input type="checkbox" name="msoption|direction"
+                                                                   id="mse2_msoption|direction_1" value="Правый"/>
+                                                            <label for="mse2_msoption|direction_1" class="">Правый</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <!-- Конец фильтра направления открывания-->
 
-                                    <div class="filter-item active">
-                                        <div class="filter-item-title">
-                                            <div class="table">
-                                                <div class="table-cell">
-                                                    Направление открывания
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-dropdown">
-                                            <div class="item-dropdown-inner">
-                                                <div class="filter-customcheck-wrap" id="mse2_msoption|direction">
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|direction"
-                                                               id="mse2_msoption|direction_0" value="Левый"/>
-                                                        <label for="mse2_msoption|direction_0" class="">Левый</label>
-                                                    </div>
-                                                    <div class="filter-customcheck">
-                                                        <input type="checkbox" name="msoption|direction"
-                                                               id="mse2_msoption|direction_1" value="Правый"/>
-                                                        <label for="mse2_msoption|direction_1" class="">Правый</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                </div>
+                                <button class="btn-new">Применить</button>
                             </form>
                         </div>
                     </div>
@@ -225,7 +254,6 @@
                 <div class="col-md-9">
                     <div class="main-column">
                         <section class="catalog" id="mse2_mfilter">
-
                             <div class="catalog-header">
                                 <div class="row min">
                                     <div class="col-sm-8 text-right-sm">
@@ -286,7 +314,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row rows" id="mse2_results">
                                 @foreach($items as $item)
                                     <div class="col-xs-6 col-sm-4">
@@ -366,20 +393,11 @@
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    <div class="one-click text-right">
-                                                        <div class="push15"></div>
-                                                        <a class="application-link fancyboxModal"
-                                                           href="../../index.html#productapplication" data-theme="тестовый">Заказать
-                                                            в 1 клик</a>
-                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 @endforeach
-
-
-
                             </div>
                             <div id="mse2_pagination">
                                 <ul class="pagination"></ul>
@@ -391,4 +409,48 @@
         </div>
     </div>
     <div class="footer-push"></div>
+
+{{--<script>
+    $(document).ready(function() {
+        $('#min_price, #max_price').on('keypress', function(event) {
+            if (event.which === 13) { // 13 - код клавиши Enter
+                event.preventDefault(); // Предотвратить отправку формы
+
+                // Получить значения из обоих input
+                var minPrice = $('#min_price').val();
+                var maxPrice = $('#max_price').val();
+
+                // Отправить данные на бекенд
+                sendDataToBackend(minPrice, maxPrice);
+            }
+        });
+
+        function sendDataToBackend(minPrice, maxPrice) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: '{{ route('filter') }}',
+                method: 'POST',
+                data: {
+                    min_price: minPrice,
+                    max_price: maxPrice
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        updateSearchResults(response.results); // Обновить результаты поиска
+                    } else {
+                        // ... обработка ошибок
+                    }
+                }
+            });
+        }
+    });
+</script>--}}
+
+
+
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\About;
+use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Items;
 use App\Models\News;
@@ -71,7 +72,12 @@ class UserController extends Controller
         $category_current = Category::with('sub_category')->where('name', 'like', '%'. $req->sub_name)->first();
         $items = $category_current->items->merge($category_current->sub_category->flatMap->items);
 
-
         return view('user.catalog.products_filters_list', compact('category','category_current','items'));
+    }
+    public function filter(Request $req)
+    {
+        dd($req->all());
+        $minPrice = $req->input('min_price');
+        $maxPrice = $req->input('max_price');
     }
 }

@@ -69,6 +69,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/contact_index', [ContactController::class,'index'])->name('contact_index');
         Route::post('/contact_create', [ContactController::class,'create'])->name('contact_create');
+
     });
 });
 
@@ -81,5 +82,6 @@ Route::get('/contacts', [UserController::class,'contacts_index'])->name('contact
 Route::get('/catalog', [UserController::class,'catalog_index'])->name('catalog');
 Route::get('/catalog/{name}', [UserController::class, 'products_filters_list'])->name('products_filters_list');
 Route::get('/catalog/{name}/{sub_name}', [UserController::class, 'product'])->name('product_sub_category');
+Route::post('/filter', [UserController::class,'filter'])->name('filter');
 
 require __DIR__ . '/auth.php';

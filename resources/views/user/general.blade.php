@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <title>Готовый интернет-магазин межкомнатных и входных дверей | Шаблон интернет магазина дверей</title>
     <base href="">
-    <meta name="description"
-          content="Шаблон сайта для компании по продаже дверей. Готовый шаблон интернет-магазин для производителя и продавца межкомнатных и входных дверей.">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="keywords" content="">
     <meta name="robots" content="index,follow">
     <meta name="theme-color" content="#493939"/>
@@ -69,6 +68,8 @@
             "version": "2.1.4-beta",
             "options": null
         };</script>
+
+
 </head>
 <body class="index-template id-1 parent-0">
 <div class="main-wrapper">
