@@ -288,7 +288,7 @@
                             </div>
 
                             <div class="row rows" id="mse2_results">
-                                @foreach($category_current->items as $product)
+                                @foreach($items as $item)
                                     <div class="col-xs-6 col-sm-4">
                                         <div class="element relative">
                                             <form method="post" class="ms2_form">
@@ -298,17 +298,17 @@
                                                 <a class="absolute" href="testovyij.html"></a>
                                                 <div class="img-wrapper">
                                                     <img class="element-img  active "
-                                                         src="{{$product['image']}}"
-                                                         alt="{{$product['image']}}"
+                                                         src="{{$item['image']}}"
+                                                         alt="{{$item['image']}}"
                                                          data-retinasrc="/assets/images/products/226/506x384/ff8bade063b1b94351868cf6edee5dbf1b18264f.jpg"/>
                                                 </div>
                                                 <div class="element-content">
-                                                    <div class="title-h6">{{$product['name']}}</div>
+                                                    <div class="title-h6">{{$item['name']}}</div>
                                                     <div class="row min">
                                                         <div class="col-xs-6">
                                                             <div class="push14"></div>
                                                             <div class="price">
-                                                                {{$product['price']}}
+                                                                {{$item['price']}}
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-6 text-right">
