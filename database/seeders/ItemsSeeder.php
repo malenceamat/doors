@@ -22,5 +22,7 @@ class ItemsSeeder extends Seeder
                 'category_id' => $category->id, // Используем ID существующей категории
             ]);
         }
+
+        Items::factory()->configure();
     }
 }

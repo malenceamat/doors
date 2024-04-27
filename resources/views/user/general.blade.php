@@ -4,12 +4,10 @@
     <meta charset="utf-8">
     <title>Готовый интернет-магазин межкомнатных и входных дверей | Шаблон интернет магазина дверей</title>
     <base href="">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="keywords" content="">
     <meta name="robots" content="index,follow">
     <meta name="theme-color" content="#493939"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
     <meta name="modxru" content="f9b7dcac4f8e7a3ce24034278ce72477"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href={{asset("images/site/favicon.png")}}/>

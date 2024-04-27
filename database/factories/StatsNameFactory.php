@@ -15,8 +15,24 @@ class StatsNameFactory extends Factory
     protected $model = StatsName::class;
     public function definition()
     {
+
         return [
-            'name' => $this->faker->word(),
+
         ];
+    }
+    public function createName()
+    {
+        $names = [
+            'price',
+            'height',
+            'width',
+            'thickness',
+            'compound',
+            'opening_direction',
+        ];
+
+        foreach ($names as $name) {
+            StatsName::factory()->create(['name' => $name]);
+        }
     }
 }

@@ -1,6 +1,5 @@
 @extends('user.general')
 @section('products_filters_list')
-    {{--<script src={{asset("https://code.jquery.com/jquery-3.6.0.min.js")}}></script>--}}
     <style>
         .btn-new {
             border-radius: 10px;
@@ -12,7 +11,6 @@
             box-shadow: 0 0 0 2px white, 0 0 0 4px #493939;
         }
     </style>
-
     <div class="middle" id="middlesection">
         <div class="container">
             <h1 class="pagetitle" style="margin-top: 20px"> {{$category_current['name']}} </h1>
@@ -55,7 +53,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-dropdown">
-                                                <fieldset id="mse2_ms|price">
+                                                <fieldset id="min_price">
                                                     <div class="number_slider_wrapper">
                                                         <div class="mse2_number_slider"></div>
                                                     </div>
@@ -94,19 +92,9 @@
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|height_general">
                                                         <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|height_general"
-                                                                   id="mse2_msoption|height_general_0" value="180"/>
-                                                            <label for="mse2_msoption|height_general_0" class="">180</label>
-                                                        </div>
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|height_general"
-                                                                   id="mse2_msoption|height_general_1" value="200"/>
-                                                            <label for="mse2_msoption|height_general_1" class="">200</label>
-                                                        </div>
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|height_general"
-                                                                   id="mse2_msoption|height_general_2" value="205"/>
-                                                            <label for="mse2_msoption|height_general_2" class="">205</label>
+                                                            <input type="checkbox" name="height"
+                                                                   id="height" value="180"/>
+                                                            <label for="height" class="">180</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -127,19 +115,9 @@
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|width_general">
                                                         <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|width_general"
-                                                                   id="mse2_msoption|width_general_0" value="80"/>
-                                                            <label for="mse2_msoption|width_general_0" class="">80</label>
-                                                        </div>
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|width_general"
-                                                                   id="mse2_msoption|width_general_1" value="86"/>
-                                                            <label for="mse2_msoption|width_general_1" class="">86</label>
-                                                        </div>
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|width_general"
-                                                                   id="mse2_msoption|width_general_2" value="96"/>
-                                                            <label for="mse2_msoption|width_general_2" class="">96</label>
+                                                            <input type="checkbox" name="width"
+                                                                   id="width" value="80"/>
+                                                            <label for="width" class="">80</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -160,28 +138,16 @@
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|fatness_general">
                                                         <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|fatness_general"
-                                                                   id="mse2_msoption|fatness_general_0" value="4.2"/>
-                                                            <label for="mse2_msoption|fatness_general_0"
+                                                            <input type="checkbox" name="thickness"
+                                                                   id="thickness" value="4.2"/>
+                                                            <label for="thickness"
                                                                    class="">4.2</label>
-                                                        </div>
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|fatness_general"
-                                                                   id="mse2_msoption|fatness_general_1" value="5.2"/>
-                                                            <label for="mse2_msoption|fatness_general_1"
-                                                                   class="">5.2</label>
-                                                        </div>
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|fatness_general"
-                                                                   id="mse2_msoption|fatness_general_2" value="10.5"/>
-                                                            <label for="mse2_msoption|fatness_general_2"
-                                                                   class="">10.5</label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Конец филтра толщины -->
+                                        <!-- Конец фильтра толщины -->
 
                                         <!-- Фильтр материала покрытия -->
                                         <div class="filter-item active">
@@ -196,19 +162,9 @@
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|coating">
                                                         <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|coating"
-                                                                   id="mse2_msoption|coating_0" value="Металл"/>
-                                                            <label for="mse2_msoption|coating_0" class="">Металл</label>
-                                                        </div>
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|coating"
-                                                                   id="mse2_msoption|coating_1" value="Панель МДФ"/>
-                                                            <label for="mse2_msoption|coating_1" class="">Панель МДФ</label>
-                                                        </div>
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|coating"
-                                                                   id="mse2_msoption|coating_2" value="Сосна"/>
-                                                            <label for="mse2_msoption|coating_2" class="">Сосна</label>
+                                                            <input type="checkbox" name="compound"
+                                                                   id="compound" value="Металл"/>
+                                                            <label for="compound" class="">Металл</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -229,14 +185,9 @@
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|direction">
                                                         <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|direction"
-                                                                   id="mse2_msoption|direction_0" value="Левый"/>
-                                                            <label for="mse2_msoption|direction_0" class="">Левый</label>
-                                                        </div>
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="msoption|direction"
-                                                                   id="mse2_msoption|direction_1" value="Правый"/>
-                                                            <label for="mse2_msoption|direction_1" class="">Правый</label>
+                                                            <input type="checkbox" name="opening_direction"
+                                                                   id="opening_direction" value="Левый"/>
+                                                            <label for="opening_direction" class="">Левый</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -273,13 +224,13 @@
                                                 </span>
                                             </div>
                                             <div id="mse2_sort">
-                                                <a href="../../index.html#" data-sort="resource|pagetitle"
+                                                <a href="#" data-sort="resource|pagetitle"
                                                    data-default="asc" class="sort">По названию</a>
-                                                <a href="../../index.html#" data-sort="ms|price" data-default="asc"
+                                                <a href="#" data-sort="ms|price" data-default="asc"
                                                    class="sort">По цене</a>
-                                                <a href="../../index.html#" data-sort="ms|popular" data-dir=""
+                                                <a href="#" data-sort="ms|popular" data-dir=""
                                                    data-default="desc" class="sort">По популярности</a>
-                                                <a href="../../index.html#" data-sort="resource|publishedon" data-dir=""
+                                                <a href="#" data-sort="resource|publishedon" data-dir=""
                                                    data-default="desc" class="sort">По дате добавления</a>
                                             </div>
                                         </div>
@@ -322,12 +273,9 @@
                                                 <input type="hidden" name="id" value="226">
                                                 <input type="hidden" name="count" value="1">
                                                 <input type="hidden" name="options" value="[]">
-                                                <a class="absolute" href="testovyij.html"></a>
+                                                <a class="absolute" href="#"></a>
                                                 <div class="img-wrapper">
-                                                    <img class="element-img  active "
-                                                         src="{{$item['image']}}"
-                                                         alt="{{$item['image']}}"
-                                                         data-retinasrc="/assets/images/products/226/506x384/ff8bade063b1b94351868cf6edee5dbf1b18264f.jpg"/>
+                                                    <img class="element-img  active " src="{{$item['image']}}" alt="{{$item['image']}}"/>
                                                 </div>
                                                 <div class="element-content">
                                                     <div class="title-h6">{{$item['name']}}</div>
@@ -409,48 +357,4 @@
         </div>
     </div>
     <div class="footer-push"></div>
-
-{{--<script>
-    $(document).ready(function() {
-        $('#min_price, #max_price').on('keypress', function(event) {
-            if (event.which === 13) { // 13 - код клавиши Enter
-                event.preventDefault(); // Предотвратить отправку формы
-
-                // Получить значения из обоих input
-                var minPrice = $('#min_price').val();
-                var maxPrice = $('#max_price').val();
-
-                // Отправить данные на бекенд
-                sendDataToBackend(minPrice, maxPrice);
-            }
-        });
-
-        function sendDataToBackend(minPrice, maxPrice) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                url: '{{ route('filter') }}',
-                method: 'POST',
-                data: {
-                    min_price: minPrice,
-                    max_price: maxPrice
-                },
-                success: function(response) {
-                    if (response.status === 'success') {
-                        updateSearchResults(response.results); // Обновить результаты поиска
-                    } else {
-                        // ... обработка ошибок
-                    }
-                }
-            });
-        }
-    });
-</script>--}}
-
-
-
 @endsection

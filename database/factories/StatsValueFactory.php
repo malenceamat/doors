@@ -20,4 +20,8 @@ class StatsValueFactory extends Factory
             'name' => $this->faker->word(),
         ];
     }
+    public function createValue()
+    {
+            StatsValue::factory(5)->create(['name' => $this->faker->randomNumber()]);
+    }
 }

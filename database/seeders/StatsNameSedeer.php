@@ -14,6 +14,6 @@ class StatsNameSedeer extends Seeder
      */
     public function run()
     {
-        StatsName::factory(5)->create();
+        StatsName::factory()->createName();
     }
 }

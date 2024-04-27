@@ -18,4 +18,8 @@ class Items extends Model
     {
         return $this->hasMany(ItemsStats::class);
     }
+    public function entity()
+    {
+        return $this->hasMany(EntityItem::class);
+    }
 }

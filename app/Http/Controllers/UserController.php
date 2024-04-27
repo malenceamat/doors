@@ -77,7 +77,5 @@ class UserController extends Controller
     public function filter(Request $req)
     {
         dd($req->all());
-        $minPrice = $req->input('min_price');
-        $maxPrice = $req->input('max_price');
     }
 }
