@@ -76,6 +76,45 @@ class UserController extends Controller
     }
     public function filter(Request $req)
     {
-        dd($req->all());
+        $category = Category::with('parent')->get();
+        $category_current = Category::with('sub_category')->where('name', 'like', '%'. $req->sub_name)->first();
+
+        $filters = $req->only(['min_price', 'max_price', 'height', 'width', 'thickness', 'compound', 'opening_direction']);
+        $query = $category_current->items->merge($category_current->sub_category->flatMap->items)->toQuery();
+
+        if ($filters['min_price'] || $filters['max_price']) {
+            $query->whereBetween('price', [$filters['min_price'], $filters['max_price']]);
+        }
+
+        if ($filters['height']) {
+            echo 123;
+        }
+
+        if($filters['width']) {
+            echo 456;
+        }
+
+        if ($filters['thickness']) {
+            echo 78;
+        }
+
+        if ($filters['compound']) {
+            echo 90;
+        }
+
+        if ($filters['opening_direction']) {
+            echo 12;
+        }
+        session(['min_price' => $req->min_price]);
+        session(['max_price' => $req->max_price]);
+        session(['height' => $req->height]);
+        session(['width' => $req->width]);
+        session(['thickness' => $req->thickness]);
+        session(['compound' => $req->compound]);
+        session(['opening_direction' => $req->opening_direction]);
+
+        $items = $query->get();
+
+        return view('user.catalog.products_filters_list', compact('category_current','category','items'));
     }
 }

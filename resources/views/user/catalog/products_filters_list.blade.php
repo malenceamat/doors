@@ -40,6 +40,7 @@
                                 Фильтры
                             </div>
                             <form action="{{route('filter')}}" class="filters-form" method="post" id="filter">
+                                <input type="hidden" value="{{$category_current['name']}}" name="sub_name">
                                 @csrf
                                     <div class="aside-filters-block-inner">
 
@@ -63,14 +64,14 @@
                                                             <div class="form-group relative">
                                                                 <label for="min_price">От</label>
                                                                 <input type="text" name="min_price" id="min_price"
-                                                                       value="0" class="form-control"/>
+                                                                       value="{{ session('min_price') }}" class="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-6">
                                                             <div class="form-group relative">
                                                                 <label for="max_price">До</label>
                                                                 <input type="text" name="max_price" id="max_price"
-                                                                       value="24661" class="form-control"/>
+                                                                       value="{{ session('max_price') }}" class="form-control"/>
                                                             </div>
                                                         </div>
                                                     </div>
