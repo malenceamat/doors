@@ -15,4 +15,8 @@ class EntityItem extends Model
     {
         return $this->belongsTo(Items::class);
     }
+    public function items_stats()
+    {
+        return $this->hasMany(ItemsStats::class);
+    }
 }

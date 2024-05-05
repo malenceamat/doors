@@ -11,16 +11,18 @@ class ItemsStats extends Model
 
     protected $table = 'items_stats';
 
-    public function stats_item()
+    protected $fillable = ['entity_item_id','stats_name_id','stats_value_id'];
+
+    public function entity_items()
     {
-        return $this->belongsTo(Items::class, 'item_id');
+        return $this->belongsTo(EntityItem::class, 'entity_id');
     }
     public function stats_name()
     {
-        return $this->belongsTo(StatsName::class, 'stats_name_id');
+        return $this->belongsTo(StatsName::class, 'id','stats_name_id');
     }
     public function stats_value()
     {
-        return $this->belongsTo(StatsValue::class, 'stats_value_id');
+        return $this->belongsTo(StatsValue::class, 'id','stats_value_id');
     }
 }

@@ -22,7 +22,7 @@ class StatsNameFactory extends Factory
     }
     public function createName()
     {
-        $names = [
+        $availableNames = [
             'price',
             'height',
             'width',
@@ -31,8 +31,8 @@ class StatsNameFactory extends Factory
             'opening_direction',
         ];
 
-        foreach ($names as $name) {
-            StatsName::factory()->create(['name' => $name]);
+        foreach ($availableNames as $name) {
+            StatsName::create(['name' => $name]);
         }
     }
 }

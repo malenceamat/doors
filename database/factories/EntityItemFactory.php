@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\EntityItem;
+use App\Models\Items;
+use App\Models\ItemsStats;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EntityItemFactory extends Factory
@@ -16,7 +18,7 @@ class EntityItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'item_id' => Items::factory()
         ];
     }
 }

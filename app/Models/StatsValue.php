@@ -13,6 +13,6 @@ class StatsValue extends Model
 
     public function stats_value_items()
     {
-        return $this->hasOne(ItemsStats::class, 'stats_values_id');
+        return $this->belongsTo(ItemsStats::class, 'stats_values_id');
     }
 }

@@ -19,65 +19,74 @@ class UserController extends Controller
 
         return view('user.content.general', compact('category'));
     }
+
     public function index_pay_delivery()
     {
         $category = Category::with('parent')->get();
         $pay_delivery = PayDelivery::first();
 
-        return view('user.pay_delivery.pay_delivery', compact('category','pay_delivery'));
+        return view('user.pay_delivery.pay_delivery', compact('category', 'pay_delivery'));
     }
+
     public function about_index()
     {
         $category = Category::with('parent')->get();
         $about = About::first();
-        return view('user.about.about', compact('category','about'));
+        return view('user.about.about', compact('category', 'about'));
     }
+
     public function news_index()
     {
         $category = Category::with('parent')->get();
         $news = News::get();
-        return view('user.news.news',compact('category','news'));
+        return view('user.news.news', compact('category', 'news'));
     }
+
     public function news_index_id($id)
     {
         $data = News::get();
         $news = News::find($id);
         $category = Category::with('parent')->get();
 
-        return view('user.news.news_index', ['id' => $id],compact('news','data','category'));
+        return view('user.news.news_index', ['id' => $id], compact('news', 'data', 'category'));
     }
+
     public function contacts_index()
     {
         $category = Category::with('parent')->get();
 
         return view('user.contacts.contacts', compact('category'));
     }
+
     public function catalog_index()
     {
         $category = Category::with('parent')->get();
 
         return view('user.catalog.catalog', compact('category'));
     }
+
     public function products_filters_list(Request $req)
     {
-        $category = Category::with('parent','items')->get();
-        $category_current = Category::with('sub_category','items')->where('name', 'like', '%'. $req->name)->first();
+        $category = Category::with('parent', 'items')->get();
+        $category_current = Category::with('sub_category', 'items')->where('name', 'like', '%' . $req->name)->first();
         $items = $category_current->items->merge($category_current->sub_category->flatMap->items);
 
-        return view('user.catalog.products_filters_list', compact('category','category_current','items'));
+        return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items'));
     }
+
     public function product(Request $req)
     {
         $category = Category::with('parent')->get();
-        $category_current = Category::with('sub_category')->where('name', 'like', '%'. $req->sub_name)->first();
+        $category_current = Category::with('sub_category')->where('name', 'like', '%' . $req->sub_name)->first();
         $items = $category_current->items->merge($category_current->sub_category->flatMap->items);
 
-        return view('user.catalog.products_filters_list', compact('category','category_current','items'));
+        return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items'));
     }
+
     public function filter(Request $req)
     {
         $category = Category::with('parent')->get();
-        $category_current = Category::with('sub_category')->where('name', 'like', '%'. $req->sub_name)->first();
+        $category_current = Category::with('sub_category')->where('name', 'like', '%' . $req->sub_name)->first();
 
         $filters = $req->only(['min_price', 'max_price', 'height', 'width', 'thickness', 'compound', 'opening_direction']);
         $query = $category_current->items->merge($category_current->sub_category->flatMap->items)->toQuery();
@@ -86,23 +95,23 @@ class UserController extends Controller
             $query->whereBetween('price', [$filters['min_price'], $filters['max_price']]);
         }
 
-        if ($filters['height']) {
+        if (isset($filters['height'])) {
             echo 123;
         }
 
-        if($filters['width']) {
+        if (isset($filters['width'])) {
             echo 456;
         }
 
-        if ($filters['thickness']) {
+        if (isset($filters['thickness'])) {
             echo 78;
         }
 
-        if ($filters['compound']) {
+        if (isset($filters['compound'])) {
             echo 90;
         }
 
-        if ($filters['opening_direction']) {
+        if (isset($filters['opening_direction'])) {
             echo 12;
         }
         session(['min_price' => $req->min_price]);
@@ -115,6 +124,6 @@ class UserController extends Controller
 
         $items = $query->get();
 
-        return view('user.catalog.products_filters_list', compact('category_current','category','items'));
+        return view('user.catalog.products_filters_list', compact('category_current', 'category', 'items'));
     }
 }

@@ -14,10 +14,7 @@ class Items extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function items_stats()
-    {
-        return $this->hasMany(ItemsStats::class);
-    }
+
     public function entity()
     {
         return $this->hasMany(EntityItem::class);
