@@ -32,7 +32,7 @@ class StatsNameFactory extends Factory
         ];
 
         foreach ($availableNames as $name) {
-            StatsName::create(['name' => $name]);
+            StatsName::create(['stats_names' => $name]);
         }
     }
 }

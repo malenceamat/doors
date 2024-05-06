@@ -14,6 +14,6 @@ class StatsValueSeeder extends Seeder
      */
     public function run()
     {
-        StatsValue::factory()->createValue();
+        StatsValue::factory()->count(100)->create();
     }
 }

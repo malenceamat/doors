@@ -19,10 +19,10 @@ class ItemsStats extends Model
     }
     public function stats_name()
     {
-        return $this->belongsTo(StatsName::class, 'id','stats_name_id');
+        return $this->belongsTo(StatsName::class);
     }
     public function stats_value()
     {
-        return $this->belongsTo(StatsValue::class, 'id','stats_value_id');
+        return $this->belongsTo(StatsValue::class);
     }
 }

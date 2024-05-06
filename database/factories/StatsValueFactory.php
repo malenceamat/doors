@@ -16,12 +16,22 @@ class StatsValueFactory extends Factory
 
     public function definition()
     {
-        return [
-            'name' => $this->faker->word(),
+        static $order = 0;
+
+        $types = [
+            'price' => $this->faker->randomNumber(),
+            'height' => $this->faker->randomNumber(),
+            'width' => $this->faker->randomNumber(),
+            'thickness' => $this->faker->randomNumber(),
+            'compound' => $this->faker->word(),
+            'opening_direction' => $this->faker->word()
         ];
-    }
-    public function createValue()
-    {
-            StatsValue::factory(5)->create(['name' => $this->faker->randomNumber()]);
+
+        $type = array_keys($types)[$order++ % count($types)];
+        $value = $types[$type];
+
+        return [
+            'value' => $value
+        ];
     }
 }

@@ -14,7 +14,6 @@ class Items extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
     public function entity()
     {
         return $this->hasMany(EntityItem::class);

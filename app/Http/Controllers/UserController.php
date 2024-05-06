@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 
 use App\Models\About;
-use App\Models\Banner;
 use App\Models\Category;
-use App\Models\Items;
 use App\Models\News;
 use App\Models\PayDelivery;
+use App\Service\Category\CategoryService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -32,6 +31,7 @@ class UserController extends Controller
     {
         $category = Category::with('parent')->get();
         $about = About::first();
+
         return view('user.about.about', compact('category', 'about'));
     }
 
@@ -39,9 +39,9 @@ class UserController extends Controller
     {
         $category = Category::with('parent')->get();
         $news = News::get();
+
         return view('user.news.news', compact('category', 'news'));
     }
-
     public function news_index_id($id)
     {
         $data = News::get();
@@ -50,46 +50,54 @@ class UserController extends Controller
 
         return view('user.news.news_index', ['id' => $id], compact('news', 'data', 'category'));
     }
-
     public function contacts_index()
     {
         $category = Category::with('parent')->get();
 
         return view('user.contacts.contacts', compact('category'));
     }
-
     public function catalog_index()
     {
         $category = Category::with('parent')->get();
 
         return view('user.catalog.catalog', compact('category'));
     }
-
-    public function products_filters_list(Request $req)
+    public function products_filters_list(Request $req, CategoryService $categoryService)
     {
-        $category = Category::with('parent', 'items')->get();
-        $category_current = Category::with('sub_category', 'items')->where('name', 'like', '%' . $req->name)->first();
+        $category = $categoryService->getCategories();
+        $category_current = $categoryService->getCurrentCategory($req->name ?? '');
         $items = $category_current->items->merge($category_current->sub_category->flatMap->items);
 
         return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items'));
     }
-
-    public function product(Request $req)
+    public function product(Request $req, CategoryService $categoryService)
     {
-        $category = Category::with('parent')->get();
-        $category_current = Category::with('sub_category')->where('name', 'like', '%' . $req->sub_name)->first();
+        $category = $categoryService->getCategories();
+        $category_current = $categoryService->getCurrentCategory($req->sub_name ?? '');
         $items = $category_current->items->merge($category_current->sub_category->flatMap->items);
 
         return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items'));
     }
-
-    public function filter(Request $req)
+    public function filter(Request $req, CategoryService $categoryService)
     {
-        $category = Category::with('parent')->get();
-        $category_current = Category::with('sub_category')->where('name', 'like', '%' . $req->sub_name)->first();
+        $category = $categoryService->getCategories();
+        $category_current = $categoryService->getCurrentCategory($req->sub_name ?? '');
 
         $filters = $req->only(['min_price', 'max_price', 'height', 'width', 'thickness', 'compound', 'opening_direction']);
-        $query = $category_current->items->merge($category_current->sub_category->flatMap->items)->toQuery();
+
+        $query = $category_current->items->map(function ($item) {
+            return $item->loadMissing([
+                'entity.items_stats.stats_name',
+                'entity.items_stats.stats_value'
+            ]);
+        })->concat(
+            $category_current->sub_category->flatMap->items->map(function ($item) {
+                return $item->loadMissing([
+                    'entity.items_stats.stats_name',
+                    'entity.items_stats.stats_value'
+                ]);
+            })
+        )->toQuery();
 
         if ($filters['min_price'] || $filters['max_price']) {
             $query->whereBetween('price', [$filters['min_price'], $filters['max_price']]);

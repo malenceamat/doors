@@ -13,6 +13,6 @@ class StatsName extends Model
 
     public function stats_name_items()
     {
-        return $this->belongsTo(ItemsStats::class, 'stats_name_id');
+        return $this->belongsTo(ItemsStats::class);
     }
 }

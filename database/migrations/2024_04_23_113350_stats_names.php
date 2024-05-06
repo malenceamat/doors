@@ -15,7 +15,7 @@ class StatsNames extends Migration
     {
         Schema::create('stats_names', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('stats_names');
             $table->timestamps();
         });
     }

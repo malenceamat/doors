@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             StatsValueSeeder::class,
             StatsNameSedeer::class,
             ItemsSeeder::class,
+            ItemsStatsSeeder::class,
+            EntityItemSeeder::class,
             ItemsStatsSeeder::class
         ]);
     }

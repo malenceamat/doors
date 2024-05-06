@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Category;
-use App\Models\EntityItem;
 use App\Models\Items;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -30,12 +29,4 @@ class ItemsFactory extends Factory
             'is_active' => $this->faker->numberBetween(0,1),
         ];
     }
-    public function configure()
-    {
-        return $this->afterCreating(function (Items $item) {
-            $numEntityItems = $this->faker->randomElement([1, rand(2, 5)]); // 1 или случайное число от 2 до 5
-            EntityItem::factory()->count($numEntityItems)->create(['item_id' => $item->id]);
-        });
-    }
-
 }

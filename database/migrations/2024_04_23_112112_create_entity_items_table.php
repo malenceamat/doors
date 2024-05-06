@@ -15,8 +15,8 @@ class CreateEntityItemsTable extends Migration
     {
         Schema::create('entity_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('item_id');
-            $table->foreign('item_id')->references('id')->on('items');
+            $table->unsignedBigInteger('items_id');
+            $table->foreign('items_id')->references('id')->on('items');
             $table->timestamps();
         });
     }
