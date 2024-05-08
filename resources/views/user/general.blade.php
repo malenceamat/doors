@@ -19,8 +19,6 @@
     <link href={{asset("assets/template/css/jquery.fancybox.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/jquery.jscrollpane.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/style.css")}} rel="stylesheet">
-    <link rel="stylesheet" href="https://doorsfull.demoultron.ru/assets/components/msearch2/css/web/default.css"
-          type="text/css"/>
 
     <script type="text/javascript">
         if (typeof mse2Config == "undefined") {
@@ -40,32 +38,7 @@
             "pageId": 152
         };
     </script>
-    <link rel="stylesheet"
-          href="https://doorsfull.demoultron.ru/assets/components/minishop2/css/web/default.css?v=e2bdf7f5a6"
-          type="text/css"/>
-    <link rel="stylesheet"
-          href="https://doorsfull.demoultron.ru/assets/components/minishop2/css/web/lib/jquery.jgrowl.min.css"
-          type="text/css"/>
-    <script>miniShop2Config = {
-            "close_all_message": "\u0437\u0430\u043a\u0440\u044b\u0442\u044c \u0432\u0441\u0435",
-            "cssUrl": "\/assets\/components\/minishop2\/css\/web\/",
-            "jsUrl": "\/assets\/components\/minishop2\/js\/web\/",
-            "actionUrl": "\/assets\/components\/minishop2\/action.php",
-            "ctx": "web",
-            "price_format": [2, ".", " "],
-            "price_format_no_zeros": true,
-            "weight_format": [3, ".", " "],
-            "weight_format_no_zeros": true
-        };</script>
-    <link rel="stylesheet"
-          href="https://doorsfull.demoultron.ru/assets/components/msfavorites/css/default.min.css?v=1b350711"
-          type="text/css"/>
-    <script type="text/javascript">msFavoritesConfig = {
-            "actionUrl": "\/assets\/components\/msfavorites\/action.php",
-            "ctx": "web",
-            "version": "2.1.4-beta",
-            "options": null
-        };</script>
+
 
 
 </head>

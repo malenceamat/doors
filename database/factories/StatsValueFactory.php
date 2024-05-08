@@ -19,10 +19,12 @@ class StatsValueFactory extends Factory
         static $order = 0;
 
         $types = [
-            'price' => $this->faker->randomNumber(),
-            'height' => $this->faker->randomNumber(),
-            'width' => $this->faker->randomNumber(),
-            'thickness' => $this->faker->randomNumber(),
+            'price' => $this->faker->numberBetween(500,5000),
+            'price_dealer' => $this->faker->numberBetween(500,5000),
+            'image' => $this->faker->imageUrl(),
+            'height' => $this->faker->numberBetween(100,300),
+            'width' => $this->faker->numberBetween(50,200),
+            'thickness' => $this->faker->numberBetween(500,250),
             'compound' => $this->faker->word(),
             'opening_direction' => $this->faker->word()
         ];

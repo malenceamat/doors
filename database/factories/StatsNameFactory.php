@@ -24,6 +24,8 @@ class StatsNameFactory extends Factory
     {
         $availableNames = [
             'price',
+            'price_dealer',
+            'image',
             'height',
             'width',
             'thickness',

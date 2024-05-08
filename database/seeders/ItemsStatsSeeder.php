@@ -16,18 +16,29 @@ class ItemsStatsSeeder extends Seeder
      */
     public function run()
     {
-        $entity = EntityItem::all();
-        $stats_name = StatsName::all();
+        $entities = EntityItem::all();
+        $stats_names = StatsName::all();
+        $stats_values = StatsValue::all();
 
-        $entity->each(function ($entityItem) use ($stats_name) {
-            // Для каждого stat_name создаем запись в items_stats
-            foreach ($stats_name as $statName) {
-                $stats_value = StatsValue::inRandomOrder()->first();
-                $entityItem->items_stats()->create([
-                    'stats_name_id' => $statName->id,
+        foreach ($entities as $entity) {
+            // Счетчик для перебора stats_values
+            $valueIndex = 0;
+
+            foreach ($stats_names as $stat_name) {
+                // Получаем stats_value по индексу
+                $stats_value = $stats_values;
+
+                $entity->items_stats()->create([
+                    'stats_name_id' => $stat_name->id,
                     'stats_value_id' => $stats_value->id
                 ]);
+
+                // Увеличиваем счетчик и сбрасываем его при достижении конца
+                $valueIndex++;
+                if ($valueIndex >= count($stats_values)) {
+                    $valueIndex = 0;
+                }
             }
-        });
+        }
     }
 }

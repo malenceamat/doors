@@ -263,79 +263,102 @@
                                                 </svg>
                                             </span>
                                         </div>
-                                    </div>
+                                    </div>о
                                 </div>
                             </div>
-                            <div class="row rows" id="mse2_results">
+
+                            <div class="row rows " id="mse2_results">
                                 @foreach($items as $item)
                                     <div class="col-xs-6 col-sm-4">
                                         <div class="element relative">
                                             <form method="post" class="ms2_form">
-                                                <input type="hidden" name="id" value="226">
+                                                <input type="hidden" name="id" value="207">
                                                 <input type="hidden" name="count" value="1">
                                                 <input type="hidden" name="options" value="[]">
                                                 <a class="absolute" href="#"></a>
                                                 <div class="img-wrapper">
+                                                    {{--<img class="element-img  active " src="../../assets/images/products/207/253x192/58a1014266c5560ff78483737ad3af7c607fd711.jpg" alt=""
+                                                         data-retinasrc="/assets/images/products/207/506x384/58a1014266c5560ff78483737ad3af7c607fd711.jpg"/>--}}
                                                     <img class="element-img  active " src="{{$item['image']}}" alt="{{$item['image']}}"/>
                                                 </div>
                                                 <div class="element-content">
                                                     <div class="title-h6">{{$item['name']}}</div>
+                                                    <div class="product-options-wrapper">
+                                                        <div class="color-block">
+                                                            <div class="color-block-inner">
+                                                                @foreach ($item->entity as $item_entity)
+                                                                    <div class="color-element" title="{{ $item_entity->id }}">
+                                                                        @foreach($item_entity->items_stats as $item_stats)
+                                                                            <input type="radio" id="{{ $item_stats->id }}" name="item_id" value="{{ $item_stats->id }}"
+                                                                                   data-values-container-id="values-container-{{ $item_stats->id }}">
+                                                                            <label for="{{ $item_stats->id }}"><span></span></label>
+                                                                            <div id="values-container-{{ $item_stats->id }}" class="values-container" style="display: none;"></div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                        <div class="push20"></div>
+                                                    </div>
+
                                                     <div class="row min">
                                                         <div class="col-xs-6">
                                                             <div class="push14"></div>
-                                                            <div class="price">
-                                                                {{$item['price']}}
-                                                            </div>
+                                                            @foreach($item->entity as $item_entity)
+                                                                <div id="values-container-{{ $item_stats->id }}" class="values-container" style="display: none;"></div>
+
+                                                                <div class="price" id="values-container-{{ $item_entity->id }}">
+                                                                    {{$item_entity->items_stats->first()->stats_value->value}}
+                                                                </div>
+                                                            @endforeach
                                                         </div>
                                                         <div class="col-xs-6 text-right">
                                                             <a class="msfavorites" data-click data-data-list="default"
-                                                               data-data-type="resource" data-data-id="226">
+                                                               data-data-type="resource" data-data-id="207">
                                                                     <span class="msfavorites-noneactive" title="Добавить в избранное">
                                                                         <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="heart"
                                                                              role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                                                              class="svg-inline--fa fa-heart fa-w-16 fa-2x">
-                                                                            <path fill="currentColor" d="M462.3 62.7c-54.5-46.4-136-38.7-186.6 13.5L256 96.6l-19.7-20.3C195.5 34.1 113.2 8.7 49.7
-                                                                                                         62.7c-62.8 53.6-66.1 149.8-9.9 207.8l193.5 199.8c6.2 6.4 14.4 9.7 22.6 9.7 8.2 0 16.4-3.2
-                                                                                                         22.6-9.7L472 270.5c56.4-58 53.1-154.2-9.7-207.8zm-13.1 185.6L256.4 448.1 62.8 248.3c-38.4-39.6-46.4-115.1
-                                                                                                         7.7-161.2 54.8-46.8 119.2-12.9 142.8 11.5l42.7 44.1 42.7-44.1c23.2-24 88.2-58 142.8-11.5 54 46 46.1 121.5
-                                                                                                         7.7 161.2z"
+                                                                            <path fill="currentColor" d="M462.3 62.7c-54.5-46.4-136-38.7-186.6 13.5L256 96.6l-19.7-20.3C195.5 34.1 113.2
+                                                                                  8.7 49.7 62.7c-62.8 53.6-66.1 149.8-9.9 207.8l193.5 199.8c6.2 6.4 14.4 9.7 22.6 9.7 8.2 0 16.4-3.2 22.6-9.7L472
+                                                                                  270.5c56.4-58 53.1-154.2-9.7-207.8zm-13.1 185.6L256.4 448.1 62.8 248.3c-38.4-39.6-46.4-115.1 7.7-161.2 54.8-46.8
+                                                                                  119.2-12.9 142.8 11.5l42.7 44.1 42.7-44.1c23.2-24 88.2-58 142.8-11.5 54 46 46.1 121.5 7.7 161.2z"
                                                                                   class="">
                                                                             </path>
                                                                         </svg>
                                                                     </span>
                                                                 <span class="msfavorites-active" title="Удалить из избранного">
-                                                                        <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="heart"
-                                                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                                                        <svg aria-hidden="true" focusable="false" data-prefix="fad"
+                                                                             data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                                                              class="svg-inline--fa fa-heart fa-w-16 fa-2x">
-                                                                             <g class="fa-group">
-                                                                                 <path fill="currentColor" d="M472.13 270.53l-193.5 199.8a31.34 31.34 0 0 1-44.31 1c-.35-.34-.68-.66-1-1L39.81
-                                                                                                              270.53c-56.2-58.1-52.9-154.3 9.9-207.9A128.33 128.33 0 0 1 133.58 32c37.28 0 74.85
-                                                                                                              15.41 102.73 44.23L256 96.53l19.7-20.3C303.64 47.41 341.2 32 378.47 32a128.2 128.2
-                                                                                                              0 0 1 83.83 30.63c62.81 53.6 66.11 149.8 9.83 207.9z"
-                                                                                       class="fa-secondary">
-                                                                                 </path>
-                                                                                 <path fill="currentColor" d="" class="fa-primary"></path>
-                                                                             </g>
+                                                                            <g class="fa-group">
+                                                                                <path fill="currentColor" d="M472.13 270.53l-193.5 199.8a31.34 31.34 0 0 1-44.31
+                                                                                      1c-.35-.34-.68-.66-1-1L39.81 270.53c-56.2-58.1-52.9-154.3 9.9-207.9A128.33
+                                                                                      128.33 0 0 1 133.58 32c37.28 0 74.85 15.41 102.73 44.23L256 96.53l19.7-20.3C303.64
+                                                                                      47.41 341.2 32 378.47 32a128.2 128.2 0 0 1 83.83 30.63c62.81 53.6 66.11 149.8 9.83 207.9z"
+                                                                                      class="fa-secondary">
+                                                                                </path>
+                                                                                <path fill="currentColor" d="" class="fa-primary"></path>
+                                                                            </g>
                                                                         </svg>
                                                                     </span>
                                                             </a>
-                                                            <button class="to-cart" type="submit" name="ms2_action"
-                                                                    value="cart/add">
+                                                            <button class="to-cart" type="submit" name="ms2_action" value="cart/add">
                                                                 <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                                                      data-icon="shopping-basket" role="img"
                                                                      xmlns="http://www.w3.org/2000/svg"
                                                                      viewBox="0 0 576 512"
                                                                      class="svg-inline--fa fa-shopping-basket fa-w-18 fa-2x">
                                                                     <path fill="currentColor"
-                                                                          d="M576 216v16c0 13.255-10.745 24-24 24h-8l-26.113 182.788C514.509 462.435
-                                                                                 494.257 480 470.37 480H105.63c-23.887 0-44.139-17.565-47.518-41.212L32
-                                                                                 256h-8c-13.255 0-24-10.745-24-24v-16c0-13.255 10.745-24 24-24h67.341l106.78-146.821c10.395-14.292
-                                                                                 30.407-17.453 44.701-7.058 14.293 10.395 17.453 30.408 7.058 44.701L170.477 192h235.046L326.12
-                                                                                 82.821c-10.395-14.292-7.234-34.306 7.059-44.701 14.291-10.395 34.306-7.235 44.701 7.058L484.659
-                                                                                 192H552c13.255 0 24 10.745 24 24zM312 392V280c0-13.255-10.745-24-24-24s-24 10.745-24 24v112c0
-                                                                                 13.255 10.745 24 24 24s24-10.745 24-24zm112 0V280c0-13.255-10.745-24-24-24s-24 10.745-24 24v112c0
-                                                                                 13.255 10.745 24 24 24s24-10.745 24-24zm-224 0V280c0-13.255-10.745-24-24-24s-24 10.745-24 24v112c0
-                                                                                 13.255 10.745 24 24 24s24-10.745 24-24z"
+                                                                          d="M576 216v16c0 13.255-10.745 24-24 24h-8l-26.113 182.788C514.509 462.435 494.257
+                                                                              480 470.37 480H105.63c-23.887 0-44.139-17.565-47.518-41.212L32 256h-8c-13.255
+                                                                              0-24-10.745-24-24v-16c0-13.255 10.745-24 24-24h67.341l106.78-146.821c10.395-14.292
+                                                                              30.407-17.453 44.701-7.058 14.293 10.395 17.453 30.408 7.058 44.701L170.477
+                                                                              192h235.046L326.12 82.821c-10.395-14.292-7.234-34.306 7.059-44.701 14.291-10.395
+                                                                              34.306-7.235 44.701 7.058L484.659 192H552c13.255 0 24 10.745 24 24zM312 392V280c0-13.255-10.745-24-24-24s-24
+                                                                              10.745-24 24v112c0 13.255 10.745 24 24 24s24-10.745 24-24zm112 0V280c0-13.255-10.745-24-24-24s-24 10.745-24
+                                                                              24v112c0 13.255 10.745 24 24 24s24-10.745 24-24zm-224 0V280c0-13.255-10.745-24-24-24s-24 10.745-24 24v112c0
+                                                                              13.255 10.745 24 24 24s24-10.745 24-24z"
                                                                           class="">
                                                                     </path>
                                                                 </svg>
@@ -347,9 +370,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-                            </div>
-                            <div id="mse2_pagination">
-                                <ul class="pagination"></ul>
                             </div>
                         </section>
                     </div>

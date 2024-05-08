@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\News;
 use App\Models\PayDelivery;
 use App\Service\Category\CategoryService;
+use App\Service\Item\ItemQueryService;
+use App\Service\Item\ItemService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -62,11 +64,11 @@ class UserController extends Controller
 
         return view('user.catalog.catalog', compact('category'));
     }
-    public function products_filters_list(Request $req, CategoryService $categoryService)
+    public function products_filters_list(Request $req, CategoryService $categoryService, ItemService $itemService)
     {
         $category = $categoryService->getCategories();
         $category_current = $categoryService->getCurrentCategory($req->name ?? '');
-        $items = $category_current->items->merge($category_current->sub_category->flatMap->items);
+        $items = $itemService->getItems($category_current);
 
         return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items'));
     }
@@ -78,50 +80,35 @@ class UserController extends Controller
 
         return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items'));
     }
-    public function filter(Request $req, CategoryService $categoryService)
+    public function filter(Request $req, CategoryService $categoryService, ItemService $itemService)
     {
         $category = $categoryService->getCategories();
         $category_current = $categoryService->getCurrentCategory($req->sub_name ?? '');
 
         $filters = $req->only(['min_price', 'max_price', 'height', 'width', 'thickness', 'compound', 'opening_direction']);
 
-        $query = $category_current->items->map(function ($item) {
-            return $item->loadMissing([
-                'entity.items_stats.stats_name',
-                'entity.items_stats.stats_value'
-            ]);
-        })->concat(
-            $category_current->sub_category->flatMap->items->map(function ($item) {
-                return $item->loadMissing([
-                    'entity.items_stats.stats_name',
-                    'entity.items_stats.stats_value'
-                ]);
-            })
-        )->toQuery();
+        $query = $itemService->getItems($category_current)->toQuery();
 
-        if ($filters['min_price'] || $filters['max_price']) {
-            $query->whereBetween('price', [$filters['min_price'], $filters['max_price']]);
+        if (isset($filters['min_price']) && isset($filters['max_price'])) {
+            $query->whereHas('entity.items_stats', function ($q) use ($filters) {
+                $q->join('stats_names', 'items_stats.stats_name_id', '=', 'stats_names.id')
+                    ->join('stats_values', 'items_stats.stats_value_id', '=', 'stats_values.id')
+                    ->where('stats_names.stats_names', 'price')
+                    ->whereBetween('stats_values.value', [$filters['min_price'], $filters['max_price']]);
+            });
         }
 
-        if (isset($filters['height'])) {
-            echo 123;
-        }
+        /*foreach (['height', 'width', 'thickness', 'compound', 'opening_direction'] as $filterName) {
+            if (isset($filters[$filterName])) {
+                $query->whereHas('entity.items_stats', function ($q) use ($filterName, $filters) {
+                    $q->join('stats_names', 'items_stats.stats_name_id', '=', 'stats_names.id')
+                        ->join('stats_values', 'items_stats.stats_value_id', '=', 'stats_values.id')
+                        ->where('stats_names.stats_names', $filterName)
+                        ->where('stats_values.value', $filters[$filterName]);
+                });
+            }
+        }*/
 
-        if (isset($filters['width'])) {
-            echo 456;
-        }
-
-        if (isset($filters['thickness'])) {
-            echo 78;
-        }
-
-        if (isset($filters['compound'])) {
-            echo 90;
-        }
-
-        if (isset($filters['opening_direction'])) {
-            echo 12;
-        }
         session(['min_price' => $req->min_price]);
         session(['max_price' => $req->max_price]);
         session(['height' => $req->height]);

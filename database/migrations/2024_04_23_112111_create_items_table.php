@@ -20,8 +20,6 @@ class CreateItemsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedBigInteger('id_1c');
             $table->string('description');
-            $table->decimal('price');
-            $table->string('image');
             $table->boolean('is_popular');
             $table->boolean('is_stock');
             $table->boolean('is_new_items');

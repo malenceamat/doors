@@ -21,8 +21,6 @@ class ItemsFactory extends Factory
             'category_id' => Category::factory(),
             'id_1c' => $this->faker->numberBetween(1,10),
             'description' => $this->faker->text(),
-            'price' => $this->faker->numberBetween(500,5000),
-            'image' => $this->faker->imageUrl(),
             'is_popular' => $this->faker->numberBetween(0,1),
             'is_stock' => $this->faker->numberBetween(0,1),
             'is_new_items' => $this->faker->numberBetween(0,1),
