@@ -26,7 +26,7 @@ class ItemsStatsSeeder extends Seeder
 
             foreach ($stats_names as $stat_name) {
                 // Получаем stats_value по индексу
-                $stats_value = $stats_values;
+                $stats_value = $stats_values[$valueIndex];
 
                 $entity->items_stats()->create([
                     'stats_name_id' => $stat_name->id,

@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Category;
+use App\Models\Items;
 use App\Models\News;
 use App\Models\PayDelivery;
 use App\Service\Category\CategoryService;
 use App\Service\Item\ItemQueryService;
 use App\Service\Item\ItemService;
+use App\Service\ItemFiltersService\ItemFiltersService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -64,24 +66,30 @@ class UserController extends Controller
 
         return view('user.catalog.catalog', compact('category'));
     }
-    public function products_filters_list(Request $req, CategoryService $categoryService, ItemService $itemService)
+    public function products_filters_list(Request $req, CategoryService $categoryService, ItemService $itemService, ItemFiltersService $item_filters_service)
     {
         $category = $categoryService->getCategories();
         $category_current = $categoryService->getCurrentCategory($req->name ?? '');
         $items = $itemService->getItems($category_current);
 
-        return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items'));
+        $values = $item_filters_service->getStats();
+
+        return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items','values'));
     }
-    public function product(Request $req, CategoryService $categoryService)
+    public function product(Request $req, CategoryService $categoryService, ItemFiltersService $item_filters_service)
     {
         $category = $categoryService->getCategories();
         $category_current = $categoryService->getCurrentCategory($req->sub_name ?? '');
         $items = $category_current->items->merge($category_current->sub_category->flatMap->items);
 
-        return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items'));
+        $values = $item_filters_service->getStats();
+
+        return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items','values'));
     }
-    public function filter(Request $req, CategoryService $categoryService, ItemService $itemService)
+    public function filter(Request $req, CategoryService $categoryService, ItemService $itemService, ItemFiltersService $item_filters_service)
     {
+        $values = $item_filters_service->getStats();
+
         $category = $categoryService->getCategories();
         $category_current = $categoryService->getCurrentCategory($req->sub_name ?? '');
 
@@ -98,7 +106,7 @@ class UserController extends Controller
             });
         }
 
-        /*foreach (['height', 'width', 'thickness', 'compound', 'opening_direction'] as $filterName) {
+        foreach (['height', 'width', 'thickness', 'compound', 'opening_direction'] as $filterName) {
             if (isset($filters[$filterName])) {
                 $query->whereHas('entity.items_stats', function ($q) use ($filterName, $filters) {
                     $q->join('stats_names', 'items_stats.stats_name_id', '=', 'stats_names.id')
@@ -107,18 +115,18 @@ class UserController extends Controller
                         ->where('stats_values.value', $filters[$filterName]);
                 });
             }
-        }*/
+        }
 
         session(['min_price' => $req->min_price]);
         session(['max_price' => $req->max_price]);
-        session(['height' => $req->height]);
-        session(['width' => $req->width]);
-        session(['thickness' => $req->thickness]);
-        session(['compound' => $req->compound]);
-        session(['opening_direction' => $req->opening_direction]);
+        session()->put('height', $req->input('height'));
+        session()->put('width', $req->input('width'));
+        session()->put('thickness', $req->input('thickness'));
+        session()->put('compound', $req->input('compound'));
+        session()->put('opening_direction', $req->input('opening_direction'));
 
         $items = $query->get();
 
-        return view('user.catalog.products_filters_list', compact('category_current', 'category', 'items'));
+        return view('user.catalog.products_filters_list', compact('category_current', 'category', 'items','values'));
     }
 }

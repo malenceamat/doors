@@ -39,11 +39,10 @@
                             <div class="filters-form-title-xs visible-xs visible-sm">
                                 Фильтры
                             </div>
-                            <form action="{{route('filter')}}" class="filters-form" method="post" id="filter">
-                                <input type="hidden" value="{{$category_current['name']}}" name="sub_name">
-                                @csrf
+                                <form action="{{route('filter')}}" class="filters-form" method="post" id="filter">
+                                    <input type="hidden" value="{{$category_current['name']}}" name="sub_name">
+                                    @csrf
                                     <div class="aside-filters-block-inner">
-
                                         <!-- Фильтр цены -->
                                         <div class="filter-item active">
                                             <div class="filter-item-title">
@@ -64,14 +63,14 @@
                                                             <div class="form-group relative">
                                                                 <label for="min_price">От</label>
                                                                 <input type="text" name="min_price" id="min_price"
-                                                                       value="{{ session('min_price') }}" class="form-control"/>
+                                                                       value="{{ session('min_price') ?? '0' }}" class="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-6">
                                                             <div class="form-group relative">
                                                                 <label for="max_price">До</label>
                                                                 <input type="text" name="max_price" id="max_price"
-                                                                       value="{{ session('max_price') }}" class="form-control"/>
+                                                                       value="{{ session('max_price') ?? '' }}" class="form-control"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -79,7 +78,6 @@
                                             </div>
                                         </div>
                                         <!-- Конец фильтра цены -->
-
                                         <!-- Фильтр высоты -->
                                         <div class="filter-item active">
                                             <div class="filter-item-title">
@@ -92,17 +90,19 @@
                                             <div class="item-dropdown">
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|height_general">
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="height"
-                                                                   id="height" value="180"/>
-                                                            <label for="height" class="">180</label>
-                                                        </div>
+                                                        @foreach($values['heights'] as $data)
+                                                            <div class="filter-customcheck">
+                                                                <input type="checkbox" name="height[]"
+                                                                       id="height_{{ $data }}" value="{{$data}}"
+                                                                       @if (session('height') && in_array($data, session('height'))) checked @endif/>
+                                                                <label for="height_{{ $data }}" class="">{{$data}}</label>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Конец фильтра высоты -->
-
                                         <!-- Фильтр ширины -->
                                         <div class="filter-item active">
                                             <div class="filter-item-title">
@@ -115,17 +115,19 @@
                                             <div class="item-dropdown">
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|width_general">
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="width"
-                                                                   id="width" value="80"/>
-                                                            <label for="width" class="">80</label>
-                                                        </div>
+                                                        @foreach($values['widths'] as $data)
+                                                            <div class="filter-customcheck">
+                                                                <input type="checkbox" name="width[]"
+                                                                       id="width" value="{{$data}}"
+                                                                       @if (session('width') && in_array($data, session('width'))) checked @endif/>
+                                                                <label for="width" class="">{{$data}}</label>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Конец фильтра ширины -->
-
                                         <!-- Фильтр толщины -->
                                         <div class="filter-item active">
                                             <div class="filter-item-title">
@@ -138,18 +140,20 @@
                                             <div class="item-dropdown">
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|fatness_general">
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="thickness"
-                                                                   id="thickness" value="4.2"/>
-                                                            <label for="thickness"
-                                                                   class="">4.2</label>
-                                                        </div>
+                                                        @foreach($values['thickness'] as $data)
+                                                            <div class="filter-customcheck">
+                                                                <input type="checkbox" name="thickness[]"
+                                                                       id="thickness" value="{{$data}}"
+                                                                       @if (session('thickness') && in_array($data, session('thickness'))) checked @endif/>
+                                                                <label for="thickness"
+                                                                       class="">{{$data}}</label>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Конец фильтра толщины -->
-
                                         <!-- Фильтр материала покрытия -->
                                         <div class="filter-item active">
                                             <div class="filter-item-title">
@@ -162,17 +166,19 @@
                                             <div class="item-dropdown">
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|coating">
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="compound"
-                                                                   id="compound" value="Металл"/>
-                                                            <label for="compound" class="">Металл</label>
-                                                        </div>
+                                                        @foreach($values['compounds'] as $data)
+                                                            <div class="filter-customcheck">
+                                                                <input type="checkbox" name="compound[]"
+                                                                       id="compound" value="{{$data}}"
+                                                                       @if (session('compound') && in_array($data, session('compound'))) checked @endif/>
+                                                                <label for="compound" class="">{{$data}}</label>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Конец фильтра материала покрытия -->
-
                                         <!-- Фильтр направления открывая-->
                                         <div class="filter-item active">
                                             <div class="filter-item-title">
@@ -185,20 +191,22 @@
                                             <div class="item-dropdown">
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|direction">
-                                                        <div class="filter-customcheck">
-                                                            <input type="checkbox" name="opening_direction"
-                                                                   id="opening_direction" value="Левый"/>
-                                                            <label for="opening_direction" class="">Левый</label>
-                                                        </div>
+                                                        @foreach($values['opening_directions'] as $data)
+                                                            <div class="filter-customcheck">
+                                                                <input type="checkbox" name="opening_direction[]"
+                                                                       id="opening_direction" value="{{$data}}"
+                                                                       @if (session('opening_direction') && in_array($data, session('opening_direction'))) checked @endif/>
+                                                                <label for="opening_direction" class="">{{$data}}</label>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Конец фильтра направления открывания-->
-
                                     </div>
-                                <button class="btn-new">Применить</button>
-                            </form>
+                                    <button class="btn-new">Применить</button>
+                                </form>
                         </div>
                     </div>
                     <div class="push40 hidden-xs hidden-sm"></div>
@@ -263,10 +271,9 @@
                                                 </svg>
                                             </span>
                                         </div>
-                                    </div>о
+                                    </div>
                                 </div>
                             </div>
-
                             <div class="row rows " id="mse2_results">
                                 @foreach($items as $item)
                                     <div class="col-xs-6 col-sm-4">
@@ -277,11 +284,18 @@
                                                 <input type="hidden" name="options" value="[]">
                                                 <a class="absolute" href="#"></a>
                                                 <div class="img-wrapper">
-                                                    {{--<img class="element-img  active " src="../../assets/images/products/207/253x192/58a1014266c5560ff78483737ad3af7c607fd711.jpg" alt=""
-                                                         data-retinasrc="/assets/images/products/207/506x384/58a1014266c5560ff78483737ad3af7c607fd711.jpg"/>--}}
-                                                    <img class="element-img  active " src="{{$item['image']}}" alt="{{$item['image']}}"/>
+                                                    @php $first_image = true; @endphp
+                                                    @foreach($item->entity as $entity)
+                                                        @foreach($entity->items_stats as $image)
+                                                            @if($image->stats_name_id == 3)
+                                                                <img class="element-img {{ $first_image ? 'active' : '' }}" src="{{$image->stats_value->value}}" alt="{{$image->stats_value->value}}"/>
+                                                                @php $first_image = false; @endphp
+                                                            @endif
+                                                        @endforeach
+                                                    @endforeach
                                                 </div>
-                                                <div class="element-content">
+
+                                                <div class="element-content" data-item-id="{{ $item->id }}">
                                                     <div class="title-h6">{{$item['name']}}</div>
                                                     <div class="product-options-wrapper">
                                                         <div class="color-block">
@@ -289,9 +303,14 @@
                                                                 @foreach ($item->entity as $item_entity)
                                                                     <div class="color-element" title="{{ $item_entity->id }}">
                                                                         @foreach($item_entity->items_stats as $item_stats)
-                                                                            <input type="radio" id="{{ $item_stats->id }}" name="item_id" value="{{ $item_stats->id }}"
-                                                                                   data-values-container-id="values-container-{{ $item_stats->id }}">
-                                                                            <label for="{{ $item_stats->id }}"><span></span></label>
+                                                                            <input type="radio" id="{{ $item_stats->id }}" name="item_id_{{ $item->id }}" value="{{ $item_stats->id }}"
+                                                                                   data-price="{{ $item_entity->items_stats->first()->stats_value->value }}"
+                                                                                   data-values-container-id="values-container-{{ $item_stats->id }}" src="{{$item_stats->stats_value->value}}"
+                                                                                {{ $loop->parent->first && $loop->first ? 'checked' : '' }}>
+                                                                            <label for="{{ $item_stats->id }}">
+                                                                                <span></span>
+                                                                                <img src="{{$item_stats->stats_value->value}}" alt="">
+                                                                            </label>
                                                                             <div id="values-container-{{ $item_stats->id }}" class="values-container" style="display: none;"></div>
                                                                         @endforeach
                                                                     </div>
@@ -300,69 +319,11 @@
                                                         </div>
                                                         <div class="push20"></div>
                                                     </div>
-
                                                     <div class="row min">
                                                         <div class="col-xs-6">
                                                             <div class="push14"></div>
-                                                            @foreach($item->entity as $item_entity)
-                                                                <div id="values-container-{{ $item_stats->id }}" class="values-container" style="display: none;"></div>
-
-                                                                <div class="price" id="values-container-{{ $item_entity->id }}">
-                                                                    {{$item_entity->items_stats->first()->stats_value->value}}
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                        <div class="col-xs-6 text-right">
-                                                            <a class="msfavorites" data-click data-data-list="default"
-                                                               data-data-type="resource" data-data-id="207">
-                                                                    <span class="msfavorites-noneactive" title="Добавить в избранное">
-                                                                        <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="heart"
-                                                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                                                             class="svg-inline--fa fa-heart fa-w-16 fa-2x">
-                                                                            <path fill="currentColor" d="M462.3 62.7c-54.5-46.4-136-38.7-186.6 13.5L256 96.6l-19.7-20.3C195.5 34.1 113.2
-                                                                                  8.7 49.7 62.7c-62.8 53.6-66.1 149.8-9.9 207.8l193.5 199.8c6.2 6.4 14.4 9.7 22.6 9.7 8.2 0 16.4-3.2 22.6-9.7L472
-                                                                                  270.5c56.4-58 53.1-154.2-9.7-207.8zm-13.1 185.6L256.4 448.1 62.8 248.3c-38.4-39.6-46.4-115.1 7.7-161.2 54.8-46.8
-                                                                                  119.2-12.9 142.8 11.5l42.7 44.1 42.7-44.1c23.2-24 88.2-58 142.8-11.5 54 46 46.1 121.5 7.7 161.2z"
-                                                                                  class="">
-                                                                            </path>
-                                                                        </svg>
-                                                                    </span>
-                                                                <span class="msfavorites-active" title="Удалить из избранного">
-                                                                        <svg aria-hidden="true" focusable="false" data-prefix="fad"
-                                                                             data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                                                             class="svg-inline--fa fa-heart fa-w-16 fa-2x">
-                                                                            <g class="fa-group">
-                                                                                <path fill="currentColor" d="M472.13 270.53l-193.5 199.8a31.34 31.34 0 0 1-44.31
-                                                                                      1c-.35-.34-.68-.66-1-1L39.81 270.53c-56.2-58.1-52.9-154.3 9.9-207.9A128.33
-                                                                                      128.33 0 0 1 133.58 32c37.28 0 74.85 15.41 102.73 44.23L256 96.53l19.7-20.3C303.64
-                                                                                      47.41 341.2 32 378.47 32a128.2 128.2 0 0 1 83.83 30.63c62.81 53.6 66.11 149.8 9.83 207.9z"
-                                                                                      class="fa-secondary">
-                                                                                </path>
-                                                                                <path fill="currentColor" d="" class="fa-primary"></path>
-                                                                            </g>
-                                                                        </svg>
-                                                                    </span>
-                                                            </a>
-                                                            <button class="to-cart" type="submit" name="ms2_action" value="cart/add">
-                                                                <svg aria-hidden="true" focusable="false" data-prefix="fas"
-                                                                     data-icon="shopping-basket" role="img"
-                                                                     xmlns="http://www.w3.org/2000/svg"
-                                                                     viewBox="0 0 576 512"
-                                                                     class="svg-inline--fa fa-shopping-basket fa-w-18 fa-2x">
-                                                                    <path fill="currentColor"
-                                                                          d="M576 216v16c0 13.255-10.745 24-24 24h-8l-26.113 182.788C514.509 462.435 494.257
-                                                                              480 470.37 480H105.63c-23.887 0-44.139-17.565-47.518-41.212L32 256h-8c-13.255
-                                                                              0-24-10.745-24-24v-16c0-13.255 10.745-24 24-24h67.341l106.78-146.821c10.395-14.292
-                                                                              30.407-17.453 44.701-7.058 14.293 10.395 17.453 30.408 7.058 44.701L170.477
-                                                                              192h235.046L326.12 82.821c-10.395-14.292-7.234-34.306 7.059-44.701 14.291-10.395
-                                                                              34.306-7.235 44.701 7.058L484.659 192H552c13.255 0 24 10.745 24 24zM312 392V280c0-13.255-10.745-24-24-24s-24
-                                                                              10.745-24 24v112c0 13.255 10.745 24 24 24s24-10.745 24-24zm112 0V280c0-13.255-10.745-24-24-24s-24 10.745-24
-                                                                              24v112c0 13.255 10.745 24 24 24s24-10.745 24-24zm-224 0V280c0-13.255-10.745-24-24-24s-24 10.745-24 24v112c0
-                                                                              13.255 10.745 24 24 24s24-10.745 24-24z"
-                                                                          class="">
-                                                                    </path>
-                                                                </svg>
-                                                            </button>
+                                                            <div class="price" id="selected-item-price-{{ $item->id }}">
+                                                                {{ $item->entity->first()->items_stats->first()->stats_value->value }} </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -378,4 +339,22 @@
         </div>
     </div>
     <div class="footer-push"></div>
+    <script>
+        const productCards = document.querySelectorAll('.element-content');
+
+        productCards.forEach(card => {
+            const itemId = card.dataset.itemId;
+            const radioButtons = card.querySelectorAll(`input[name="item_id_${itemId}"]`);
+            const selectedItemPrice = card.querySelector(`#selected-item-price-${itemId}`);
+
+            radioButtons.forEach(radioButton => {
+                radioButton.addEventListener('change', () => {
+                    if (radioButton.checked) {
+                        selectedItemPrice.textContent = radioButton.dataset.price;
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
+
