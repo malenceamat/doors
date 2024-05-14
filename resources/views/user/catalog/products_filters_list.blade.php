@@ -308,7 +308,7 @@
                                                                         <div class="color-element" title="{{ $item_entity->id }}">
                                                                             @foreach($item_entity->items_stats as $item_stats)
                                                                                 <input type="radio" id="{{ $item_stats->id }}" name="item_id_{{ $item->id }}" value="{{asset('/storage/'. $item_stats->id)}}"
-                                                                                       data-price="{{ $item_entity->items_stats->first()->stats_value->value . добление₽'}}"
+                                                                                       data-price="{{ $item_entity->items_stats->first()->stats_value->value . '₽'}}"
                                                                                        data-values-container-id="values-container-{{ $item_stats->id }}" @if ($item_stats->stats_name_id == 4) src="{{asset('/storage/'. $item_stats->stats_value->value)}} @endif"
                                                                                     {{ $loop->parent->first && $loop->first ? 'checked' : '' }}>
                                                                                 <label for="{{ $item_stats->id }}">
