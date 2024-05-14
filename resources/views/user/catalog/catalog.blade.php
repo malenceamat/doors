@@ -15,7 +15,7 @@
                                                 <div class="img-wrapper">
                                                     <div class="img-inner">
                                                         <a href="{{route('products_filters_list', ['name' => $cat['name']])}}">
-                                                            <img src="{{asset('assets/cache_image/images/categories/1_220x0_750.jpg')}}" alt="">
+                                                            <img src="{{asset('/storage/'. $cat['image_path'])}}" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -41,7 +41,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="vxodnyie-dveri/index.html" class="more">Смотреть все</a>
+                                        <a href="{{route('products_filters_list', ['name' => $cat['name']])}}" class="more">Смотреть все</a>
                                     </div>
                                 </div>
                             </div>

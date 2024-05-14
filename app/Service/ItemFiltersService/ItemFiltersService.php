@@ -30,7 +30,7 @@ class ItemFiltersService
     }
     public function getStats(): array
     {
-        $statsNameIds = [4, 5, 6, 7, 8];
+        $statsNameIds = [5, 6, 7, 8, 9];
         $unique = $this->getUniqueValues($statsNameIds);
 
         [$heights, $widths, $thickness, $compounds, $opening_directions] = array_values($unique);

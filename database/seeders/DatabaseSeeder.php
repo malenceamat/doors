@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             CategoriesSeeder::class,
             StatsValueSeeder::class,
-            StatsNameSedeer::class,
+            StatsNameSeeder::class,
             ItemsSeeder::class,
-            ItemsStatsSeeder::class,
             EntityItemSeeder::class,
+            ItemsStatsSeeder::class,
             ItemsStatsSeeder::class
         ]);
     }

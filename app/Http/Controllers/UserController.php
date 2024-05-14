@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Category;
-use App\Models\Items;
 use App\Models\News;
 use App\Models\PayDelivery;
 use App\Service\Category\CategoryService;
-use App\Service\Item\ItemQueryService;
 use App\Service\Item\ItemService;
 use App\Service\ItemFiltersService\ItemFiltersService;
 use Illuminate\Http\Request;

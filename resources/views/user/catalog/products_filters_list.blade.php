@@ -118,9 +118,9 @@
                                                         @foreach($values['widths'] as $data)
                                                             <div class="filter-customcheck">
                                                                 <input type="checkbox" name="width[]"
-                                                                       id="width" value="{{$data}}"
+                                                                       id="width_{{$data}}" value="{{$data}}"
                                                                        @if (session('width') && in_array($data, session('width'))) checked @endif/>
-                                                                <label for="width" class="">{{$data}}</label>
+                                                                <label for="width_{{$data}}" class="">{{$data}}</label>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -143,9 +143,9 @@
                                                         @foreach($values['thickness'] as $data)
                                                             <div class="filter-customcheck">
                                                                 <input type="checkbox" name="thickness[]"
-                                                                       id="thickness" value="{{$data}}"
+                                                                       id="thickness_{{$data}}" value="{{$data}}"
                                                                        @if (session('thickness') && in_array($data, session('thickness'))) checked @endif/>
-                                                                <label for="thickness"
+                                                                <label for="thickness_{{$data}}"
                                                                        class="">{{$data}}</label>
                                                             </div>
                                                         @endforeach
@@ -169,9 +169,9 @@
                                                         @foreach($values['compounds'] as $data)
                                                             <div class="filter-customcheck">
                                                                 <input type="checkbox" name="compound[]"
-                                                                       id="compound" value="{{$data}}"
+                                                                       id="compound_{{$data}}" value="{{$data}}"
                                                                        @if (session('compound') && in_array($data, session('compound'))) checked @endif/>
-                                                                <label for="compound" class="">{{$data}}</label>
+                                                                <label for="compound_{{$data}}" class="">{{$data}}</label>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -194,9 +194,9 @@
                                                         @foreach($values['opening_directions'] as $data)
                                                             <div class="filter-customcheck">
                                                                 <input type="checkbox" name="opening_direction[]"
-                                                                       id="opening_direction" value="{{$data}}"
+                                                                       id="opening_direction_{{$data}}" value="{{$data}}"
                                                                        @if (session('opening_direction') && in_array($data, session('opening_direction'))) checked @endif/>
-                                                                <label for="opening_direction" class="">{{$data}}</label>
+                                                                <label for="opening_direction_{{$data}}" class="">{{$data}}</label>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -284,12 +284,15 @@
                                                 <input type="hidden" name="options" value="[]">
                                                 <a class="absolute" href="#"></a>
                                                 <div class="img-wrapper">
-                                                    @php $first_image = true; @endphp
+                                                    @php $first_image = true; $uniqueImages = []; @endphp
                                                     @foreach($item->entity as $entity)
                                                         @foreach($entity->items_stats as $image)
                                                             @if($image->stats_name_id == 3)
-                                                                <img class="element-img {{ $first_image ? 'active' : '' }}" src="{{$image->stats_value->value}}" alt="{{$image->stats_value->value}}"/>
-                                                                @php $first_image = false; @endphp
+                                                                @php $imagePath = $image->stats_value->value; @endphp
+                                                                @if(!in_array($imagePath, $uniqueImages))
+                                                                    <img class="element-img {{ $first_image ? 'active' : '' }}" src="{{asset('/storage/' . $imagePath)}}" alt="{{$imagePath}}"/>
+                                                                    @php $first_image = false; $uniqueImages[] = $imagePath; @endphp
+                                                                @endif
                                                             @endif
                                                         @endforeach
                                                     @endforeach
@@ -300,21 +303,26 @@
                                                     <div class="product-options-wrapper">
                                                         <div class="color-block">
                                                             <div class="color-block-inner">
-                                                                @foreach ($item->entity as $item_entity)
-                                                                    <div class="color-element" title="{{ $item_entity->id }}">
-                                                                        @foreach($item_entity->items_stats as $item_stats)
-                                                                            <input type="radio" id="{{ $item_stats->id }}" name="item_id_{{ $item->id }}" value="{{ $item_stats->id }}"
-                                                                                   data-price="{{ $item_entity->items_stats->first()->stats_value->value }}"
-                                                                                   data-values-container-id="values-container-{{ $item_stats->id }}" src="{{$item_stats->stats_value->value}}"
-                                                                                {{ $loop->parent->first && $loop->first ? 'checked' : '' }}>
-                                                                            <label for="{{ $item_stats->id }}">
-                                                                                <span></span>
-                                                                                <img src="{{$item_stats->stats_value->value}}" alt="">
-                                                                            </label>
-                                                                            <div id="values-container-{{ $item_stats->id }}" class="values-container" style="display: none;"></div>
-                                                                        @endforeach
-                                                                    </div>
-                                                                @endforeach
+                                                                @if ($item->entity->count() > 1)
+                                                                    @foreach ($item->entity as $item_entity)
+                                                                        <div class="color-element" title="{{ $item_entity->id }}">
+                                                                            @foreach($item_entity->items_stats as $item_stats)
+                                                                                <input type="radio" id="{{ $item_stats->id }}" name="item_id_{{ $item->id }}" value="{{asset('/storage/'. $item_stats->id)}}"
+                                                                                       data-price="{{ $item_entity->items_stats->first()->stats_value->value . '₽'}}"
+                                                                                       data-values-container-id="values-container-{{ $item_stats->id }}" @if ($item_stats->stats_name_id == 4) src="{{asset('/storage/'. $item_stats->stats_value->value)}} @endif"
+                                                                                    {{ $loop->parent->first && $loop->first ? 'checked' : '' }}>
+                                                                                <label for="{{ $item_stats->id }}">
+                                                                                    <span></span>
+                                                                                    @if ($item_stats->stats_name_id == 4)
+                                                                                        <img src="{{asset('/storage/'. $item_stats->stats_value->value)}}" alt="{{asset('/storage/'. $item_stats->stats_value->value)}}" id="values-container-{{ $item_stats->id }}">
+                                                                                    @endif
+                                                                                </label>
+                                                                                <div id="values-container-{{ $item_stats->id }}" class="values-container" style="display: none;"></div>
+
+                                                                            @endforeach
+                                                                        </div>
+                                                                    @endforeach
+                                                                @endif
                                                             </div>
                                                         </div>
                                                         <div class="push20"></div>
@@ -323,7 +331,8 @@
                                                         <div class="col-xs-6">
                                                             <div class="push14"></div>
                                                             <div class="price" id="selected-item-price-{{ $item->id }}">
-                                                                {{ $item->entity->first()->items_stats->first()->stats_value->value }} </div>
+                                                                @if(isset($item->entity->first()->items_stats[0])) {{ $item->entity->first()->items_stats->first()->stats_value->value}} @endif  <wrap>₽</wrap>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
