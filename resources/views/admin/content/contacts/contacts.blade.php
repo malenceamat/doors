@@ -11,18 +11,18 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="address">Адрес</label>
+                                        <label for="address">Адрес магазина</label>
                                         <input type="text" class="form-control mb-3"
-                                               placeholder="Адрес" id="address" name="address"
+                                               placeholder="Пример: г. Москва, ул. Калужская, 80, офис 315" id="address" name="address"
                                                value="{{$contact['address']}}">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="number">Номер телефона</label>
+                                        <label for="number">Номер телефона для связи</label>
                                         <input type="tel" class="form-control mb-3"
-                                               placeholder="Номер телефона" id="number" name="number"
+                                               placeholder="+79123456789" id="number" name="number"
                                                value="{{$contact['number']}}">
                                     </div>
                                 </div>
@@ -31,7 +31,7 @@
                                     <div class="form-group">
                                         <label for="email">E-mail</label>
                                         <input type="email" class="form-control mb-3"
-                                               placeholder="E-mail" id="email" name="email"
+                                               placeholder="myemail@gmail.com" id="email" name="email"
                                                value="{{$contact['email']}}">
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                                     <div class="form-group">
                                         <label for="work_mode">Режим работы</label>
                                         <input type="text" class="form-control mb-3"
-                                               placeholder="Режим работы" id="work_mode" name="work_mode"
+                                               placeholder="Пример: Пн - Пт: c 8.00 - 19.00 Сб - Вс: c 9.00 - 15.00" id="work_mode" name="work_mode"
                                                value="{{$contact['work_time']}}">
                                     </div>
                                 </div>

@@ -26,7 +26,6 @@
     <div class="header-bottom">
         <div class="container">
             <div class="inner relative">
-
                 <div class="logo">
                     <div class="table">
                         <div class="table-cell">
@@ -37,11 +36,9 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="header-tel">
                     <div class="table">
                         <div class="table-cell">
-
                             <div class="header-tel-1">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="phone-alt"
                                      role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -51,28 +48,13 @@
                                           class=""></path>
                                 </svg>
                                 <a href="tel:+71234445566">+7 (123) 444-55-66</a>
-
                             </div>
-
-
-                            <div class="header-tel-2">
-                                <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="phone-alt"
-                                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                     class="svg-inline--fa fa-phone-alt fa-w-16 fa-2x">
-                                    <path fill="currentColor"
-                                          d="M493.09 351.3L384.7 304.8a31.36 31.36 0 0 0-36.5 8.9l-44.1 53.9A350 350 0 0 1 144.5 208l53.9-44.1a31.35 31.35 0 0 0 8.9-36.49l-46.5-108.5A31.33 31.33 0 0 0 125 .81L24.2 24.11A31.05 31.05 0 0 0 0 54.51C0 307.8 205.3 512 457.49 512A31.23 31.23 0 0 0 488 487.7L511.19 387a31.21 31.21 0 0 0-18.1-35.7zM456.89 480C222.4 479.7 32.3 289.7 32.1 55.21l99.6-23 46 107.39-72.8 59.5C153.3 302.3 209.4 358.6 313 407.2l59.5-72.8 107.39 46z"
-                                          class=""></path>
-                                </svg>
-                                <a href="tel:+73217778899">+7 (321) 777-88-99</a>
-                            </div>
-
                         </div>
                     </div>
                 </div>
                 <div class="header-info">
                     <div class="table">
                         <div class="table-cell">
-
 
                             <div class="header-address">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="map-marker-alt"
@@ -85,8 +67,6 @@
                                 г. Москва, ул. Калужская, 80, офис 315
                             </div>
                             <div class="visible-xs"></div>
-
-
                             <div class="schedule">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="clock" role="img"
                                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -98,7 +78,6 @@
                                 Пн - Пт: c 8.00 - 19.00 Сб - Вс: c 9.00 - 15.00
                             </div>
                             <div class="visible-xs"></div>
-
                         </div>
                     </div>
                 </div>
@@ -114,22 +93,17 @@
                 <div class="header-social social-links visible-xs">
                     <a href="index.html#" class="vk_link"><i class="fa fa-vk" aria-hidden="true"></i></a>
                 </div>
-
             </div>
         </div>
     </div>
-
-
     <div class="top-bar fix-true ">
         <div class="top-bar-container">
             <div class="inner relative">
-
                 <div class="mob-menu-btn hidden-lg hidden-md">
                     <span class="icon-menu-burger">
                         <span class="icon-menu-burger__line"></span>
                     </span>
                 </div>
-
                 <nav class="mobile-menu">
                     <ul class="">
                         <li class="first down">
@@ -288,7 +262,6 @@
                     </ul>
                     <div class="cleaner"></div>
                 </div>
-
                 <div class="header-favorites">
                     <a href="sluzhebnyie-straniczyi/izbrannoe.html" class="absolute msfavorites"></a>
                     <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="heart" role="img"
@@ -303,7 +276,6 @@
                 </div>
                 <div class="header-cart text-center relative">
                     <div id="msMiniCart" class="">
-
                         <div class="empty">
                             <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="shopping-cart"
                                  role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"

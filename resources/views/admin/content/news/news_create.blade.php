@@ -14,6 +14,7 @@
             @endif
             <div class="col-md-12">
                 <div class="mb-12">
+                    <p>Размер изображения: 1000х450</p>
                     <div class="col-lg-10 col-sm-12 mt-2 pl-0">
                         <input id="itn-croppie-result-i" type="text" hidden value="{{$news['image']}}"
                                name="image">
@@ -40,7 +41,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="title">Заголовок</label>
+                                            <label for="title">Заголовок для новости</label>
                                             <input type="text" class="form-control mb-3"
                                                    placeholder="Заголовок" id="title" name="title"
                                                    value="{{$news['title']}}">
@@ -53,7 +54,7 @@
                                                 <div class="widget-header">
                                                     <div class="row">
                                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                            <h4> Текст </h4>
+                                                            <h4> Основной текст для новости </h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -122,13 +123,13 @@
             enableExif: true,
             enableOrientation: true,
             viewport: {
-                width: 200,
-                height: 200,
+                width: 1000,
+                height: 450,
                 type: 'square'
             },
             boundary: {
-                width: 300,
-                height: 300
+                width: 1250,
+                height: 800
             }
         });
 
@@ -154,7 +155,7 @@
             $('.itn-croppie').slideUp();
             uploadCrop.croppie('result', {
                 type: 'base64',
-                size: 'original'
+                size: {width:1000, height:450}
             }).then(function (result) {
                 $('#itn-croppie-result').attr('src', result)
                 $('#itn-croppie-result-i').attr('value', result)
