@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             PayDeliverySeeder::class,
             AboutSeeder::class,
             ContactSeeder::class,
-            NewsSeeder::class
+            NewsSeeder::class,
+            SliderSeeder::class
         ]);
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Contact;
 use App\Models\News;
 use App\Models\PayDelivery;
+use App\Models\Slider;
 use App\Service\Category\CategoryService;
 use App\Service\Item\ItemService;
 use App\Service\ItemFiltersService\ItemFiltersService;
@@ -18,8 +19,9 @@ class UserController extends Controller
     public function index()
     {
         $category = Category::with('parent')->get();
+        $sliders = Slider::get();
 
-        return view('user.content.general', compact('category'));
+        return view('user.content.general', compact('category','sliders'));
     }
 
     public function index_pay_delivery()

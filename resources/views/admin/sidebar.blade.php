@@ -95,7 +95,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    {{--<li>
                         <a href="#level-three_discount" data-bs-toggle="collapse"
                            aria-expanded="{{ (request()->routeIs('qwe')) ? 'true' : 'false'}}"
                            class="dropdown-toggle collapsed"> Новинки/Акции
@@ -111,7 +111,7 @@
                                 <a href="{{route('info_show')}}"> Обзор </a>
                             </li>
                         </ul>
-                    </li>
+                    </li>--}}
                     <li>
                         <a href="#level-three_banner" data-bs-toggle="collapse"
                            aria-expanded="{{ (request()->routeIs('banner')) ? 'true' : 'false'}}"
