@@ -170,7 +170,7 @@
             </li>
         </ul>
 
-        <ul class="list-unstyled menu-categories" id="accordionExample">
+        {{--<ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
                 <a href="#catalog" data-bs-toggle="collapse"
                    aria-expanded="{{ (request()->routeIs('contact_index')) ? 'true' : 'false'}}"
@@ -199,7 +199,7 @@
                     </li>
                 </ul>
             </li>
-        </ul>
+        </ul>--}}
 
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
@@ -329,6 +329,5 @@
                 </ul>
             </li>
         </ul>
-
     </nav>
 </div>

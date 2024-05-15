@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\News;
 use App\Models\PayDelivery;
 use App\Service\Category\CategoryService;
@@ -55,8 +56,9 @@ class UserController extends Controller
     public function contacts_index()
     {
         $category = Category::with('parent')->get();
+        $contacts = Contact::first();
 
-        return view('user.contacts.contacts', compact('category'));
+        return view('user.contacts.contacts', compact('category','contacts'));
     }
     public function catalog_index()
     {

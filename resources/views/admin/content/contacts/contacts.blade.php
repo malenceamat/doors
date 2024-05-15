@@ -40,7 +40,7 @@
                                         <label for="work_mode">Режим работы</label>
                                         <input type="text" class="form-control mb-3"
                                                placeholder="Режим работы" id="work_mode" name="work_mode"
-                                               value="{{$contact['work_mode']}}">
+                                               value="{{$contact['work_time']}}">
                                     </div>
                                 </div>
                                 <input type="hidden" name="id" value="{{$contact['id']}}">

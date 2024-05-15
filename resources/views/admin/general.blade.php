@@ -17,15 +17,16 @@
     <link href={{asset("layouts/vertical-light-menu/css/light/plugins.css")}} rel="stylesheet" type="text/css"/>
     <link href={{asset("layouts/vertical-light-menu/css/dark/plugins.css")}} rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
-
     <link rel="stylesheet" type="text/css" href={{asset("src/assets/css/light/elements/alert.css")}}>
     <link rel="stylesheet" type="text/css" href={{asset("src/assets/css/dark/elements/alert.css")}}>
     <link href={{asset("src/assets/css/light/scrollspyNav.css")}} rel="stylesheet" type="text/css"/>
 
-
     <style>
         body.dark .layout-px-spacing, .layout-px-spacing {
             min-height: calc(100vh - 155px) !important;
+        }
+        body.dark #sidebar ul.menu-categories.ps {
+            height: auto !important;
         }
     </style>
 

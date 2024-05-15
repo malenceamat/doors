@@ -21,7 +21,7 @@
                             Адрес:
                         </div>
                         <div class="push10"></div>
-                        <div>г. Москва, ул. Калужская, 80, офис 315</div>
+                        <div>{{$contacts->address ?? ''}}</div>
                         <hr class="hidden-xs hidden-sm"/>
                         <div class="push20 visible-xs visible-sm"></div>
 
@@ -37,10 +37,7 @@
                             Телефоны:
                         </div>
                         <div class="push10"></div>
-                        <div>+7 (123) 444-55-66</div>
-
-                        <div class="push5"></div>
-                        <div>+7 (321) 777-88-99</div>
+                        <div>{{$contacts->number ?? ''}}</div>
 
                         <hr class="hidden-xs hidden-sm"/>
                         <div class="push20 visible-xs visible-sm"></div>
@@ -56,7 +53,7 @@
                             E-mail:
                         </div>
                         <div class="push10"></div>
-                        <div>info@sitename.com</div>
+                        <div>{{$contacts->email ?? ''}}</div>
                         <hr class="hidden-xs hidden-sm"/>
                         <div class="push20 visible-xs visible-sm"></div>
 
@@ -72,7 +69,7 @@
                             Режим работы:
                         </div>
                         <div class="push10"></div>
-                        <div>Пн - Пт: c 8.00 - 19.00 Сб - Вс: c 9.00 - 15.00</div>
+                        <div>{{$contacts->work_time ?? ''}}</div>
                         <hr class="hidden-xs hidden-sm"/>
                         <div class="push20 visible-xs visible-sm"></div>
 
