@@ -68,9 +68,9 @@ class UserController extends Controller
     {
         $category = $categoryService->getCategories();
         $category_current = $categoryService->getCurrentCategory($req->name ?? '');
-        $items = $itemService->getItems($category_current);
+        $items = $category_current->items->merge($category_current->sub_category->flatMap->items);
 
-        $values = $item_filters_service->getStats();
+        $values = $item_filters_service->getStats($items);
 
         return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items','values'));
     }
@@ -80,14 +80,12 @@ class UserController extends Controller
         $category_current = $categoryService->getCurrentCategory($req->sub_name ?? '');
         $items = $category_current->items->merge($category_current->sub_category->flatMap->items);
 
-        $values = $item_filters_service->getStats();
+        $values = $item_filters_service->getStats($items);
 
         return view('user.catalog.products_filters_list', compact('category', 'category_current', 'items','values'));
     }
     public function filter(Request $req, CategoryService $categoryService, ItemService $itemService, ItemFiltersService $item_filters_service)
     {
-        $values = $item_filters_service->getStats();
-
         $category = $categoryService->getCategories();
         $category_current = $categoryService->getCurrentCategory($req->sub_name ?? '');
 
@@ -110,7 +108,7 @@ class UserController extends Controller
                     $q->join('stats_names', 'items_stats.stats_name_id', '=', 'stats_names.id')
                         ->join('stats_values', 'items_stats.stats_value_id', '=', 'stats_values.id')
                         ->where('stats_names.stats_names', $filterName)
-                        ->where('stats_values.value', $filters[$filterName]);
+                        ->whereIn('stats_values.value', (array)$filters[$filterName]);
                 });
             }
         }
@@ -124,6 +122,8 @@ class UserController extends Controller
         session()->put('opening_direction', $req->input('opening_direction'));
 
         $items = $query->get();
+
+        $values = $item_filters_service->getStats($items);
 
         return view('user.catalog.products_filters_list', compact('category_current', 'category', 'items','values'));
     }

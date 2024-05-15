@@ -3,19 +3,17 @@
 namespace App\Service\ItemFiltersService;
 
 use App\Models\Items;
+use Illuminate\Database\Eloquent\Collection;
 
 class ItemFiltersService
 {
-    public function getUniqueValues(array $stats_name_id): array
+    public function getUniqueValues(array $stats_name_id, Collection $items): array
     {
         $result = [];
 
-        $items = Items::with(['entity.items_stats' => function ($query) use ($stats_name_id) {
-            $query->whereIn('stats_name_id', $stats_name_id);
-        }])->get();
-
         foreach ($stats_name_id as $stats_id) {
-            $result[$stats_id] = $items->pluck('entity')
+            $result[$stats_id] = collect($items)
+                ->pluck('entity')
                 ->flatten()
                 ->pluck('items_stats')
                 ->flatten()
@@ -28,10 +26,10 @@ class ItemFiltersService
 
         return $result;
     }
-    public function getStats(): array
+    public function getStats(Collection $items): array
     {
         $statsNameIds = [5, 6, 7, 8, 9];
-        $unique = $this->getUniqueValues($statsNameIds);
+        $unique = $this->getUniqueValues($statsNameIds, $items); // Передаем $items
 
         [$heights, $widths, $thickness, $compounds, $opening_directions] = array_values($unique);
 
