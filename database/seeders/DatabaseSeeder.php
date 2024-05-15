@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
             AboutSeeder::class,
             ContactSeeder::class,
             NewsSeeder::class,
-            SliderSeeder::class
+            SliderSeeder::class,
+            InfoBlockSeeder::class,
+            BannerSeeder::class
         ]);
     }
 }

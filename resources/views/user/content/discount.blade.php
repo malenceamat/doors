@@ -507,8 +507,6 @@
                                     <input type="hidden" name="options" value="[]">
                                     <a class="absolute"
                                        href="katalog-tovarov/prochee/dveri-dlya-saunyi/dver-dlya-saunyi-69x189-sm-czvet-matovaya-bronza.html"></a>
-
-
                                     <div class="product-tags">
                                         <div class="product-tag-new">Новинка</div>
 
@@ -517,8 +515,6 @@
                                             -6%
                                         </div>
                                     </div>
-
-
                                     <div class="img-wrapper">
                                         <img class="active"
                                              src="assets/images/products/215/253x192/eea03de9c76e31bfab92b3e9903d50e6f3f5c69a.jpg"
@@ -528,12 +524,8 @@
                                     <div class="element-content">
                                         <div class="element-article f12">Артикул: 51832947</div>
                                         <div class="title-h6">Дверь для сауны, 69х189 см, цвет матовая бронза</div>
-
-
-                                        <span class="old-price">
-                    5 000  ₽                 </span>
-                                        <span class="price">
-                    4 700  ₽                 </span>
+                                        <span class="old-price">5 000  ₽</span>
+                                        <span class="price">4 700</span>
                                     </div>
                                 </form>
                             </div>
@@ -543,19 +535,17 @@
             </div>
         </div>
 
-
         <div class="banner-carousel">
             <div class="item">
                 <div class="item-inner">
-                    <a href="bannerclick/5.html">
-                        <img src="assets/cache_image/images/banners/horizont-banner1_1240x250_b11.jpg"
+                    <a href="#">
+                        <img src="{{asset('/storage/' . $banner->image)}}"
                              alt="Баннер -30% на входные двери" title=""/>
                     </a>
                 </div>
             </div>
         </div>
         <div class="push20"></div>
-
 
     </div>
     <div class="push50"></div>

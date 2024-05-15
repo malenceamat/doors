@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 
 use App\Models\About;
+use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\InfoBlock;
 use App\Models\News;
 use App\Models\PayDelivery;
 use App\Models\Slider;
@@ -20,8 +22,10 @@ class UserController extends Controller
     {
         $category = Category::with('parent')->get();
         $sliders = Slider::get();
+        $info_blocks = InfoBlock::get();
+        $banner = Banner::first();
 
-        return view('user.content.general', compact('category','sliders'));
+        return view('user.content.general', compact('category','sliders','info_blocks','banner'));
     }
 
     public function index_pay_delivery()
