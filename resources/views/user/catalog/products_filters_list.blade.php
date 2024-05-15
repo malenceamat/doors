@@ -307,18 +307,15 @@
                                                                     @foreach ($item->entity as $item_entity)
                                                                         <div class="color-element" title="{{ $item_entity->id }}">
                                                                             @foreach($item_entity->items_stats as $item_stats)
-                                                                                <input type="radio" id="{{ $item_stats->id }}" name="item_id_{{ $item->id }}" value="{{asset('/storage/'. $item_stats->id)}}"
-                                                                                       data-price="{{ $item_entity->items_stats->first()->stats_value->value . '₽'}}"
-                                                                                       data-values-container-id="values-container-{{ $item_stats->id }}" @if ($item_stats->stats_name_id == 4) src="{{asset('/storage/'. $item_stats->stats_value->value)}} @endif"
+                                                                                <input type="radio" id="{{ $item_stats->id }}" name="item_id_{{ $item->id }}" value="{{$item->id}}"
+                                                                                       data-price="{{ $item_entity->items_stats->first()->stats_value->value . ' ₽'}}"
+                                                                                       data-values-container-id="values-container-{{ $item_stats->id }}"
                                                                                     {{ $loop->parent->first && $loop->first ? 'checked' : '' }}>
-                                                                                <label for="{{ $item_stats->id }}">
-                                                                                    <span></span>
-                                                                                    @if ($item_stats->stats_name_id == 4)
-                                                                                        <img src="{{asset('/storage/'. $item_stats->stats_value->value)}}" alt="{{asset('/storage/'. $item_stats->stats_value->value)}}" id="values-container-{{ $item_stats->id }}">
-                                                                                    @endif
-                                                                                </label>
-                                                                                <div id="values-container-{{ $item_stats->id }}" class="values-container" style="display: none;"></div>
-
+                                                                                @if ($item_stats->stats_name_id == 4)
+                                                                                    <label for="{{ $item_stats->id }}" style="background-image: url({{ asset('storage/' . $item_stats->stats_value->value) }});">
+                                                                                        <span></span>
+                                                                                    </label>
+                                                                                @endif
                                                                             @endforeach
                                                                         </div>
                                                                     @endforeach
