@@ -4,14 +4,9 @@
         <div class="row">
 
             <div class="col-sm-6 col-lg-5 col-sm-push-6 col-lg-push-7 index-about-img-wrapper">
-
-
                 <div class="index-about-img">
                     <img src={{asset("images/categories/dveri-gluxaya-i-so-steklom-v-interere.jpg")}}  s alt="">
                 </div>
-                <div class="dots-bg"><img src={{asset("assets/template/images/mask-group-9.png")}} s alt="qw"></div>
-
-
                 <div class="push50 visible-xs"></div>
             </div>
 
