@@ -53,6 +53,7 @@
     @yield('contacts')
     @yield('catalog')
     @yield('products_filters_list')
+    @yield('card_product')
 </div>
 
 @include('user.footer')

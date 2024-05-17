@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InfoBlockController;
 use App\Http\Controllers\NewsController;
@@ -79,9 +80,10 @@ Route::get('/about', [UserController::class,'about_index'])->name('about_index')
 Route::get('/news', [UserController::class,'news_index'])->name('news');
 Route::get('/news_show/{id}', [UserController::class,'news_index_id'])->name('news_index_id');
 Route::get('/contacts', [UserController::class,'contacts_index'])->name('contacts');
-Route::get('/catalog', [UserController::class,'catalog_index'])->name('catalog');
-Route::get('/catalog/{name}', [UserController::class, 'products_filters_list'])->name('products_filters_list');
-Route::get('/catalog/{name}/{sub_name}', [UserController::class, 'product'])->name('product_sub_category');
-Route::post('/filter', [UserController::class,'filter'])->name('filter');
+Route::get('/catalog', [CatalogController::class,'index'])->name('catalog');
+Route::get('/catalog/{name}', [CatalogController::class, 'products_filters_list'])->name('products_filters_list');
+Route::get('/catalog/{name}/{sub_name}', [CatalogController::class, 'product'])->name('product_sub_category');
+Route::post('/filter', [CatalogController::class,'filter'])->name('filter');
+Route::get('/card_product', [CatalogController::class, 'card_product'])->name('card_product');
 
 require __DIR__ . '/auth.php';

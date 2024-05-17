@@ -279,10 +279,10 @@
                                     <div class="col-xs-6 col-sm-4">
                                         <div class="element relative">
                                             <form method="post" class="ms2_form">
-                                                <input type="hidden" name="id" value="207">
-                                                <input type="hidden" name="count" value="1">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$item['id']}}">
                                                 <input type="hidden" name="options" value="[]">
-                                                <a class="absolute" href="#"></a>
+                                                <a class="absolute" href="{{route ('card_product')}}"></a>
                                                 <div class="img-wrapper">
                                                     @php $first_image = true; $uniqueImages = []; @endphp
                                                     @foreach($item->entity as $entity)
