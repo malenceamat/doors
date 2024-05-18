@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Items;
 use App\Service\Category\CategoryService;
 use App\Service\Item\ItemService;
 use App\Service\ItemFiltersService\ItemFiltersService;
@@ -40,11 +41,9 @@ class CatalogController extends Controller
     {
         $category = $categoryService->getCategories();
         $category_current = $categoryService->getCurrentCategory($req->sub_name ?? '');
-
-        $filters = $req->only(['min_price', 'max_price', 'height', 'width', 'thickness', 'compound', 'opening_direction']);
+        $filters = $req->only(['min_price', 'max_price', 'Высота', 'Ширина', 'Толщина', 'Материал', 'Направление_открывания']);
 
         $query = $itemService->getItems($category_current)->toQuery();
-
         if (isset($filters['min_price']) && isset($filters['max_price'])) {
             $query->whereHas('entity.items_stats', function ($q) use ($filters) {
                 $q->join('stats_names', 'items_stats.stats_name_id', '=', 'stats_names.id')
@@ -54,7 +53,7 @@ class CatalogController extends Controller
             });
         }
 
-        foreach (['height', 'width', 'thickness', 'compound', 'opening_direction'] as $filterName) {
+        foreach (['Высота', 'Ширина', 'Толщина', 'Материал', 'Направление_открывания'] as $filterName) {
             if (isset($filters[$filterName])) {
                 $query->whereHas('entity.items_stats', function ($q) use ($filterName, $filters) {
                     $q->join('stats_names', 'items_stats.stats_name_id', '=', 'stats_names.id')
@@ -67,11 +66,11 @@ class CatalogController extends Controller
 
         session(['min_price' => $req->min_price]);
         session(['max_price' => $req->max_price]);
-        session()->put('height', $req->input('height'));
-        session()->put('width', $req->input('width'));
-        session()->put('thickness', $req->input('thickness'));
-        session()->put('compound', $req->input('compound'));
-        session()->put('opening_direction', $req->input('opening_direction'));
+        session()->put('height', $req->input('Высота'));
+        session()->put('width', $req->input('Ширина'));
+        session()->put('thickness', $req->input('Толщина'));
+        session()->put('compound', $req->input('Материал'));
+        session()->put('opening_direction', $req->input('Направление_открывания'));
 
         $items = $query->get();
 
@@ -79,10 +78,13 @@ class CatalogController extends Controller
 
         return view('user.catalog.products_filters_list', compact('category_current', 'category', 'items','values'));
     }
-    public function card_product(CategoryService $categoryService)
+    public function card_product(CategoryService $categoryService, $item_id)
     {
+        $item = Items::find($item_id)->loadMissing([
+            'entity.items_stats.stats_name',
+            'entity.items_stats.stats_value'
+        ]);;
         $category = $categoryService->getCategories();
-
-        return view('user.catalog.product', compact('category'));
+        return view('user.catalog.product', compact('category','item'));
     }
 }

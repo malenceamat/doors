@@ -193,11 +193,6 @@
                                 <span>Новости</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <span>Отзывы</span>
-                            </a>
-                        </li>
                         <li class="{{request()->routeIs('contacts') ? 'active' : ''}}">
                             <a href="{{route('contacts')}}">
                                 <span>Контакты</span>
@@ -247,11 +242,6 @@
                         <li class="{{request()->routeIs('news','news_index_id') ? 'active' : ''}}">
                             <a href="{{route('news')}}">
                                 <span>Новости</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>Отзывы</span>
                             </a>
                         </li>
                         <li class="{{request()->routeIs('contacts') ? 'active' : ''}}">

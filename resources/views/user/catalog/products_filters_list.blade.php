@@ -90,12 +90,12 @@
                                             <div class="item-dropdown">
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|height_general">
-                                                        @foreach($values['heights'] as $data)
+                                                        @foreach($values['Высота'] as $height)
                                                             <div class="filter-customcheck">
-                                                                <input type="checkbox" name="height[]"
-                                                                       id="height_{{ $data }}" value="{{$data}}"
-                                                                       @if (session('height') && in_array($data, session('height'))) checked @endif/>
-                                                                <label for="height_{{ $data }}" class="">{{$data}}</label>
+                                                                <input type="checkbox" name="Высота[]"
+                                                                       id="height_{{ $height }}" value="{{$height}}"
+                                                                       @if (session('height') && in_array($height, session('height'))) checked @endif/>
+                                                                <label for="height_{{ $height }}" class="">{{$height}}</label>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -115,12 +115,12 @@
                                             <div class="item-dropdown">
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|width_general">
-                                                        @foreach($values['widths'] as $data)
+                                                        @foreach($values['Ширина'] as $width)
                                                             <div class="filter-customcheck">
-                                                                <input type="checkbox" name="width[]"
-                                                                       id="width_{{$data}}" value="{{$data}}"
-                                                                       @if (session('width') && in_array($data, session('width'))) checked @endif/>
-                                                                <label for="width_{{$data}}" class="">{{$data}}</label>
+                                                                <input type="checkbox" name="Ширина[]"
+                                                                       id="width_{{$width}}" value="{{$width}}"
+                                                                       @if (session('width') && in_array($width, session('width'))) checked @endif/>
+                                                                <label for="width_{{$width}}" class="">{{$width}}</label>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -140,13 +140,13 @@
                                             <div class="item-dropdown">
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|fatness_general">
-                                                        @foreach($values['thickness'] as $data)
+                                                        @foreach($values['Толщина'] as $thickness)
                                                             <div class="filter-customcheck">
-                                                                <input type="checkbox" name="thickness[]"
-                                                                       id="thickness_{{$data}}" value="{{$data}}"
-                                                                       @if (session('thickness') && in_array($data, session('thickness'))) checked @endif/>
-                                                                <label for="thickness_{{$data}}"
-                                                                       class="">{{$data}}</label>
+                                                                <input type="checkbox" name="Толщина[]"
+                                                                       id="thickness_{{$thickness}}" value="{{$thickness}}"
+                                                                       @if (session('thickness') && in_array($thickness, session('thickness'))) checked @endif/>
+                                                                <label for="thickness_{{$thickness}}"
+                                                                       class="">{{$thickness}}</label>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -166,12 +166,12 @@
                                             <div class="item-dropdown">
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|coating">
-                                                        @foreach($values['compounds'] as $data)
+                                                        @foreach($values['Материал'] as $compound)
                                                             <div class="filter-customcheck">
-                                                                <input type="checkbox" name="compound[]"
-                                                                       id="compound_{{$data}}" value="{{$data}}"
-                                                                       @if (session('compound') && in_array($data, session('compound'))) checked @endif/>
-                                                                <label for="compound_{{$data}}" class="">{{$data}}</label>
+                                                                <input type="checkbox" name="Материал[]"
+                                                                       id="compound_{{$compound}}" value="{{$compound}}"
+                                                                       @if (session('compound') && in_array($compound, session('compound'))) checked @endif/>
+                                                                <label for="compound_{{$compound}}" class="">{{$compound}}</label>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -191,12 +191,12 @@
                                             <div class="item-dropdown">
                                                 <div class="item-dropdown-inner">
                                                     <div class="filter-customcheck-wrap" id="mse2_msoption|direction">
-                                                        @foreach($values['opening_directions'] as $data)
+                                                        @foreach($values['Направление открывания'] as $opening_direction)
                                                             <div class="filter-customcheck">
-                                                                <input type="checkbox" name="opening_direction[]"
-                                                                       id="opening_direction_{{$data}}" value="{{$data}}"
-                                                                       @if (session('opening_direction') && in_array($data, session('opening_direction'))) checked @endif/>
-                                                                <label for="opening_direction_{{$data}}" class="">{{$data}}</label>
+                                                                <input type="checkbox" name="Направление открывания[]"
+                                                                       id="opening_direction_{{$opening_direction}}" value="{{$opening_direction}}"
+                                                                       @if (session('opening_direction') && in_array($opening_direction, session('opening_direction'))) checked @endif/>
+                                                                <label for="opening_direction_{{$opening_direction}}" class="">{{$opening_direction}}</label>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -214,6 +214,7 @@
                 <div class="col-md-9">
                     <div class="main-column">
                         <section class="catalog" id="mse2_mfilter">
+
                             <div class="catalog-header">
                                 <div class="row min">
                                     <div class="col-sm-8 text-right-sm">
@@ -282,7 +283,7 @@
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$item['id']}}">
                                                 <input type="hidden" name="options" value="[]">
-                                                <a class="absolute" href="{{route ('card_product')}}"></a>
+                                                <a class="absolute" href="{{route ('card_product', ['item_id' => $item['id'], 'item_name' => $item['name']])}}"></a>
                                                 <div class="img-wrapper">
                                                     @php $first_image = true; $uniqueImages = []; @endphp
                                                     @foreach($item->entity as $entity)

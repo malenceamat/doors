@@ -84,6 +84,7 @@ Route::get('/catalog', [CatalogController::class,'index'])->name('catalog');
 Route::get('/catalog/{name}', [CatalogController::class, 'products_filters_list'])->name('products_filters_list');
 Route::get('/catalog/{name}/{sub_name}', [CatalogController::class, 'product'])->name('product_sub_category');
 Route::post('/filter', [CatalogController::class,'filter'])->name('filter');
-Route::get('/card_product', [CatalogController::class, 'card_product'])->name('card_product');
+
+Route::get('/product/{item_id}/{item_name}', [CatalogController::class, 'card_product'])->name('card_product');
 
 require __DIR__ . '/auth.php';

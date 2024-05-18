@@ -34,11 +34,11 @@ class ItemFiltersService
         [$heights, $widths, $thickness, $compounds, $opening_directions] = array_values($unique);
 
         return [
-            'heights' => $heights,
-            'widths' => $widths,
-            'thickness' => $thickness,
-            'compounds' => $compounds,
-            'opening_directions' => $opening_directions,
+            'Высота' => $heights,
+            'Ширина' => $widths,
+            'Толщина' => $thickness,
+            'Материал' => $compounds,
+            'Направление открывания' => $opening_directions,
         ];
     }
 }

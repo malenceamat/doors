@@ -31,23 +31,23 @@ class StatsNameSeeder extends Seeder
         ]);
 
         StatsName::create([
-            'stats_names' => 'height'
+            'stats_names' => 'Высота'
         ]);
 
         StatsName::create([
-            'stats_names' => 'width'
+            'stats_names' => 'Ширина'
         ]);
 
         StatsName::create([
-            'stats_names' => 'thickness'
+            'stats_names' => 'Толщина'
         ]);
 
         StatsName::create([
-            'stats_names' => 'compound'
+            'stats_names' => 'Материал'
         ]);
 
         StatsName::create([
-            'stats_names' => 'opening_direction'
+            'stats_names' => 'Направление_открывания'
         ]);
     }
 }
