@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>Готовый интернет-магазин межкомнатных и входных дверей | Шаблон интернет магазина дверей</title>
-    <base href="">
     <meta name="keywords" content="">
     <meta name="robots" content="index,follow">
     <meta name="theme-color" content="#493939"/>
@@ -38,9 +37,6 @@
             "pageId": 152
         };
     </script>
-
-
-
 </head>
 <body class="index-template id-1 parent-0">
 <div class="main-wrapper">
@@ -57,11 +53,6 @@
 </div>
 
 @include('user.footer')
-
-
-
-
-
 
 <span id="up"><i class="fa fa-angle-up"></i></span>
 <!--[if lt IE 9]>

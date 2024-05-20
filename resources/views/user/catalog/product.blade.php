@@ -5,7 +5,9 @@
             <h1 class="pagetitle">{{$item['name']}}</h1>
             <div class="main-column">
                     <div class="product-detail">
-                        <form class="form-horizontal ms2_form" method="post">
+{{--
+                        <form class="form-horizontal ms2_form" method="post" action="#">
+--}}
 {{--                            <input type="hidden" name="id" value="203"/> id товара для покупки--}}
                             <div class="row">
                                 <div class="col-xs-10"></div>
@@ -52,27 +54,33 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-6 col-md-6">
-                                    <div class="product-gallery relative">
-                                        <div id="msGallery">
-                                            <div class="fotorama"
-                                                 data-nav="thumbs"
-                                                 data-thumbheight="50"
-                                                 data-allowfullscreen="true"
-                                                 data-swipe="true"
-                                                 data-autoplay="5000">
-                                                <a href="../../../assets/images/products/203/49f7fc298ab3c6f211898182f56460806a55fc49.png"
-                                                   target="_blank" data-color="graciya-snar-1100x1100h-1000x1000">
-                                                    <img
-                                                        src="../../../assets/images/products/203/451x342/49f7fc298ab3c6f211898182f56460806a55fc49.jpg"
-                                                        alt="">
-                                                </a>
+                                @if($item->entity->count() == 1)
+                                    @foreach($item->entity as $entity)
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="product-gallery relative">
+                                                @foreach($entity->items_stats as $image)
+                                                    @if($image->stats_name_id == 3)
+                                                        <div id="msGallery">
+                                                            <div class="fotorama"
+                                                                 data-nav="thumbs"
+                                                                 data-thumbheight="50"
+                                                                 data-allowfullscreen="true"
+                                                                 data-swipe="true"
+                                                                 data-autoplay="5000">
+                                                                <a href="{{asset('/storage/' . $image->stats_value->value)}}"
+                                                                   target="_blank" data-color="graciya-snar-1100x1100h-1000x1000">
+                                                                    <img src="{{asset('/storage/' . $image->stats_value->value)}}" alt="">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
                                             </div>
+                                            <div class="push20"></div>
+                                            <div class="push20 visible-md visible-xs"></div>
                                         </div>
-                                    </div>
-                                    <div class="push20"></div>
-                                    <div class="push20 visible-md visible-xs"></div>
-                                </div>
+                                    @endforeach
+                                @endif
                                 <div class="col-sm-6 col-md-6">
                                     @if($item->entity->count() == 1)
                                         @foreach($item->entity as $entity)
@@ -82,7 +90,6 @@
                                                         <div class="product-price-wrapper">
                                                             <span class="product-price bold">{{ $stats->stats_value->value }}</span>
                                                         </div>
-                                                        @break
                                                     @endif
                                                 @endforeach
                                                 <div class="push30"></div>
@@ -113,175 +120,44 @@
                             </div>
                             <div class="push60 hidden-xs hidden-sm"></div>
                             <div class="push30 visible-xs visible-sm"></div>
-                        </form>
+                        {{--</form>--}}
                         <div class="section">
                             <div class="mobile-tab-header">Характеристики</div>
                             <ul class="tabs mobile">
                                 <li class="current">Характеристики</li>
                                 <li>Описание</li>
-                                <li>Отзывы</li>
+                                {{--<li>Отзывы</li>--}}
                             </ul>
                             <div class="push30"></div>
                             {{-- характеристики --}}
-                            <div class="box visible">
-                                <div class="char-wrapper">
-                                    <div class="char_block">
-                                        <table class="props_list nbg">
-                                            <tbody>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Бренд</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>VELLDORIS</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Страна производства</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>Китай</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Степень шумоизоляции</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>Средний (26-31дБ) </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Общая ширина (см)</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>96 </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Общая высота (см)</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>180 </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Общая толщина (см)</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>10.5 </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Количество замков</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>5 </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Наполнитель</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>Пенополистирол </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Количество петель</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>3 </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Направление открывания</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>Правый </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Покрытие</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>Металл </span>
-                                                </td>
-                                            </tr>
-
-
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Вес</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>69.2 кг.</span>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Размеры</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-
-                                                    <span>100 x 200 x 20</span>
-
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="char_name">
-                                                    <div class="props_item">
-                                                        <span>Гарантия</span>
-                                                    </div>
-                                                </td>
-                                                <td class="char_value">
-                                                    <span>2 года </span>
-                                                </td>
-                                            </tr>
-
-
-                                            </tbody>
-                                        </table>
+                            @if($item->entity->count() == 1)
+                                @foreach($item->entity as $entity)
+                                    <div class="box visible">
+                                        <div class="char-wrapper">
+                                            <div class="char_block">
+                                                <table class="props_list nbg">
+                                                    <tbody>
+                                                    @foreach($entity->items_stats as $stats)
+                                                            <tr>
+                                                                <td class="char_name">
+                                                                    <div class="props_item">
+                                                                        <span>{{ $stats->stats_name->stats_names }}</span>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="char_value">
+                                                                    <span>{{ $stats->stats_value->value }}</span>
+                                                                </td>
+                                                            </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="push20"></div>
                                     </div>
-                                </div>
-                                <div class="push20"></div>
-                            </div>
+                                @endforeach
+                            @endif
+
                             {{-- конец характеристик --}}
                             <!--Описание-->
                             <div class="box">
@@ -308,7 +184,7 @@
                             </div>
                             {{--конец описания--}}
                             <!--отзыв-->
-                            <div class="box">
+                            {{--<div class="box">
                                 <div class="reviews" id="reviews">
                                     <ul class="pagination"></ul>
                                 </div>
@@ -321,7 +197,7 @@
 
                                             <form class="form well ec-form" method="post" role="form"
                                                   id="ec-form-resource-203" data-fid="resource-203"
-                                                  action="../../../index.html">
+                                                  action="#">
                                                 <input type="hidden" name="thread" value="resource-203">
 
                                                 <div class="form-group ec-antispam">
@@ -399,7 +275,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>--}}
                             {{--конец отзыва--}}
                         </div>
                     </div>
@@ -409,4 +285,3 @@
     </div>
     <div class="footer-push"></div>
 @endsection
-

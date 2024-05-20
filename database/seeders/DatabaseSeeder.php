@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             ItemsSeeder::class,
             EntityItemSeeder::class,
             ItemsStatsSeeder::class,
-            ItemsStatsSeeder::class,
             PayDeliverySeeder::class,
             AboutSeeder::class,
             ContactSeeder::class,

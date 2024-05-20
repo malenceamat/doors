@@ -2,7 +2,6 @@
 
 namespace App\Service\Item;
 
-use Illuminate\Database\Eloquent\Builder;
 class ItemService
 {
     public function getItems($category_current)

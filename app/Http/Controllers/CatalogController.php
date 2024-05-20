@@ -17,7 +17,7 @@ class CatalogController extends Controller
 
         return view('user.catalog.catalog', compact('category'));
     }
-    public function products_filters_list(Request $req, CategoryService $categoryService, ItemService $itemService, ItemFiltersService $item_filters_service)
+    public function products_filters_list(Request $req, CategoryService $categoryService, ItemFiltersService $item_filters_service)
     {
         $category = $categoryService->getCategories();
         $category_current = $categoryService->getCurrentCategory($req->name ?? '');
@@ -83,7 +83,8 @@ class CatalogController extends Controller
         $item = Items::find($item_id)->loadMissing([
             'entity.items_stats.stats_name',
             'entity.items_stats.stats_value'
-        ]);;
+        ]);
+
         $category = $categoryService->getCategories();
         return view('user.catalog.product', compact('category','item'));
     }
