@@ -275,8 +275,6 @@
     <div class="footer-push"></div>
 @endsection--}}
 @section('card_product')
-
-
     <div class="middle">
         <div class="container" style="margin-top: 20px">
             <h1 class="pagetitle">Дверь межкомнатная остеклённая Ницца</h1>
