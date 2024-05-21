@@ -12,12 +12,14 @@
     <link rel="icon" type="image/png" href={{asset("images/site/favicon.png")}}/>
     <link href={{asset("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap")}} s
           rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}" rel="stylesheet">
     <link href={{asset("assets/template/css/font-awesome.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/bootstrap.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/jquery.fancybox.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/jquery.jscrollpane.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/style.css")}} rel="stylesheet">
+    <link href={{asset("assets/fotorama.css")}} rel="stylesheet">
+
 
     <script type="text/javascript">
         if (typeof mse2Config == "undefined") {
@@ -115,9 +117,9 @@
 <script src={{asset("assets/template/js/minishop.js")}}></script>
 <script
     src={{asset("https://doorsfull.demoultron.ru/assets/components/minishop2/js/web/lib/jquery.jgrowl.min.js")}}></script>
-<script src="https://doorsfull.demoultron.ru/assets/components/minishop2/js/web/message_settings.js"></script>
-<script src="https://doorsfull.demoultron.ru/assets/components/msfavorites/js/default.min.js?v=1b350711"></script>
-<script src="https://doorsfull.demoultron.ru/assets/components/ajaxform/js/default.js"></script>
+<script src={{asset("assets/mini_shop2.js")}}></script>
+<script src={{asset("assets/ms_favorites.js")}}></script>
+<script src={{asset("assets/ajax_form.js")}}></script>
 <script>AjaxForm.initialize({
         "assetsUrl": "\/assets\/components\/ajaxform\/",
         "actionUrl": "\/assets\/components\/ajaxform\/action.php",
