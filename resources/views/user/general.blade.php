@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" href={{asset("images/site/favicon.png")}}/>
     <link href={{asset("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap")}} s
           rel="stylesheet">
+    <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js")}}></script>
     <link href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}" rel="stylesheet">
     <link href={{asset("assets/template/css/font-awesome.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/bootstrap.css")}} rel="stylesheet">
@@ -19,7 +20,8 @@
     <link href={{asset("assets/template/css/jquery.jscrollpane.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/style.css")}} rel="stylesheet">
     <link href={{asset("assets/fotorama.css")}} rel="stylesheet">
-
+    <link rel="stylesheet" href={{asset("https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css")}}>
+    <script src={{asset("https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js")}}></script>
 
     <script type="text/javascript">
         if (typeof mse2Config == "undefined") {
