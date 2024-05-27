@@ -12,12 +12,13 @@
                             <div class="col-xs-10"></div>
                             <div class="col-xs-2">
                                 <div class="favorites-btn-wrapper text-right">
-                                    <a class="msfavorites" data-click="" data-data-list="default" data-data-type="resource" data-data-id="207">
+                                    <a class="msfavorites" data-click="" data-data-list="default"
+                                       data-data-type="resource" data-data-id="207">
                                         <span class="msfavorites-noneactive" title="Добавить в избранное">
                                             <svg aria-hidden="true" focusable="false" data-prefix="fal"
-                                                     data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg"
-                                                     viewBox="0 0 512 512"
-                                                     class="svg-inline--fa fa-heart fa-w-16 fa-2x">
+                                                 data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 512 512"
+                                                 class="svg-inline--fa fa-heart fa-w-16 fa-2x">
                                                 <path fill="currentColor" d="M462.3 62.7c-54.5-46.4-136-38.7-186.6 13.5L256
                                                                           96.6l-19.7-20.3C195.5 34.1 113.2 8.7 49.7 62.7c-62.8
                                                                           53.6-66.1 149.8-9.9 207.8l193.5 199.8c6.2 6.4 14.4 9.7
@@ -25,7 +26,8 @@
                                                                           53.1-154.2-9.7-207.8zm-13.1 185.6L256.4 448.1 62.8
                                                                           248.3c-38.4-39.6-46.4-115.1 7.7-161.2 54.8-46.8
                                                                           119.2-12.9 142.8 11.5l42.7 44.1 42.7-44.1c23.2-24
-                                                                          88.2-58 142.8-11.5 54 46 46.1 121.5 7.7 161.2z" class="">
+                                                                          88.2-58 142.8-11.5 54 46 46.1 121.5 7.7 161.2z"
+                                                      class="">
                                                 </path>
                                             </svg>
                                         </span>
@@ -39,7 +41,8 @@
                                                                               1c-.35-.34-.68-.66-1-1L39.81 270.53c-56.2-58.1-52.9-154.3
                                                                               9.9-207.9A128.33 128.33 0 0 1 133.58 32c37.28 0 74.85 15.41
                                                                               102.73 44.23L256 96.53l19.7-20.3C303.64 47.41 341.2 32 378.47
-                                                                              32a128.2 128.2 0 0 1 83.83 30.63c62.81 53.6 66.11 149.8 9.83 207.9z" class="fa-secondary">
+                                                                              32a128.2 128.2 0 0 1 83.83 30.63c62.81 53.6 66.11 149.8 9.83 207.9z"
+                                                          class="fa-secondary">
                                                     </path>
                                                     <path fill="currentColor" d="" class="fa-primary"></path>
                                                 </g>
@@ -53,24 +56,8 @@
                             <div class="col-sm-6 col-md-6">
                                 <div class="product-gallery relative">
                                     <div id="msGallery">
-                                        <div class="fotorama"
-                                             data-nav="thumbs"
-                                             data-thumbheight="50"
-                                             data-allowfullscreen="true"
-                                             data-swipe="true"
-                                             data-autoplay="5000">
-                                            @foreach($item->entity as $entity)
-                                                @foreach($entity->items_stats as $image)
-                                                    @if($image->stats_name_id == 3)
-                                                        <a href="{{ asset('/storage/' . $image->stats_value->value) }}"
-                                                           target="_blank" data-color="{{$image->stats_value->id}}"
-                                                           data-fotorama-target="img-{{ $image->id }}">
-                                                            <img src="{{ asset('/storage/' . $image->stats_value->value) }}" alt=""
-                                                                 data-fotorama-target="img-{{ $image->id }}" title="{{ $entity->id }}">
-                                                        </a>
-                                                    @endif
-                                                @endforeach
-                                            @endforeach
+                                        <div class="fotorama" data-auto="false"
+                                             data-gallery-images="{{ $galleryImages }}">
                                         </div>
                                     </div>
                                 </div>
@@ -265,40 +252,5 @@
         </div>
     </div>
     <div class="footer-push"></div>
-    <script>
-        // Получаем все элементы миниатюр
-        const miniatures = document.querySelectorAll('.color-miniature');
-
-        // Получаем элемент галереи
-        const gallery = document.querySelector('.fotorama');
-
-        // Инициализация Fotorama с обработчиком события ready
-        gallery.fotorama = new Fotorama(gallery, {
-            ready: function() {
-                // Добавляем обработчик клика на миниатюры
-                miniatures.forEach(miniature => {
-                    miniature.addEventListener('click', function() {
-                        // Убираем класс active  с всех миниатюр
-                        miniatures.forEach(mini => mini.classList.remove('active'));
-
-                        // Добавляем класс active  к выбранной миниатюре
-                        this.classList.add('active');
-
-                        // Получаем id миниатюры из инпута
-                        const input = this.querySelector('input[type="radio"]');
-                        const miniatureId = input.name;
-
-                        // Выводим id миниатюры в консоль
-                        console.log("ID миниатюры:", miniatureId);
-
-                        // Получаем id выбранного цвета из инпута
-                        const selectedId = input.dataset.valuesContainerId;
-
-                        // Переключаем картинку в фотораме
-                        gallery.fotorama.show(selectedId);
-                    });
-                });
-            }
-        });
-    </script>
+    <script src={{asset("fotorama.js")}}
 @endsection

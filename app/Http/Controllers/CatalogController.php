@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Items;
 use App\Service\Category\CategoryService;
+use App\Service\FotoramaService\FotoramaService;
 use App\Service\Item\ItemService;
 use App\Service\ItemFiltersService\ItemFiltersService;
 use Illuminate\Http\Request;
@@ -78,14 +79,16 @@ class CatalogController extends Controller
 
         return view('user.catalog.products_filters_list', compact('category_current', 'category', 'items','values'));
     }
-    public function card_product(CategoryService $categoryService, $item_id)
+    public function card_product(CategoryService $categoryService, $item_id,FotoramaService $fotoramaService)
     {
         $item = Items::find($item_id)->loadMissing([
             'entity.items_stats.stats_name',
             'entity.items_stats.stats_value'
         ]);
 
+        $galleryImages = $fotoramaService->getFotoramaImages($item);
+
         $category = $categoryService->getCategories();
-        return view('user.catalog.product', compact('category','item'));
+        return view('user.catalog.product', compact('category','item','galleryImages'));
     }
 }

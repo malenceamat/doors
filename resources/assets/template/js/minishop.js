@@ -334,7 +334,7 @@
                          images[$(this).attr('data-color')] = index;
                      }
                 })
-             
+
                 $('<link/>', {
                     rel: 'stylesheet',
                     type: 'text/css',
@@ -358,7 +358,7 @@
                         Fotorama.resize(measure);
                     }
                 }
-                
+
                     $('.product-info .color-element label').click(function(){
                         var color = $(this).prev().val();
                          if(images[color] != undefined){
@@ -413,6 +413,7 @@
             if (payments.length > 0) {
                 for (var i in payments) {
                     if (payments.hasOwnProperty(i)) {
+
                         $paymentInputs.filter(miniShop2.Order.paymentInputUniquePrefix + payments[i]).attr('disabled', false).prop('disabled', false).closest(miniShop2.Order.inputParent).show();
                     }
                 }

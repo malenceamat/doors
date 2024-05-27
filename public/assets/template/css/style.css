@@ -1,145 +1,4 @@
 @charset "utf-8";
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src:url('../fonts/euclidflex-ultralight.eot'),
-        url('../fonts/euclidflex-ultralight.woff2.html'),
-        url('../fonts/euclidflex-ultralight.woff.html'),
-        url('../fonts/euclidflex-ultralight.ttf.html');
-    font-weight: 200;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src: url('../fonts/euclidflex-light.eot'),
-        url('../fonts/euclidflex-light.woff2.html'),
-        url('../fonts/euclidflex-light.woff.html'),
-        url('../fonts/euclidflex-light.ttf.html');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-        src: url('../fonts/euclidflex-bolditalic.eot'),
-        url('../fonts/euclidflex-bolditalic.woff2.html'),
-        url('../fonts/euclidflex-bolditalic.woff.html'),
-        url('../fonts/euclidflex-bolditalic.ttf.html');
-    font-weight: bold;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src: url('../fonts/euclidflex-thinitalic.eot'),
-        url('../fonts/euclidflex-thinitalic.woff2.html') ,
-        url('../fonts/euclidflex-thinitalic.woff.html'),
-        url('../fonts/euclidflex-thinitalic.ttf.html');
-    font-weight: 100;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-        src: url('../fonts/euclidflex-regular.eot'),
-        url('../fonts/euclidflex-regular.woff2.html'),
-        url('../fonts/euclidflex-regular.woff.html') ,
-        url('../fonts/euclidflex-regular.ttf.html');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src: url('../fonts/euclidflex-ultralightitalic.eot'),
-        url('../fonts/euclidflex-ultralightitalic.woff2.html'),
-        url('../fonts/euclidflex-ultralightitalic.woff.html') ,
-        url('../fonts/euclidflex-ultralightitalic.ttf.html');
-    font-weight: 200;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src: url('../fonts/euclidflex-mediumitalic.eot'),
-        url('../fonts/euclidflex-mediumitalic.woff2.html') ,
-        url('../fonts/euclidflex-mediumitalic.woff.html') ,
-        url('../fonts/euclidflex-mediumitalic.ttf.html');
-    font-weight: 500;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'Euclid Flex';
-        src: url('../fonts/euclidflex-semibolditalic.eot'),
-        url('../fonts/euclidflex-semibolditalic.woff2.html'),
-        url('../fonts/euclidflex-semibolditalic.woff.html') ,
-        url('../fonts/euclidflex-semibolditalic.ttf.html');
-    font-weight: 600;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src: url('../fonts/euclidflex-semibold.eot'),
-        url('../fonts/euclidflex-semibold.woff2.html'),
-        url('../fonts/euclidflex-semibold.woff.html'),
-        url('../fonts/euclidflex-semibold.ttf.html');
-    font-weight: 600;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src: url('../fonts/euclidflex-lightitalic.eot'),
-        url('../fonts/euclidflex-lightitalic.woff2.html') ,
-        url('../fonts/euclidflex-lightitalic.woff.html') ,
-        url('../fonts/euclidflex-lightitalic.ttf.html');
-    font-weight: 300;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src: url('../fonts/euclidflex-italic.eot'),
-        url('../fonts/euclidflex-italic.woff2.html'),
-        url('../fonts/euclidflex-italic.woff.html'),
-        url('../fonts/euclidflex-italic.ttf.html');
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src: url('../fonts/euclidflex-bold.eot'),
-        url('../fonts/euclidflex-bold.woff2.html') ,
-        url('../fonts/euclidflex-bold.woff.html') ,
-        url('../fonts/euclidflex-bold.ttf.html');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src: url('../fonts/euclidflex-thin.eot'),
-        url('../fonts/euclidflex-thin.woff2.html') ,
-        url('../fonts/euclidflex-thin.woff.html'),
-        url('../fonts/euclidflex-thin.ttf.html');
-    font-weight: 100;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Euclid Flex';
-    src: url('../fonts/euclidflex-medium.eot'),
-        url('../fonts/euclidflex-medium.woff2.html'),
-        url('../fonts/euclidflex-medium.woff.html'),
-        url('../fonts/euclidflex-medium.ttf.html');
-    font-weight: 500;
-    font-style: normal;
-}
-
-
 .push1{
     height: 1px;
 }
@@ -513,7 +372,7 @@ a.decoration-none{
     text-decoration: none;
 }
 strong,
-b, 
+b,
 .bold{
     font-weight: bold;
 }
@@ -612,12 +471,12 @@ img{
 img.left{
     float: left;
     margin-right: 15px;
-    margin-bottom: 5px;    
+    margin-bottom: 5px;
 }
 img.right{
     float: right;
     margin-left: 15px;
-    margin-bottom: 5px;    
+    margin-bottom: 5px;
 }
 .white{
     color: #fff;
@@ -715,25 +574,25 @@ ol.list ol li,
 .content ul ol li,
 .product-text ol ol li,
 .content ol ol li{
-    list-style: decimal; 
+    list-style: decimal;
     padding-left: 3px;
     margin-left: 12px;
     margin-bottom: 10px;
 }
 ol.list,
 .product-text ol,
-.content ol{ 
-    counter-reset: item; 
+.content ol{
+    counter-reset: item;
 }
 ol.list li,
 .product-text ol,
 .content ol{
-    display: block; 
+    display: block;
 }
 ol.list li:before,
 .product-text ol:before,
-.content ol:before{ 
-    content: counters(item, ".") ". "; 
+.content ol:before{
+    content: counters(item, ".") ". ";
     counter-increment: item;
     padding: 0 5px 0 10px;
     color: #999999;
@@ -753,7 +612,7 @@ ol.list ul ol li:after,
 .content table tr:nth-child(odd) {
     background: #F5F5F5;
 }
-.content table td, 
+.content table td,
 .content table th {
     padding: 14px 20px;
     font-size: 14px;
@@ -770,7 +629,7 @@ ol.list ul ol li:after,
     font-weight: bold;
 }
 @media (max-width: 767px){
-    .content table td, 
+    .content table td,
     .content table th {
         padding: 8px 10px;
         font-size: 12px;
@@ -999,7 +858,7 @@ ol.list ul ol li:after,
     margin-top: -1px !important;
     font-size: 20px;
 }
-.button.disabled, 
+.button.disabled,
 .button.disabled:hover {
     background: #dadada;
     border-color: #dadada;
@@ -1086,7 +945,7 @@ ol.list ul ol li:after,
     .header-address{
         display: inline-block;
     }
-    
+
 }
 .callback-link{
     margin-bottom: 10px;
@@ -1096,7 +955,7 @@ ol.list ul ol li:after,
     margin-bottom: 20px;
 }
 .customcheck input[type=checkbox]{
-    position: fixed;  
+    position: fixed;
     top: -100000px;
 }
 .customcheck input[type=checkbox] + label{
@@ -1107,7 +966,7 @@ ol.list ul ol li:after,
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;   
+    user-select: none;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
@@ -1200,9 +1059,9 @@ hr{
         position: fixed;
         top: 0;
         left: 0;
-    
-        
-    } 
+
+
+    }
     .top-bar-push{
         height: 56px;
     }
@@ -2037,7 +1896,7 @@ body::-webkit-scrollbar-track {
     text-transform: none;
 }
 .reviews > .rev-item,
-.rev-grid-sizer{ 
+.rev-grid-sizer{
     width: 100%;
 }
 .reviews > .rev-item .inner{
@@ -2106,7 +1965,7 @@ body::-webkit-scrollbar-track {
     width: 100% !important;
     display: block;
 }
-#ticketForm .form-actions, 
+#ticketForm .form-actions,
 #comment-form .form-actions {
     padding-top: 0 !important;
     border-top: none !important;
@@ -2499,7 +2358,7 @@ body::-webkit-scrollbar-track {
     .header-info {
         color: #493939;
     }
-    
+
 }
 @media(min-width: 768px) {
     .logo {
@@ -2777,7 +2636,7 @@ body::-webkit-scrollbar-track {
         left: 320px;
         font-size: 16px;
     }
-    .schedule, 
+    .schedule,
     .header-address {
         padding: 0 0 0 30px;
         color: #262121;
@@ -2935,7 +2794,7 @@ ul.tabs li{
     cursor: pointer;
     text-align: center;
     border: 1px solid transparent;
-    border-bottom: none;    
+    border-bottom: none;
     text-transform: uppercase;
     font-size: 14px;
     line-height: 1.2;
@@ -2957,7 +2816,7 @@ ul.tabs li.current:hover{
 }
 ul.tabs li:hover{
     background: #F6F6F6;
-    border-color: #F6F6F6;        
+    border-color: #F6F6F6;
 }
 ul.tabs li.current:after{
     content:"";
@@ -2994,7 +2853,7 @@ ul.tabs li.current:after{
 .special-goods-wrapper ul.tabs li:last-child{
     border-radius: 0 3px 3px 0;
 }
-.special-goods-wrapper ul.tabs li.current, 
+.special-goods-wrapper ul.tabs li.current,
 .special-goods-wrapper ul.tabs li.current:hover {
     background: #72bf0d;
     border-color:#72bf0d;
@@ -3061,7 +2920,7 @@ ul.tabs li.current:after{
     }
     ul.tabs li.current{
         display: none;
-    } 
+    }
     ul.tabs li:last-of-type{
         border-radius: 0 0 3px 3px;
     }
@@ -3205,7 +3064,7 @@ ul.tabs li.current:after{
     margin-bottom: 10px;
 }
 .customradio input[type=radio]{
-    position: fixed;  
+    position: fixed;
     top: -100000px;
 }
 .customradio{
@@ -3220,7 +3079,7 @@ ul.tabs li.current:after{
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;   
+    user-select: none;
     cursor: pointer;
     display: inline-block;
     margin-bottom: 4px;
@@ -3249,8 +3108,8 @@ ul.tabs li.current:after{
     font-size: 13px;
 }
 
-.customradio.disabled label, 
-.customradio.disabled label strong, 
+.customradio.disabled label,
+.customradio.disabled label strong,
 .customradio.disabled label::before{
     cursor: default !important;
     color: #848484;
@@ -3747,7 +3606,7 @@ ul.tabs li.current:after{
     height: 220px;
 }
 
-.products-carousel .slick-prev, 
+.products-carousel .slick-prev,
 .products-carousel .slick-next,
 .shop-categories-carousel .slick-prev,
 .shop-categories-carousel .slick-next{
@@ -3787,7 +3646,7 @@ ul.tabs li.current:after{
     margin: 0;
     right: 10px;
 }
-.products-carousel .slick-prev:hover, 
+.products-carousel .slick-prev:hover,
 .products-carousel .slick-next:hover,
 .shop-categories-carousel .slick-prev:hover,
 .shop-categories-carousel .slick-next:hover{
@@ -4438,12 +4297,12 @@ ul.tabs li.current:after{
 .shop-categories{
     background: #493939;
     background-image: url(../images/dark-wood.png);
-    
+
 }
 
 .shop-categories .element{
     position: relative;
-} 
+}
 .shop-categories .element:hover{
     position: relative;
     -webkit-transition: all 200ms ease-out;
@@ -4487,7 +4346,7 @@ ul.tabs li.current:after{
 }
 .shop-categories .categories-wrapper{
     padding:10px;
-    
+
 }
 
 .shop-categories .element .title a{
@@ -4857,7 +4716,7 @@ ul.tabs li.current:after{
 }
 .special-goods-wrapper{
     background-color: #fff;
-    
+
 }
 @media(max-width: 1299px) and (min-width:992px){
     .vantages{
@@ -4979,7 +4838,7 @@ ul.tabs li.current:after{
     position: relative;
     background: #fff;
     padding: 20px 20px 20px 160px;
-    
+
 }
 .catalog-type2 > .row > div:nth-of-type(1) > .element,
 .catalog-type2 .row.slick-slider .slick-track > div:nth-of-type(1) .element{
@@ -5013,7 +4872,7 @@ ul.tabs li.current:after{
 }
 
 
-.recommended-carousel .slick-prev, 
+.recommended-carousel .slick-prev,
 .recommended-carousel .slick-next{
     display: block;
     width: 50px;
@@ -5159,7 +5018,7 @@ ul.tabs li.current:after{
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
-} 
+}
 
 .dots-bg, .dots-bg-2{
     float: left;
@@ -5405,7 +5264,7 @@ table.props_list {
     margin-bottom: 15px;
 }
 .filter-customcheck input[type=checkbox]{
-    position: fixed;  
+    position: fixed;
     top: -100000px;
 }
 .filter-customcheck input[type=checkbox] + label{
@@ -5470,16 +5329,16 @@ table.props_list {
 .aside-filters-block .ui-slider-horizontal .ui-slider-handle {
     margin-left: -.6em;
 }
-.aside-filters-block .ui-corner-all, 
-.aside-filters-block .ui-corner-top, 
-.aside-filters-block .ui-corner-right, 
+.aside-filters-block .ui-corner-all,
+.aside-filters-block .ui-corner-top,
+.aside-filters-block .ui-corner-right,
 .aside-filters-block .ui-corner-tr{
     border-radius: 0 !important;
 }
 .aside-filters-block .ui-slider-handle.ui-state-default.ui-corner-all{
     border-radius: 2px !important;
     background: #72BF0D !important;
-    border-color: #72BF0D !important; 
+    border-color: #72BF0D !important;
     top: -4px;
     opacity: 1 !important;
 }

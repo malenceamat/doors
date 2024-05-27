@@ -19,7 +19,6 @@
     <link href={{asset("assets/template/css/jquery.fancybox.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/jquery.jscrollpane.css")}} rel="stylesheet">
     <link href={{asset("assets/template/css/style.css")}} rel="stylesheet">
-    <link href={{asset("assets/fotorama.css")}} rel="stylesheet">
     <link rel="stylesheet" href={{asset("https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css")}}>
     <script src={{asset("https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js")}}></script>
 
@@ -108,19 +107,12 @@
 
     });
 </script>
-
-<script src="https://doorsfull.demoultron.ru/assets/components/msearch2/js/web/custom.js"></script>
-
 <script type="text/javascript">
     if ($("form.msearch2").length) {
         mSearch2.Form.initialize("form.msearch2");
     }
 </script>
-<script src={{asset("assets/template/js/minishop.js")}}></script>
-<script
-    src={{asset("https://doorsfull.demoultron.ru/assets/components/minishop2/js/web/lib/jquery.jgrowl.min.js")}}></script>
-<script src={{asset("assets/mini_shop2.js")}}></script>
-<script src={{asset("assets/ms_favorites.js")}}></script>
+<script src={{asset("https://doorsfull.demoultron.ru/assets/components/minishop2/js/web/lib/jquery.jgrowl.min.js")}}></script>
 <script src={{asset("assets/ajax_form.js")}}></script>
 <script>AjaxForm.initialize({
         "assetsUrl": "\/assets\/components\/ajaxform\/",
@@ -130,5 +122,6 @@
         "clearFieldsOnSuccess": true,
         "pageId": 1
     });</script>
+
 </body>
 </html>
