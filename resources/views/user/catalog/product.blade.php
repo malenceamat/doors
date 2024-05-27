@@ -1,4 +1,11 @@
 @extends('user.general')
+@section('style')
+    <style>
+        .characteristics-table {
+            display: none;
+        }
+    </style>
+@endsection
 @section('card_product')
     <div class="middle">
         <div class="container" style="margin-top: 20px">
@@ -78,11 +85,12 @@
                                                 <div class="color-block-inner">
                                                     @if ($item->entity->count() > 1)
                                                         @foreach ($item->entity as $item_entity)
-                                                            <div class="color-element" title="{{ $item_entity->id }}" data-image-id="{{ $item_entity->id }}"
+                                                            <div class="color-element" title="{{ $item_entity->id }}"
+                                                                 data-image-id="{{ $item_entity->id }}"
                                                                  data-fotorama-target="img-{{ $item_entity->id }}">
                                                                 @foreach($item_entity->items_stats as $item_stats)
                                                                     <input type="radio" id="{{ $item_stats->id }}" name="item_id_{{ $item->id }}" value="{{$item->id}}"
-                                                                           data-price="{{ $item_entity->items_stats->first()->stats_value->value . ' ₽'}}"
+                                                                           @if ($item_stats->stats_name_id == 1) data-price="{{ $item_stats->stats_value->value }} ₽" @endif
                                                                            data-values-container-id="values-container-{{ $item_stats->id }}"
                                                                         {{ $loop->parent->first && $loop->first ? 'checked' : '' }}>
                                                                     @if ($item_stats->stats_name_id == 4)
@@ -99,9 +107,15 @@
                                         @endif
                                         <div class="push20"></div>
                                     </div>
-                                    <div class="product-price-wrapper">
-                                        <span class="product-price bold">3800 ₽ </span>
-                                    </div>
+                                    @foreach($item->entity as $entity)
+                                        <div class="product-price-wrapper" >
+                                            @foreach($entity->items_stats as $stats)
+                                                @if($stats->stats_name_id == 1)
+                                                    <span class="product-price bold" id="selected-item-price-{{$entity->id}}" data-price="{{ $stats->stats_value->value }}">{{$stats->stats_value->value}}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    @endforeach
                                     <div class="push30"></div>
                                     <div class="element product-count-element">
                                         <div class="row min">
@@ -135,26 +149,34 @@
                         <ul class="tabs mobile">
                             <li class="current">Характеристики</li>
                             <li>Описание</li>
-                            <li>Отзывы</li>
+                            {{--<li>Отзывы</li>--}}
                         </ul>
                         <div class="push30"></div>
                         <div class="box visible">
                             <div class="char-wrapper">
                                 <div class="char_block">
-                                    <table class="props_list nbg">
-                                        <tbody>
-                                        <tr>
-                                            <td class="char_name">
-                                                <div class="props_item">
-                                                    <span>Страна производства</span>
-                                                </div>
-                                            </td>
-                                            <td class="char_value">
-                                                <span>Россия</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                    @foreach($item->entity as $entity)
+                                        <div class="characteristics-table" data-image-id="{{ $entity->id }}" data-item-id="{{ $item->id }}">
+                                            <table class="props_list nbg">
+                                                <tbody>
+                                                @foreach($entity->items_stats as $stats)
+                                                    @if (!in_array($stats->stats_name->stats_names, ['price','price_dealer','image','image_path']))
+                                                        <tr>
+                                                            <td class="char_name">
+                                                                <div class="props_item">
+                                                                    <span>{{$stats->stats_name->stats_names}}</span>
+                                                                </div>
+                                                            </td>
+                                                            <td class="char_value">
+                                                                <span>{{$stats->stats_value->value}}</span>
+                                                            </td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="push20"></div>
@@ -169,7 +191,7 @@
                                 <ul class="pagination"></ul>
                             </div>
                             <div class="push10"></div>
-                            <div class="row">
+                           {{-- <div class="row">
                                 <div class="col-md-8">
                                     <div class="rev-form rf">
                                         <div class="title bold upper f20">Оставить отзыв</div>
@@ -243,7 +265,7 @@
                                         <p><small>* - поля, обязательные для заполнения</small></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -252,5 +274,23 @@
         </div>
     </div>
     <div class="footer-push"></div>
-    <script src={{asset("fotorama.js")}}
+@endsection
+@section('script')
+    <script src={{asset("fotorama.js")}}></script>
+    <script>
+        $(document).ready(function() {
+            let thumbnails = $('.color-element'); // Объявляем thumbnails здесь
+            thumbnails.on('click', function() {
+                let imageId = $(this).data('image-id');
+                let selectedPrice = $('#selected-item-price-' + imageId);
+                let allPrices = $('.product-price');
+                // Сначала скрываем все цены
+                allPrices.hide();
+                // Показываем только цену выбранной миниатюры
+                selectedPrice.show();
+            });
+            // Показываем цену первой миниатюры при загрузке страницы
+            thumbnails.first().trigger('click');
+        });
+    </script>
 @endsection

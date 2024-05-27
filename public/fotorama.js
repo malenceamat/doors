@@ -13,7 +13,6 @@ $(document).ready(function() {
         nav: 'thumbs' // Добавляем настройку nav: 'thumbs' в fotorama
     });
 });
-
 $(document).ready(function() {
     var $fotorama = $('.fotorama').fotorama({
         nav: 'thumbs'
@@ -26,4 +25,14 @@ $(document).ready(function() {
             $fotorama.show(index); // Отображаем слайд с индексом, соответствующим индексу миниатюры
         });
     });
+
+    $('.characteristics-table').hide();
+
+    thumbnails.on('click', function() {
+        var imageId = $(this).data('image-id');
+        $('.characteristics-table').hide();
+        $('.characteristics-table[data-image-id="' + imageId + '"]').show();
+    });
+
+    thumbnails.first().trigger('click'); // Вызываем событие click на первой миниатюре
 });

@@ -1,5 +1,5 @@
 @extends('user.general')
-@section('products_filters_list')
+@section('style')
     <style>
         .btn-new {
             border-radius: 10px;
@@ -11,6 +11,8 @@
             box-shadow: 0 0 0 2px white, 0 0 0 4px #493939;
         }
     </style>
+@endsection
+@section('products_filters_list')
     <div class="middle" id="middlesection">
         <div class="container">
             <h1 class="pagetitle" style="margin-top: 20px"> {{$category_current['name']}} </h1>
@@ -346,9 +348,10 @@
         </div>
     </div>
     <div class="footer-push"></div>
+@endsection
+@section('script')
     <script>
         const productCards = document.querySelectorAll('.element-content');
-
         productCards.forEach(card => {
             const itemId = card.dataset.itemId;
             const radioButtons = card.querySelectorAll(`input[name="item_id_${itemId}"]`);
@@ -364,4 +367,3 @@
         });
     </script>
 @endsection
-
