@@ -4,6 +4,9 @@
         .characteristics-table {
             display: none;
         }
+        .product-price-wrapper {
+            display: none;
+        }
     </style>
 @endsection
 @section('card_product')
@@ -83,32 +86,37 @@
                                                     Цвет покрытия:
                                                 </div>
                                                 <div class="color-block-inner">
-                                                    @if ($item->entity->count() > 1)
-                                                        @foreach ($item->entity as $item_entity)
-                                                            <div class="color-element" title="{{ $item_entity->id }}"
-                                                                 data-image-id="{{ $item_entity->id }}"
-                                                                 data-fotorama-target="img-{{ $item_entity->id }}">
-                                                                @foreach($item_entity->items_stats as $item_stats)
-                                                                    <input type="radio" id="{{ $item_stats->id }}" name="item_id_{{ $item->id }}" value="{{$item->id}}"
-                                                                           @if ($item_stats->stats_name_id == 1) data-price="{{ $item_stats->stats_value->value }} ₽" @endif
-                                                                           data-values-container-id="values-container-{{ $item_stats->id }}"
-                                                                        {{ $loop->parent->first && $loop->first ? 'checked' : '' }}>
-                                                                    @if ($item_stats->stats_name_id == 4)
-                                                                        <label for="{{ $item_stats->id }}" style="background-image: url({{ asset('storage/' . $item_stats->stats_value->value) }});">
-                                                                            <span></span>
-                                                                        </label>
-                                                                    @endif
-                                                                @endforeach
-                                                            </div>
-                                                        @endforeach
-                                                    @endif
+                                                    @foreach ($item->entity as $item_entity)
+                                                        <div class="color-element" title="{{ $item_entity->id }}"
+                                                             data-image-id="{{ $item_entity->id }}"
+                                                             data-fotorama-target="img-{{ $item_entity->id }}">
+                                                            @foreach($item_entity->items_stats as $item_stats)
+                                                                <input type="radio" id="{{ $item_stats->id }}" name="item_id_{{ $item->id }}" value="{{$item->id}}"
+                                                                       @if ($item_stats->stats_name_id == 1) data-price="{{ $item_stats->stats_value->value }} ₽" @endif
+                                                                       data-values-container-id="values-container-{{ $item_stats->id }}"
+                                                                    {{ $loop->parent->first && $loop->first ? 'checked' : '' }}>
+                                                                @if ($item_stats->stats_name_id == 4)
+                                                                    <label for="{{ $item_stats->id }}" style="background-image: url({{ asset('storage/' . $item_stats->stats_value->value) }});">
+                                                                        <span></span>
+                                                                    </label>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
+                                        @endif
+                                        @if($item->entity->count() <= 1)
+                                            @foreach($item->entity as $item_entity)
+                                                <div class="color-element" title="{{ $item_entity->id }}"
+                                                     data-image-id="{{ $item_entity->id }}"
+                                                     data-fotorama-target="img-{{ $item_entity->id }}"></div>
+                                            @endforeach
                                         @endif
                                         <div class="push20"></div>
                                     </div>
                                     @foreach($item->entity as $entity)
-                                        <div class="product-price-wrapper" >
+                                        <div class="product-price-wrapper">
                                             @foreach($entity->items_stats as $stats)
                                                 @if($stats->stats_name_id == 1)
                                                     <span class="product-price bold" id="selected-item-price-{{$entity->id}}" data-price="{{ $stats->stats_value->value }}">{{$stats->stats_value->value}}</span>
@@ -280,17 +288,37 @@
     <script>
         $(document).ready(function() {
             let thumbnails = $('.color-element'); // Объявляем thumbnails здесь
+            let numThumbnails = thumbnails.length;
+
+            // Проверяем количество миниатюр
+            if(numThumbnails === 1) {
+                thumbnails.addClass('active'); // Добавляем класс active для единственной миниатюры
+            }
+
             thumbnails.on('click', function() {
                 let imageId = $(this).data('image-id');
                 let selectedPrice = $('#selected-item-price-' + imageId);
                 let allPrices = $('.product-price');
+                let priceWrapper = selectedPrice.closest('.product-price-wrapper'); // Находим ближайший родительский элемент с классом product-price-wrapper
+
                 // Сначала скрываем все цены
                 allPrices.hide();
+                $('.product-price-wrapper').hide(); // Скрываем все блоки product-price-wrapper
+
                 // Показываем только цену выбранной миниатюры
-                selectedPrice.show();
+                allPrices.text(function() {
+                    return $(this).text().replace(' ₽', ''); // Удаляем символ ₽ перед добавлением его снова
+                });
+                selectedPrice.show().text(selectedPrice.text() + ' ₽');
+
+                // Показываем блок product-price-wrapper для выбранной миниатюры
+                priceWrapper.show();
             });
-            // Показываем цену первой миниатюры при загрузке страницы
             thumbnails.first().trigger('click');
+            // Если только одна миниатюра, показываем цену при загрузке страницы
+            if(numThumbnails === 1) {
+                thumbnails.trigger('click');
+            }
         });
     </script>
 @endsection
