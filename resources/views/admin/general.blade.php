@@ -71,7 +71,6 @@
                             @yield('info_create_update')
                             @yield('info_show')
                             @yield('banner')
-                            @yield('blog')
                             @yield('pay_delivery_create')
                             @yield('partners_create')
                             @yield('partners_show')
@@ -79,6 +78,7 @@
                             @yield('news')
                             @yield('news_show')
                             @yield('contacts')
+                            @yield('dealer')
                         </div>
                     </div>
                 </div>

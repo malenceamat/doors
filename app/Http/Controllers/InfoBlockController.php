@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Helpers\BaseHelperController;
 use App\Http\Requests\InfoBlockRequest;
 use App\Models\InfoBlock;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class InfoBlockController extends Controller
@@ -12,8 +13,9 @@ class InfoBlockController extends Controller
     public function index($id = null)
     {
         $info = $id ? InfoBlock::find($id) : new InfoBlock;
+        $check_role = Auth::user();
 
-        return view('admin.content.info_block.info_create_update',compact('info'));
+        return view('admin.content.info_block.info_create_update',compact('info','check_role'));
     }
     public function create(InfoBlockRequest $req)
     {
@@ -26,8 +28,9 @@ class InfoBlockController extends Controller
     public function show()
     {
         $info = InfoBlock::get();
+        $check_role = Auth::user();
 
-        return view('admin.content.info_block.info_show',compact('info'));
+        return view('admin.content.info_block.info_show',compact('info','check_role'));
     }
     public function update(InfoBlockRequest $req)
     {

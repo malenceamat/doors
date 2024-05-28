@@ -3,7 +3,6 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InfoBlockController;
@@ -27,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
 
     Route::prefix('admin')->group(function () {
@@ -46,9 +45,6 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/banner', [BannerController::class, 'index'])->name('banner');
         Route::post('/banner_create', [BannerController::class, 'create'])->name('banner_create');
-
-        Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-        Route::post('/blog_create', [BlogController::class, 'create'])->name('blog_create');
 
         Route::get('/pay_delivery_index', [PayDeliveryController::class, 'index'])->name('pay_delivery_index');
         Route::post('/pay_delivery_create', [PayDeliveryController::class,'create'])->name('pay_delivery_create');
@@ -71,6 +67,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/contact_index', [ContactController::class,'index'])->name('contact_index');
         Route::post('/contact_create', [ContactController::class,'create'])->name('contact_create');
 
+        Route::get('/dealer',[AdminController::class,'dealer'])->name('dealer');
+        Route::post('/register_dealer',[AdminController::class,'register_dealer'])->name('register_dealer');
+
+
+
+
     });
 });
 
@@ -84,7 +86,15 @@ Route::get('/catalog', [CatalogController::class,'index'])->name('catalog');
 Route::get('/catalog/{name}', [CatalogController::class, 'products_filters_list'])->name('products_filters_list');
 Route::get('/catalog/{name}/{sub_name}', [CatalogController::class, 'product'])->name('product_sub_category');
 Route::post('/filter', [CatalogController::class,'filter'])->name('filter');
-
 Route::get('/product/{item_id}/{item_name}', [CatalogController::class, 'card_product'])->name('card_product');
+
+Route::middleware(['auth'])->group(function (){
+    Route::get('/cabinet', [AdminController::class, 'index']);
+
+    Route::prefix('cabinet')->group(function () {
+
+    });
+});
+
 
 require __DIR__ . '/auth.php';

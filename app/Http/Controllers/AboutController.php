@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Helpers\BaseHelperController;
 use App\Http\Requests\AboutRequest;
 use App\Models\About;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
@@ -12,8 +13,9 @@ class AboutController extends Controller
     public function index()
     {
         $about = About::firstORCreate();
+        $check_role = Auth::user();
 
-        return view('admin.content.about.about',compact('about'));
+        return view('admin.content.about.about',compact('about','check_role'));
     }
     public function create(AboutRequest $req)
     {

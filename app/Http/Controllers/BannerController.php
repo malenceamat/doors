@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Helpers\BaseHelperController;
 use App\Http\Requests\BannerRequest;
 use App\Models\Banner;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class BannerController extends Controller
@@ -12,8 +13,9 @@ class BannerController extends Controller
     public function index()
     {
         $banner = Banner::firstOrCreate();
+        $check_role = Auth::user();
 
-        return view('admin.content.banner.banner_create', compact('banner'));
+        return view('admin.content.banner.banner_create', compact('banner','check_role'));
     }
     public function create(BannerRequest $req)
     {

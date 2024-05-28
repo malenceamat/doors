@@ -41,36 +41,87 @@
                 </div>
             </a>
             <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
-                <div class="user-profile-section">
-                    <div class="media mx-auto">
-                        <div class="media-body">
-                            <h5>ФИО</h5>
-                            <p>Администратор</p>
+                @if($check_role->role == 'admin')
+                    <div class="user-profile-section">
+                        <div class="media mx-auto">
+                            <div class="media-body">
+                                <h5>{{$check_role->name}}</h5>
+                                <p>Администратор</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-user">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                        <span>Профиль</span>
-                    </a>
-                </div>
-                <div class="dropdown-item">
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-user">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                        <span>Пользователи</span>
-                    </a>
-                </div>
+                    <div class="dropdown-item">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-edit-2">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg>
+                            <span class="icon-name">Настройка профиля</span>
+                        </a>
+                    </div>
+                    <div class="dropdown-item">
+                        <a href="{{route ('dealer')}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-user">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span class="icon-name">Рег. Дилера</span>
+                        </a>
+                    </div>
+                    <div class="dropdown-item">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-archive">
+                                <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                                <rect x="1" y="3" width="22" height="5"></rect>
+                                <line x1="10" y1="12" x2="14" y2="12"></line>
+                            </svg>
+                            <span>Заказы</span>
+                        </a>
+                    </div>
+                    <div class="dropdown-item">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-message-circle">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3
+                                         21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48
+                                         8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg>
+                            <span>Отзывы</span>
+                        </a>
+                    </div>
+                @else
+                    <div class="user-profile-section">
+                        <div class="media mx-auto">
+                            <div class="media-body">
+                                @if($check_role->role == 'dealer')
+                                    <h5>{{$check_role->name}}</h5>
+                                    <p>Дилер</p>
+                                @else
+                                    <h5>{{$check_role->name}}</h5>
+                                    <p>Пользователь</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-item">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-edit-2">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg>
+                            <span class="icon-name">Настройка профиля</span>
+                        </a>
+                    </div>
+                @endif
                 {{--<div class="dropdown-item">
                     <a href="app-mailbox.html">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -84,7 +135,7 @@
                     </a>
                 </div>--}}
                 <div class="dropdown-item">
-                    <a href="#">
+                    <a onclick="document.getElementById('logout').submit();return false;" style="cursor: pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                              class="feather feather-log-out">
@@ -92,8 +143,13 @@
                             <polyline points="16 17 21 12 16 7"></polyline>
                             <line x1="21" y1="12" x2="9" y2="12"></line>
                         </svg>
-                        <span>Выход</span>
+                        <span style="user-select: none">Выход</span>
                     </a>
+
+                    <form id="logout" method="POST" action="{{ route('logout') }}" style="display: none">
+                        @csrf
+                        <button style="width: 90%;" class="btn btn-warning btn-lg">Выйти из аккаунта</button>
+                    </form>
                 </div>
             </div>
         </li>

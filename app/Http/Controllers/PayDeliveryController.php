@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PayDeliveryRequest;
 use App\Models\PayDelivery;
+use Illuminate\Support\Facades\Auth;
 
 class PayDeliveryController extends Controller
 {
     public function index()
     {
         $pay_delivery = PayDelivery::firstOrCreate();
+        $check_role = Auth::user();
 
-        return view('admin.content.pay_delivery.pay_delivery',compact('pay_delivery'));
+        return view('admin.content.pay_delivery.pay_delivery',compact('pay_delivery','check_role'));
     }
     public function create(PayDeliveryRequest $req)
     {

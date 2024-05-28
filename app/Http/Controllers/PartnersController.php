@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Helpers\BaseHelperController;
 use App\Http\Requests\PartnersRequest;
 use App\Models\Partners;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PartnersController extends Controller
@@ -12,8 +13,9 @@ class PartnersController extends Controller
     public function index($id = null)
     {
         $partners = $id ? Partners::find($id) : new Partners;
+        $check_role = Auth::user();
 
-        return view('admin.content.partners.partners_create', compact('partners'));
+        return view('admin.content.partners.partners_create', compact('partners','check_role'));
     }
     public function create(PartnersRequest $req)
     {

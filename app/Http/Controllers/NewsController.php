@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Helpers\BaseHelperController;
 use App\Http\Requests\NewsRequest;
 use App\Models\News;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
@@ -12,8 +13,9 @@ class NewsController extends Controller
     public function index($id = null)
     {
         $news = $id ? News::find($id) : new News;
+        $check_role = Auth::user();
 
-        return view('admin.content.news.news_create',compact('news'));
+        return view('admin.content.news.news_create',compact('news','check_role'));
     }
     public function create(NewsRequest $req)
     {
@@ -26,8 +28,9 @@ class NewsController extends Controller
     public function show()
     {
         $news = News::orderBy('created_at')->get();
+        $check_role = Auth::user();
 
-        return view('admin.content.news.news_show',compact('news'));
+        return view('admin.content.news.news_show',compact('news','check_role'));
     }
     public function update(NewsRequest $req)
     {
