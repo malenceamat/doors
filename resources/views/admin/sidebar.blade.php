@@ -131,6 +131,23 @@
                             </ul>
                         </li>
                         <li>
+                            <a href="#level-three_text" data-bs-toggle="collapse"
+                               aria-expanded="{{ (request()->routeIs('blog')) ? 'true' : 'false'}}"
+                               class="dropdown-toggle collapsed"> Блог
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </a>
+                            <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->routeIs('blog')) ? 'show' : ''}}"
+                                id="level-three_text" data-bs-parent="#pages">
+                                <li class="{{ (request()->routeIs('blog')) ? 'active' : ''}}">
+                                    <a href="{{route('blog')}}"> Создание </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#level-three_partners" data-bs-toggle="collapse"
                                aria-expanded="{{ (request()->routeIs('partners')) ? 'true' : 'false'}}"
                                class="dropdown-toggle collapsed"> Партнеры

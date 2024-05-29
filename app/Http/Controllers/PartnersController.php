@@ -28,8 +28,9 @@ class PartnersController extends Controller
     public function show()
     {
         $partners = Partners::get();
+        $check_role = Auth::user();
 
-        return view('admin.content.partners.partners_show',compact('partners'));
+        return view('admin.content.partners.partners_show',compact('partners','check_role'));
     }
     public function update(PartnersRequest $req)
     {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Banner;
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\InfoBlock;
@@ -20,8 +21,10 @@ class UserController extends Controller
         $sliders = Slider::get();
         $info_blocks = InfoBlock::get();
         $banner = Banner::first();
+        $news = News::get()->take(3);
+        $blog = Blog::first();
 
-        return view('user.content.general', compact('category','sliders','info_blocks','banner'));
+        return view('user.content.general', compact('category','sliders','info_blocks','banner','news','blog'));
     }
 
     public function index_pay_delivery()

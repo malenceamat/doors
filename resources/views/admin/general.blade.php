@@ -76,6 +76,7 @@
                             @yield('partners_show')
                             @yield('about')
                             @yield('news')
+                            @yield('blog')
                             @yield('news_show')
                             @yield('contacts')
                             @yield('dealer')

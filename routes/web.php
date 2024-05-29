@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InfoBlockController;
@@ -45,6 +46,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/banner', [BannerController::class, 'index'])->name('banner');
         Route::post('/banner_create', [BannerController::class, 'create'])->name('banner_create');
+
+        Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+        Route::post('/blog_create', [BlogController::class, 'create'])->name('blog_create');
 
         Route::get('/pay_delivery_index', [PayDeliveryController::class, 'index'])->name('pay_delivery_index');
         Route::post('/pay_delivery_create', [PayDeliveryController::class,'create'])->name('pay_delivery_create');
