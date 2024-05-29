@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Contact;
 use App\Models\InfoBlock;
 use App\Models\News;
+use App\Models\Partners;
 use App\Models\PayDelivery;
 use App\Models\Slider;
 
@@ -23,8 +24,8 @@ class UserController extends Controller
         $banner = Banner::first();
         $news = News::get()->take(3);
         $blog = Blog::first();
-
-        return view('user.content.general', compact('category','sliders','info_blocks','banner','news','blog'));
+        $partners = Partners::get();
+        return view('user.content.general', compact('category','sliders','info_blocks','banner','news','blog','partners'));
     }
 
     public function index_pay_delivery()

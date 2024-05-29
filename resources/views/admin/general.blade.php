@@ -29,6 +29,7 @@
             height: auto !important;
         }
     </style>
+    
 @yield('style')
 </head>
 <body class="layout-boxed">

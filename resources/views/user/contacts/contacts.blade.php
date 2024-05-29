@@ -120,7 +120,7 @@
                 </div>
             </div>
             <hr>
-            <div class="contacts-form">
+            {{--<div class="contacts-form">
                 <div class="push20"></div>
                 <h4>
                     Если у вас возникли вопросы или предложения, мы будем рады их рассмотреть.
@@ -169,7 +169,7 @@
                     </form>
                 </div>
                 <div class="push50"></div>
-            </div>
+            </div>--}}
         </div>
     </div>
     <div class="footer-push"></div>

@@ -91,7 +91,7 @@
             $('.itn-croppie').slideUp();
             uploadCrop.croppie('result', {
                 type: 'base64',
-                size: 'original'
+                size: {width:190, height:80}
             }).then(function (result) {
                 $('#itn-croppie-result').attr('src', result)
                 $('#itn-croppie-result-i').attr('value', result)
