@@ -40,13 +40,13 @@
             enableExif: true,
             enableOrientation: true,
             viewport: {
-                width: 550,
-                height: 350,
+                width: 1250,
+                height: 450,
                 type: 'square'
             },
             boundary: {
-                width: 900,
-                height: 550
+                width: 1250,
+                height: 800
             }
         });
 
@@ -72,7 +72,7 @@
             $('.itn-croppie').slideUp();
             uploadCrop.croppie('result', {
                 type: 'base64',
-                size: 'original'
+                size: {width:1250, height:252}
             }).then(function (result) {
                 $('#itn-croppie-result').attr('src', result)
                 $('#itn-croppie-result-i').attr('value', result)
