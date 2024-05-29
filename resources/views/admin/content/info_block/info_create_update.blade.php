@@ -1,9 +1,9 @@
 @extends('admin.general')
-@section('info_create_update')
+@section('style')
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
     <link rel="stylesheet" href={{asset("croppie.css")}} />
-
-
+@endsection
+@section('info_create_update')
     <div class="profile-image">
         <form @if(isset($info->id)) action="{{route('info_edit')}}" @else action="{{route('info_create_update')}}"
               @endif method="POST" enctype="multipart/form-data" id="save">
@@ -80,7 +80,8 @@
             </div>
         @endif
     </div>
-
+@endsection
+@section('script')
     <script src={{asset("croppie.js")}}></script>
     <script>
         let uploadCrop = $('.itn-croppie').croppie({

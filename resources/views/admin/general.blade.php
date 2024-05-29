@@ -29,7 +29,7 @@
             height: auto !important;
         }
     </style>
-
+@yield('style')
 </head>
 <body class="layout-boxed">
 
@@ -88,7 +88,7 @@
     </div>
 </div>
 
-
+@yield('script')
 <script src={{asset("src/plugins/src/global/vendors.min.js")}}></script>
 <script src={{asset("src/bootstrap/js/bootstrap.bundle.min.js")}}></script>
 <script src={{asset("src/plugins/src/perfect-scrollbar/perfect-scrollbar.min.js")}}></script>

@@ -1,8 +1,9 @@
 @extends('admin.general')
-@section('partners_create')
+@section('style')
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
     <link rel="stylesheet" href={{asset("croppie.css")}} />
-
+@endsection
+@section('partners_create')
     <div class="profile-image">
         <form @if(isset($partners->id)) action="{{route('partners_edit')}}" @else action="{{route('partners_create')}}"
               @endif method="POST" enctype="multipart/form-data" id="save">
@@ -50,8 +51,8 @@
             </div>
         @endif
     </div>
-
-
+@endsection
+@section('script')
     <script src={{asset("croppie.js")}}></script>
     <script>
         let uploadCrop = $('.itn-croppie').croppie({
@@ -111,5 +112,4 @@
             });
         });
     </script>
-
 @endsection

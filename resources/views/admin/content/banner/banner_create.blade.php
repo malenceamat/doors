@@ -1,8 +1,9 @@
 @extends('admin.general')
-@section('banner')
+@section('style')
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
     <link rel="stylesheet" href={{asset("croppie.css")}} />
-
+@endsection
+@section('banner')
     <div class="profile-image">
         <form action="{{route('banner_create')}}"
               method="POST" enctype="multipart/form-data" id="save">
@@ -31,9 +32,8 @@
             </div>
         </form>
     </div>
-
-
-
+@endsection
+@section('script')
     <script src={{asset("croppie.js")}}></script>
     <script>
         let uploadCrop = $('.itn-croppie').croppie({
@@ -94,4 +94,3 @@
         });
     </script>
 @endsection
-

@@ -1,10 +1,11 @@
 @extends('admin.general')
-@section('blog')
+@section('style')
     <script src={{asset("https://code.jquery.com/jquery-3.6.0.min.js")}}></script>
     <link rel="stylesheet" type="text/css" href={{asset("src/plugins/css/light/editors/quill/quill.snow.css")}}>
     <link rel="stylesheet" type="text/css" href={{asset("src/plugins/css/dark/editors/quill/quill.snow.css")}}>
     <link rel="stylesheet" href={{asset("croppie.css")}} />
-
+@endsection
+@section('blog')
     <div class="profile-image">
         <form action="{{route('blog_create')}}" method="post" enctype="multipart/form-data" id="save">
             @csrf
@@ -79,8 +80,8 @@
             </div>
         </form>
     </div>
-
-
+@endsection
+@section('script')
     <script src={{asset("src/assets/js/scrollspyNav.js")}}></script>
     <script src={{asset("src/plugins/src/editors/quill/quill.js")}}></script>
     <script> quill = new Quill('#editor-container', {

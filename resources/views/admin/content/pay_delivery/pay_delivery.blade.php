@@ -1,9 +1,10 @@
 @extends('admin.general')
-@section('pay_delivery_create')
+@section('style')
     <script src={{asset("https://code.jquery.com/jquery-3.6.0.min.js")}}></script>
     <link rel="stylesheet" type="text/css" href={{asset("src/plugins/css/light/editors/quill/quill.snow.css")}}>
     <link rel="stylesheet" type="text/css" href={{asset("src/plugins/css/dark/editors/quill/quill.snow.css")}}>
-
+@endsection
+@section('pay_delivery_create')
     <div class="container">
         <form action="{{route('pay_delivery_create')}}" method="post" enctype="multipart/form-data" id="save">
             @csrf
@@ -46,8 +47,8 @@
             </div>
         </form>
     </div>
-
-
+@endsection
+@section('script')
     <script src={{asset("src/assets/js/scrollspyNav.js")}}></script>
     <script src={{asset("src/plugins/src/editors/quill/quill.js")}}></script>
     <script> quill = new Quill('#editor-container', {
