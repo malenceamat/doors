@@ -5,7 +5,7 @@
 
             <div class="col-sm-6 col-lg-5 col-sm-push-6 col-lg-push-7 index-about-img-wrapper">
                 <div class="index-about-img">
-                    <img src="{{asset('/storage/' . $blog->image ?? '')}}" alt="">
+                    <img src="{{asset('/storage/' . $blog->image) ?? ''}}" alt="">
                 </div>
                 <div class="push50 visible-xs"></div>
             </div>
