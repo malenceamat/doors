@@ -13,9 +13,8 @@ class BannerController extends Controller
     public function index()
     {
         $banner = Banner::firstOrCreate();
-        $check_role = Auth::user();
 
-        return view('admin.content.banner.banner_create', compact('banner','check_role'));
+        return view('admin.content.banner.banner_create', compact('banner'));
     }
     public function create(BannerRequest $req)
     {

@@ -13,9 +13,8 @@ class NewsController extends Controller
     public function index($id = null)
     {
         $news = $id ? News::find($id) : new News;
-        $check_role = Auth::user();
 
-        return view('admin.content.news.news_create',compact('news','check_role'));
+        return view('admin.content.news.news_create',compact('news'));
     }
     public function create(NewsRequest $req)
     {
@@ -28,9 +27,8 @@ class NewsController extends Controller
     public function show()
     {
         $news = News::orderBy('created_at')->get();
-        $check_role = Auth::user();
 
-        return view('admin.content.news.news_show',compact('news','check_role'));
+        return view('admin.content.news.news_show',compact('news'));
     }
     public function update(NewsRequest $req)
     {

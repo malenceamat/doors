@@ -13,9 +13,8 @@ class BlogController extends Controller
     public function index()
     {
         $blog = Blog::firstOrCreate();
-        $check_role = Auth::user();
 
-        return view('admin.content.blog.blog_create', compact('blog','check_role'));
+        return view('admin.content.blog.blog_create', compact('blog',));
     }
     public function create(BlogRequest $req)
     {

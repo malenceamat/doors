@@ -13,9 +13,8 @@ class SliderController extends Controller
     public function index($id = null)
     {
         $slider = $id ? Slider::find($id) : new Slider();
-        $check_role = Auth::user();
 
-        return view('admin.content.slider.slider_create',compact('slider','check_role'));
+        return view('admin.content.slider.slider_create',compact('slider'));
     }
     public function create(SliderRequest $req)
     {
@@ -28,9 +27,8 @@ class SliderController extends Controller
     public function show()
     {
         $sliders = Slider::orderBy('created_at')->get();
-        $check_role = Auth::user();
 
-        return view('admin.content.slider.slider_show', compact('sliders','check_role'));
+        return view('admin.content.slider.slider_show', compact('sliders'));
     }
     public function update(SliderRequest $req)
     {

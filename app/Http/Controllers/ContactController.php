@@ -11,9 +11,8 @@ class ContactController extends Controller
     public function index()
     {
         $contact = Contact::firstOrCreate();
-        $check_role = Auth::user();
 
-        return view('admin.content.contacts.contacts', compact('contact','check_role'));
+        return view('admin.content.contacts.contacts', compact('contact',));
     }
     public function create(ContactRequest $req)
     {

@@ -11,37 +11,32 @@ class CabinetController extends Controller
 {
     public function favorites()
     {
-        $check_role = Auth::user();
         $category = Category::with('parent')->get();
 
-        return view('user.personal_cabinet.content.favorites', compact('check_role','category'));
+        return view('user.personal_cabinet.content.favorites', compact('category'));
     }
     public function basket()
     {
-        $check_role = Auth::user();
         $category = Category::with('parent')->get();
 
-        return view('user.personal_cabinet.content.basket', compact('check_role','category'));
+        return view('user.personal_cabinet.content.basket', compact('category'));
     }
     public function order()
     {
-        $check_role = Auth::user();
         $category = Category::with('parent')->get();
 
-        return view('user.personal_cabinet.content.order', compact('check_role','category'));
+        return view('user.personal_cabinet.content.order', compact('category'));
     }
     public function feedback()
     {
-        $check_role = Auth::user();
         $category = Category::with('parent')->get();
 
-        return view('user.personal_cabinet.content.feedback', compact('check_role','category'));
+        return view('user.personal_cabinet.content.feedback', compact('category'));
     }
     public function account_settings()
     {
-        $check_role = Auth::user();
         $category = Category::with('parent')->get();
 
-        return view('user.personal_cabinet.content.account_settings', compact('check_role','category'));
+        return view('user.personal_cabinet.content.account_settings', compact('category'));
     }
 }

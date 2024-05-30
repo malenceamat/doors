@@ -13,9 +13,8 @@ class PartnersController extends Controller
     public function index($id = null)
     {
         $partners = $id ? Partners::find($id) : new Partners;
-        $check_role = Auth::user();
 
-        return view('admin.content.partners.partners_create', compact('partners','check_role'));
+        return view('admin.content.partners.partners_create', compact('partners'));
     }
     public function create(PartnersRequest $req)
     {
@@ -28,9 +27,8 @@ class PartnersController extends Controller
     public function show()
     {
         $partners = Partners::get();
-        $check_role = Auth::user();
 
-        return view('admin.content.partners.partners_show',compact('partners','check_role'));
+        return view('admin.content.partners.partners_show',compact('partners'));
     }
     public function update(PartnersRequest $req)
     {

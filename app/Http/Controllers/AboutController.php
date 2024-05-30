@@ -13,9 +13,8 @@ class AboutController extends Controller
     public function index()
     {
         $about = About::firstORCreate();
-        $check_role = Auth::user();
 
-        return view('admin.content.about.about',compact('about','check_role'));
+        return view('admin.content.about.about',compact('about'));
     }
     public function create(AboutRequest $req)
     {

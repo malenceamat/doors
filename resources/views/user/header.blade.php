@@ -53,9 +53,9 @@
                             {{--<div class="callback-link-wrap text-right-sm">
                                 <a href="{{route ('account_settings')}}" style="border-bottom: 1px dashed" >Войти</a>
                             </div>--}}
-                            @if(isset($check_role))
+                            @if(Auth::user())
                                 <div class="callback-link-wrap text-right-sm">
-                                    <a href="{{route ('account_settings')}}" style="border-bottom: 1px dashed" >Здравствуйте, {{$check_role->name}}</a>
+                                    <a href="{{route ('account_settings')}}" style="border-bottom: 1px dashed" >Здравствуйте, {{Auth::user()->name}}</a>
                                 </div>
                             @else
                                 <div class="callback-link-wrap text-right-sm">

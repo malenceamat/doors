@@ -11,9 +11,8 @@ class PayDeliveryController extends Controller
     public function index()
     {
         $pay_delivery = PayDelivery::firstOrCreate();
-        $check_role = Auth::user();
 
-        return view('admin.content.pay_delivery.pay_delivery',compact('pay_delivery','check_role'));
+        return view('admin.content.pay_delivery.pay_delivery',compact('pay_delivery'));
     }
     public function create(PayDeliveryRequest $req)
     {

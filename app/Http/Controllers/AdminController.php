@@ -12,13 +12,11 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $check_role = Auth::user();
-        return view('admin.general',compact('check_role'));
+        return view('admin.general');
     }
     public function dealer()
     {
-        $check_role = Auth::user();
-        return view('admin.content.users.register_dealer.register_dealer', compact('check_role'));
+        return view('admin.content.users.register_dealer.register_dealer');
     }
     public function register_dealer(DealerRequest $req)
     {

@@ -44,7 +44,7 @@
                     <div class="user-profile-section">
                         <div class="media mx-auto">
                             <div class="media-body">
-                                <h5>{{$check_role->name}}</h5>
+                                <h5>{{Auth::user()->name}}</h5>
                                 <p>Администратор</p>
                             </div>
                         </div>

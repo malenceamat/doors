@@ -13,9 +13,8 @@ class InfoBlockController extends Controller
     public function index($id = null)
     {
         $info = $id ? InfoBlock::find($id) : new InfoBlock;
-        $check_role = Auth::user();
 
-        return view('admin.content.info_block.info_create_update',compact('info','check_role'));
+        return view('admin.content.info_block.info_create_update',compact('info'));
     }
     public function create(InfoBlockRequest $req)
     {
@@ -28,9 +27,8 @@ class InfoBlockController extends Controller
     public function show()
     {
         $info = InfoBlock::get();
-        $check_role = Auth::user();
 
-        return view('admin.content.info_block.info_show',compact('info','check_role'));
+        return view('admin.content.info_block.info_show',compact('info'));
     }
     public function update(InfoBlockRequest $req)
     {
