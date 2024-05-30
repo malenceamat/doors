@@ -13,11 +13,13 @@ use App\Models\News;
 use App\Models\Partners;
 use App\Models\PayDelivery;
 use App\Models\Slider;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function index()
     {
+        $check_role = Auth::user();
         $category = Category::with('parent')->get();
         $sliders = Slider::get();
         $info_blocks = InfoBlock::get();
@@ -25,7 +27,7 @@ class UserController extends Controller
         $news = News::get()->take(3);
         $blog = Blog::first();
         $partners = Partners::get();
-        return view('user.content.general', compact('category','sliders','info_blocks','banner','news','blog','partners'));
+        return view('user.content.general', compact('category','sliders','info_blocks','banner','news','blog','partners','check_role'));
     }
 
     public function index_pay_delivery()

@@ -36,6 +36,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="header-tel">
                     <div class="table">
                         <div class="table-cell">
@@ -49,13 +50,26 @@
                                 </svg>
                                 <a href="tel:+71234445566">+7 (123) 444-55-66</a>
                             </div>
+                            {{--<div class="callback-link-wrap text-right-sm">
+                                <a href="{{route ('account_settings')}}" style="border-bottom: 1px dashed" >Войти</a>
+                            </div>--}}
+                            @if(isset($check_role))
+                                <div class="callback-link-wrap text-right-sm">
+                                    <a href="{{route ('account_settings')}}" style="border-bottom: 1px dashed" >Здравствуйте, {{$check_role->name}}</a>
+                                </div>
+                            @else
+                                <div class="callback-link-wrap text-right-sm">
+                                    <a href="{{route ('account_settings')}}" style="border-bottom: 1px dashed" >Вход</a>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
+
                 <div class="header-info">
                     <div class="table">
                         <div class="table-cell">
-
                             <div class="header-address">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="map-marker-alt"
                                      role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
