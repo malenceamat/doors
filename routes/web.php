@@ -74,10 +74,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/dealer',[AdminController::class,'dealer'])->name('dealer');
         Route::post('/register_dealer',[AdminController::class,'register_dealer'])->name('register_dealer');
-
-
-
-
     });
 });
 

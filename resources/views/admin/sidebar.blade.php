@@ -27,7 +27,6 @@
                 </div>
             </div>
         </div>
-        @if($check_role->role == 'admin')
             <ul class="list-unstyled menu-categories" id="accordionExample">
                 <li class="menu">
                     <a href="#home" data-bs-toggle="collapse"
@@ -327,67 +326,5 @@
                     </ul>
                 </li>
             </ul>
-        @else
-            <ul class="list-unstyled menu-categories" id="accordionExample">
-
-                <li class="menu">
-                    <a href="#" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                 class="feather feather-heart">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                            <span>Избранное</span>
-                        </div>
-                    </a>
-                </li>
-
-                <li class="menu">
-                    <a href="#" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                 class="feather feather-shopping-cart">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                            <span>Корзина</span>
-                        </div>
-                    </a>
-                </li>
-
-                <li class="menu">
-                    <a href="#" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                 class="feather feather-archive">
-                                <polyline points="21 8 21 21 3 21 3 8"></polyline>
-                                <rect x="1" y="3" width="22" height="5"></rect>
-                                <line x1="10" y1="12" x2="14" y2="12"></line>
-                            </svg>
-                            <span>Заказы</span>
-                        </div>
-                    </a>
-                </li>
-
-                <li class="menu">
-                    <a href="#" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                 class="feather feather-mail">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                            <span>Отзывы</span>
-                        </div>
-                    </a>
-                </li>
-
-            </ul>
-        @endif
     </nav>
 </div>

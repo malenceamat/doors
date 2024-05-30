@@ -41,7 +41,6 @@
                 </div>
             </a>
             <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
-                @if($check_role->role == 'admin')
                     <div class="user-profile-section">
                         <div class="media mx-auto">
                             <div class="media-body">
@@ -96,32 +95,6 @@
                             <span>Отзывы</span>
                         </a>
                     </div>
-                @else
-                    <div class="user-profile-section">
-                        <div class="media mx-auto">
-                            <div class="media-body">
-                                @if($check_role->role == 'dealer')
-                                    <h5>{{$check_role->name}}</h5>
-                                    <p>Дилер</p>
-                                @else
-                                    <h5>{{$check_role->name}}</h5>
-                                    <p>Пользователь</p>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="dropdown-item">
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                 class="feather feather-edit-2">
-                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                            </svg>
-                            <span class="icon-name">Настройка профиля</span>
-                        </a>
-                    </div>
-                @endif
                 {{--<div class="dropdown-item">
                     <a href="app-mailbox.html">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
