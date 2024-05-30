@@ -16,6 +16,19 @@
     <link rel="stylesheet" href={{asset("https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css")}}>
     <script src={{asset("assets/template/js/jquery-3.2.1.min.js")}}></script>
     @yield('style')
+    <style>
+        .wrap-long-word {
+            width: 29ch;
+            overflow-wrap: break-word;
+        }
+
+        .wrap-long-word span {
+            display: inline-block;
+            width: 100%;
+            word-break: break-all;
+        }
+
+    </style>
 </head>
 <body class="index-template id-1 parent-0">
 <div class="main-wrapper">

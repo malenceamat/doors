@@ -44,7 +44,7 @@
                     <div class="user-profile-section">
                         <div class="media mx-auto">
                             <div class="media-body">
-                                <h5>{{Auth::user()->name}}</h5>
+                                <h5 style="overflow-wrap: break-word; word-break: break-all;width: 15ch">{{Auth::user()->name}}</h5>
                                 <p>Администратор</p>
                             </div>
                         </div>
