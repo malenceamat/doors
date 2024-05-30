@@ -29,6 +29,7 @@
     @yield('catalog')
     @yield('products_filters_list')
     @yield('card_product')
+    @yield('cabinet')
 </div>
 @include('user.footer')
 

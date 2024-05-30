@@ -12,10 +12,10 @@
 @section('card_product')
     <div class="middle">
         <div class="container" style="margin-top: 20px">
-            <h1 class="pagetitle">Дверь межкомнатная остеклённая Ницца</h1>
+            <h1 class="pagetitle">{{$item->name}}</h1>
             <div class="main-column">
                 <div class="product-detail">
-                    <form class="form-horizontal ms2_form" method="POST">
+                    {{--<form class="form-horizontal ms2_form" method="POST">--}}
                         @csrf
                         <input type="hidden" name="id" value="207"/>
                         <div class="row">
@@ -151,7 +151,7 @@
                         </div>
                         <div class="push60 hidden-xs hidden-sm"></div>
                         <div class="push30 visible-xs visible-sm"></div>
-                    </form>
+                    {{--</form>--}}
                     <div class="section">
                         <div class="mobile-tab-header">Характеристики</div>
                         <ul class="tabs mobile">

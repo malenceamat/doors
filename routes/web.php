@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CabinetController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InfoBlockController;
@@ -93,10 +94,13 @@ Route::post('/filter', [CatalogController::class,'filter'])->name('filter');
 Route::get('/product/{item_id}/{item_name}', [CatalogController::class, 'card_product'])->name('card_product');
 
 Route::middleware(['auth'])->group(function (){
-    Route::get('/cabinet', [AdminController::class, 'index']);
+    Route::get('/cabinet' , [CabinetController::class,'account_settings'])->name('account_settings');
 
     Route::prefix('cabinet')->group(function () {
-
+        Route::get('/favorites' , [CabinetController::class,'favorites'])->name('favorites');
+        Route::get('/basket' , [CabinetController::class,'basket'])->name('basket');
+        Route::get('/order' , [CabinetController::class,'order'])->name('order');
+        Route::get('/feedback' , [CabinetController::class,'feedback'])->name('feedback');
     });
 });
 
