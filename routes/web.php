@@ -91,6 +91,8 @@ Route::get('/product/{item_id}/{item_name}', [CatalogController::class, 'card_pr
 
 Route::middleware(['auth'])->group(function (){
     Route::get('/cabinet' , [CabinetController::class,'account_settings'])->name('account_settings');
+    Route::post('/add_favorites',[CabinetController::class,'add_favorites'])->name('add_favorites');
+    Route::get('/check-favorites/{itemId}',[CabinetController::class,'checkFavorites']);
 
     Route::prefix('cabinet')->group(function () {
         Route::get('/favorites' , [CabinetController::class,'favorites'])->name('favorites');

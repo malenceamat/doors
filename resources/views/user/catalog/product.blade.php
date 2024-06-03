@@ -15,15 +15,13 @@
             <h1 class="pagetitle">{{$item->name}}</h1>
             <div class="main-column">
                 <div class="product-detail">
-                    {{--<form class="form-horizontal ms2_form" method="POST">--}}
-                        @csrf
-                        <input type="hidden" name="id" value="207"/>
                         <div class="row">
                             <div class="col-xs-10"></div>
                             <div class="col-xs-2">
                                 <div class="favorites-btn-wrapper text-right">
                                     <a class="msfavorites" data-click="" data-data-list="default"
-                                       data-data-type="resource" data-data-id="207">
+                                       data-data-type="resource" data-data-id="{{$item->id}}">
+                                        <input type="hidden">
                                         <span class="msfavorites-noneactive" title="Добавить в избранное">
                                             <svg aria-hidden="true" focusable="false" data-prefix="fal"
                                                  data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -62,6 +60,8 @@
                                 </div>
                             </div>
                         </div>
+                    <form action="{{route ('add_favorites')}}" class="form-horizontal ms2_form" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-sm-6 col-md-6">
                                 <div class="product-gallery relative">
@@ -74,6 +74,7 @@
                                 <div class="push20"></div>
                                 <div class="push20 visible-md visible-xs"></div>
                             </div>
+
                             <div class="col-sm-6 col-md-6">
                                 <div class="product-info">
                                     <div class="push20 visible-xs"></div>
@@ -106,8 +107,9 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        @if($item->entity->count() <= 1)
+                                        @if($item->entity->count() == 1)
                                             @foreach($item->entity as $item_entity)
+                                                <input type="hidden" name="entity_item_id" value="{{$item_entity->id}}">
                                                 <div class="color-element" title="{{ $item_entity->id }}"
                                                      data-image-id="{{ $item_entity->id }}"
                                                      data-fotorama-target="img-{{ $item_entity->id }}"></div>
@@ -151,7 +153,9 @@
                         </div>
                         <div class="push60 hidden-xs hidden-sm"></div>
                         <div class="push30 visible-xs visible-sm"></div>
-                    {{--</form>--}}
+                        <input type="hidden" name="id" value="{{$item->id}}"/>
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}"/>
+                    </form>
                     <div class="section">
                         <div class="mobile-tab-header">Характеристики</div>
                         <ul class="tabs mobile">
@@ -319,6 +323,66 @@
             if(numThumbnails === 1) {
                 thumbnails.trigger('click');
             }
+        });
+
+
+        $(document).ready(function() {
+            $('.msfavorites').on('click', function(event) {
+                event.preventDefault(); // Предотвращаем стандартное поведение ссылки
+
+                var $this = $(this);
+                var itemId = $this.data('data-id');
+
+                // Проверяем, добавлен ли товар в корзину
+                $.ajax({
+                    url: '/check-favorites/' + itemId, // Замените на свой маршрут
+                    method: 'GET',
+                    success: function(response) {
+                        if (response.is_favorite) {
+                            // Товар уже в избранном, меняем на "Удалить из избранного"
+                            $this.find('.msfavorites-noneactive').hide();
+                            $this.find('.msfavorites-active').show();
+
+                            // Выполняем AJAX-запрос на удаление из избранного
+                            $.ajax({
+                                url: '/remove-from-favorites/' + itemId, // Замените на свой маршрут
+                                method: 'POST',
+                                data: {
+                                    _token: $('meta[name="csrf-token"]').attr('content') // CSRF токен
+                                },
+                                success: function() {
+                                    console.log('Товар удален из избранного');
+                                },
+                                error: function() {
+                                    console.error('Ошибка удаления товара из избранного');
+                                }
+                            });
+                        } else {
+                            // Товар не в избранном, меняем на "Добавить в избранное"
+                            $this.find('.msfavorites-noneactive').show();
+                            $this.find('.msfavorites-active').hide();
+
+                            // Выполняем AJAX-запрос на добавление в избранное
+                            $.ajax({
+                                url: '/add-to-favorites/' + itemId, // Замените на свой маршрут
+                                method: 'POST',
+                                data: {
+                                    _token: $('meta[name="csrf-token"]').attr('content') // CSRF токен
+                                },
+                                success: function() {
+                                    console.log('Товар добавлен в избранное');
+                                },
+                                error: function() {
+                                    console.error('Ошибка добавления товара в избранное');
+                                }
+                            });
+                        }
+                    },
+                    error: function() {
+                        console.error('Ошибка проверки наличия товара в избранном');
+                    }
+                });
+            });
         });
     </script>
 @endsection
