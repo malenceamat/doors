@@ -11,7 +11,6 @@ use App\Models\StatsName;
 use App\Models\StatsValue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
 class ExchangeController extends Controller
 {
     public function update_create(Request $req)
@@ -73,7 +72,7 @@ class ExchangeController extends Controller
                 $stats_names = StatsName::pluck('id', 'stats_names')->toArray();
 
                 foreach ($stats_values as $name => $value) {
-                    $stats_value = StatsValue::create(['value' => $value]);
+                    $stats_value = StatsValue::updateOrCreate(['value' => $value]);
                     if (isset($stats_names[$name])) {
                         ItemsStats::create([
                             'entity_item_id' => $entity_items->id,
