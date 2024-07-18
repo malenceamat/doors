@@ -72,7 +72,7 @@ class ExchangeController extends Controller
                 $stats_names = StatsName::pluck('id', 'stats_names')->toArray();
 
                 foreach ($stats_values as $name => $value) {
-                    $stats_value = StatsValue::updateOrCreate(['value' => $value]);
+                    $stats_value = StatsValue::create(['value' => $value]);
                     if (isset($stats_names[$name])) {
                         ItemsStats::create([
                             'entity_item_id' => $entity_items->id,
