@@ -18,12 +18,13 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('id_1c');
-            $table->longText('description');
+            $table->string('id_1c')->index();
+            $table->longText('description')->nullable();
             $table->boolean('is_popular');
             $table->boolean('is_stock');
             $table->boolean('is_new_items');
             $table->boolean('is_active');
+            $table->string('npp')->nullable();
             $table->timestamps();
         });
     }
