@@ -28,6 +28,7 @@ class ExchangeController extends Controller
                 $get_info = $get_info['infoget'][0];
             }
 
+            // Обновляем или создаем Товары
             switch ($get_info['opc']) {
                 case 1:
                     foreach ($data_json as $item) {
@@ -78,6 +79,7 @@ class ExchangeController extends Controller
 
                     return response('Товары обновлены или созданы');
 
+                // Обновляем или создаем Категории
                 case 2:
                     foreach ($data_json as $category) {
                         Category::updateOrCreate(
@@ -94,36 +96,43 @@ class ExchangeController extends Controller
 
                     return response('Категории обновлены или созданы');
 
+                // Обновляем фотографию к товару
                 case 3:
                     foreach ($data_json as $image) {
-                        dd($image);
-
-                    }
-
-
-                    for ($i = 1; $i < count($data_json); $i++) {
-                        $data = $data_json[$i];
 
                         //Сохранение фотографии
-                        $fileName = "json/" . $data['filename'] . '.' . $data['file_extension'];
-                        Storage::disk('public')->put($fileName, base64_decode($data['b64img']));
+                        $fileName = "json/" . $image['filename'] . '.' . $image['file_extension'];
+                        Storage::disk('public')->put($fileName, base64_decode($image['image']));
+
+                        // возможные характеристики сайта
+                        $stats_names = StatsName::pluck('id', 'stats_names')->toArray();
 
                         // Поиск товара, в котором нужно обновить фотографию
-                        $item = Items::find($data['parent'])->loadMissing('entity.items_stats.stats_name', 'entity.items_stats.stats_value');
+                        $items = Items::with('entity.items_stats.stats_name', 'entity.items_stats.stats_value')->find($image['parent']);
 
-                        // Поиск соответствующей характеристики товара
-                        $itemsStat = ItemsStats::where('entity_item_id', $item->id)
-                            ->where('stats_name_id', StatsName::where('stats_names', 'image')->value('id'))
-                            ->first()->stats_value_id;
-
-                        // Поиск соответствующего значения характеристики
-                        $stats_value = StatsValue::where('id', $itemsStat)->first();
-
-                        // Если значение найдено, обновление записи
-                        if ($stats_value) {
-                            $stats_value->update(['value' => $fileName]);
+                        foreach ($items->entity as $item) {
+                            foreach ($stats_names as $name => $id) {
+                                if (isset($image[$name])) {
+                                    $itemsStat = ItemsStats::where('entity_item_id', $item->items_id)
+                                        ->where('stats_name_id', $id)
+                                        ->select('id', 'stats_value_id')->first();
+                                    if (!empty($itemsStat)) {
+                                        StatsValue::where('id', $itemsStat['id'])->update(['value' => $fileName]);
+                                    } else {
+                                        $stats_value = StatsValue::create(['value' => $fileName]);
+                                        if (isset($id)) {
+                                            ItemsStats::create([
+                                                'entity_item_id' => $item->items_id,
+                                                'stats_name_id' => $id,
+                                                'stats_value_id' => $stats_value->id
+                                            ]);
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
+
                     return response('Изображение обработано и сохранено');
             }
         }
