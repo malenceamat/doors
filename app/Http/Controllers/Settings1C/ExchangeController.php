@@ -14,6 +14,29 @@ use Illuminate\Support\Facades\Storage;
 
 class ExchangeController extends Controller
 {
+    protected function updateOrCreateStats($entity_items, $stats_names, $data, $isImage = false)
+    {
+        foreach ($stats_names as $name => $id) {
+            if (isset($data[$name])) {
+                $itemsStat = ItemsStats::where('entity_item_id', $entity_items->id)
+                    ->where('stats_name_id', $id)
+                    ->select('id', 'stats_value_id')->first();
+
+                if (!empty($itemsStat)) {
+                    StatsValue::where('id', $itemsStat->stats_value_id)
+                        ->update(['value' => $data[$name]]);
+                } else {
+                    $stats_value = StatsValue::create(['value' => $data[$name]]);
+                    ItemsStats::create([
+                        'entity_item_id' => $entity_items->id,
+                        'stats_name_id' => $id,
+                        'stats_value_id' => $stats_value->id
+                    ]);
+                }
+            }
+        }
+    }
+
     public function update_create(Request $req)
     {
         // получаем json из запроса
@@ -27,6 +50,9 @@ class ExchangeController extends Controller
             } else {
                 $get_info = $get_info['infoget'][0];
             }
+
+            // Возможные характеристики сайта
+            $stats_names = StatsName::pluck('id', 'stats_names')->toArray();
 
             // Обновляем или создаем Товары
             switch ($get_info['opc']) {
@@ -48,33 +74,12 @@ class ExchangeController extends Controller
                             ]
                         );
 
-                        // возможные характеристики сайта
-                        $stats_names = StatsName::pluck('id', 'stats_names')->toArray();
-
                         // создаем или обновляем entity товара
                         $entity_items = EntityItem::updateOrCreate([
                             'items_id' => $itemEntity['id'],
                         ]);
 
-                        foreach ($stats_names as $name => $id) {
-                            if (isset($item[$name])) {
-                                $stats_id = ItemsStats::where('entity_item_id', $entity_items->id)
-                                    ->where('stats_name_id', $id)
-                                    ->select('id', 'stats_value_id')->first();
-                                if (!empty($stats_id)) {
-                                    StatsValue::where('id', $stats_id['id'])->update(['value' => $item[$name]]);
-                                } else {
-                                    $stats_value = StatsValue::create(['value' => $item[$name]]);
-                                    if (isset($id)) {
-                                        ItemsStats::create([
-                                            'entity_item_id' => $entity_items->id,
-                                            'stats_name_id' => $id,
-                                            'stats_value_id' => $stats_value->id
-                                        ]);
-                                    }
-                                }
-                            }
-                        }
+                        $this->updateOrCreateStats($entity_items,$stats_names,$item);
                     }
 
                     return response('Товары обновлены или созданы');
@@ -104,32 +109,12 @@ class ExchangeController extends Controller
                         $fileName = "json/" . $image['filename'] . '.' . $image['file_extension'];
                         Storage::disk('public')->put($fileName, base64_decode($image['image']));
 
-                        // возможные характеристики сайта
-                        $stats_names = StatsName::pluck('id', 'stats_names')->toArray();
-
                         // Поиск товара, в котором нужно обновить фотографию
                         $items = Items::with('entity.items_stats.stats_name', 'entity.items_stats.stats_value')->find($image['parent']);
 
                         foreach ($items->entity as $item) {
-                            foreach ($stats_names as $name => $id) {
-                                if (isset($image[$name])) {
-                                    $itemsStat = ItemsStats::where('entity_item_id', $item->items_id)
-                                        ->where('stats_name_id', $id)
-                                        ->select('id', 'stats_value_id')->first();
-                                    if (!empty($itemsStat)) {
-                                        StatsValue::where('id', $itemsStat['id'])->update(['value' => $fileName]);
-                                    } else {
-                                        $stats_value = StatsValue::create(['value' => $fileName]);
-                                        if (isset($id)) {
-                                            ItemsStats::create([
-                                                'entity_item_id' => $item->items_id,
-                                                'stats_name_id' => $id,
-                                                'stats_value_id' => $stats_value->id
-                                            ]);
-                                        }
-                                    }
-                                }
-                            }
+                            $this->updateOrCreateStats($item,$stats_names,$image,true);
+
                         }
                     }
 
