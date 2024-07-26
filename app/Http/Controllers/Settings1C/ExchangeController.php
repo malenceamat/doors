@@ -67,23 +67,13 @@ class ExchangeController extends Controller
             switch ($get_info['opc']) {
                 case 1:
 
-                    // Получаем все уникальные `category_id` из JSON
-                    $unique_id = collect($data_json)->pluck('category_id');
+                    $id = collect($data_json)->pluck('category_id');
 
-                    // Получаем все категории из базы данных по $unique_id
-                    $categories = Category::whereIn('id_1c', $unique_id)->get()->keyBy('id_1c');
-
-                    // Создаем массив `[id_1c => category_id]`
-                    $category_id= collect($data_json)
-                        ->mapWithKeys(function ($item) use ($categories) {
-                            $category = $categories->get($item['category_id']);
-                            return [
-                                $item['id_1C'] =>$category->id
-                            ];
-                        })
-                        ->toArray();
+                    $categories = Category::whereIn('id_1c', $id)->select(['id','id_1c'])->get()->keyBy('id_1c');
 
                     foreach ($data_json as $item) {
+                        // Получаем объект категории на основе category_id
+                        $category = isset($item['category_id']) ? $categories->get($item['category_id']) : null;
 
                         // Создаем или обновляем товар
                         $itemEntity = Items::updateOrCreate(
@@ -92,7 +82,7 @@ class ExchangeController extends Controller
                             ],
                             [
                                 'name' => $item['namesite'],
-                                'category_id' => $category_id[$item['id_1C']],
+                                'category_id' => $category ? $category->id : null,
                                 'description' => $item['description'],
                                 'is_popular' => $item['popular'],
                                 'is_stock' => $item['stock'],
