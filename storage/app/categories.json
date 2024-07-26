@@ -1,0 +1,31 @@
+[
+    {
+        "infoget": [
+            {
+                "dateget": "26.07.2024 11:53:16",
+                "opc": 2
+            }
+        ]
+    },
+    {
+        "id_1C": "000000004",
+        "thisgroup": true,
+        "parent_id": null,
+        "npp": 1,
+        "namesite": "АКЦИИ"
+    },
+    {
+        "id_1C": "000000005",
+        "thisgroup": true,
+        "parent_id": "000000004",
+        "npp": 1,
+        "namesite": "АКЦИИ2"
+    },
+    {
+        "id_1C": "000000006",
+        "thisgroup": true,
+        "parent_id": "000000004",
+        "npp": 2,
+        "namesite": "АКЦИИ3"
+    }
+]

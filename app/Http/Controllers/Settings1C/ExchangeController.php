@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ExchangeController extends Controller
 {
-    protected function updateOrCreateStats($entity_items, $stats_names, $data, $isImage = false)
+    protected function updateOrCreateStats($entity_items, $stats_names, $data)
     {
         foreach ($stats_names as $name => $id) {
             if (isset($data[$name])) {
@@ -137,7 +137,17 @@ class ExchangeController extends Controller
                             ->first();
 
                         foreach ($items->entity as $item) {
-                            $this->updateOrCreateStats($item, $stats_names, $fileName, true);
+                            // Создаем массив данных для статистики
+                            $statsData = [];
+
+                            foreach ($stats_names as $name => $id) {
+                                if (isset($image[$name])) {
+                                    // Сохраняем путь к изображению в массиве данных
+                                    $statsData[$name] = $fileName;
+                                }
+                            }
+
+                            $this->updateOrCreateStats($item, $stats_names, $statsData);
                         }
                     }
 
