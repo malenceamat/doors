@@ -54,14 +54,6 @@ class ExchangeController extends Controller
             // Возможные характеристики сайта
             $stats_names = StatsName::pluck('id', 'stats_names')->toArray();
 
-            usort($data_json, function ($a, $b) {
-                if (!isset($a['parent_id']) || $a['parent_id'] === null) {
-                    return -1;
-                } elseif (!isset($b['parent_id']) || $b['parent_id'] === null) {
-                    return 1;
-                }
-                return 0;
-            });
 
             // Обновляем или создаем Товары
             switch ($get_info['opc']) {
@@ -69,7 +61,7 @@ class ExchangeController extends Controller
 
                     $id = collect($data_json)->pluck('category_id');
 
-                    $categories = Category::whereIn('id_1c', $id)->select(['id','id_1c'])->get()->keyBy('id_1c');
+                    $categories = Category::whereIn('id_1c', $id)->select(['id', 'id_1c'])->get()->keyBy('id_1c');
 
                     foreach ($data_json as $item) {
                         // Получаем объект категории на основе category_id
@@ -98,13 +90,22 @@ class ExchangeController extends Controller
                         ]);
 
                         // Создаем или обновляем характеристики товара
-                        $this->updateOrCreateStats($entity_items,$stats_names,$item);
+                        $this->updateOrCreateStats($entity_items, $stats_names, $item);
                     }
 
                     return response('Товары обновлены или созданы');
 
                 // Обновляем или создаем Категории
                 case 2:
+
+                    usort($data_json, function ($a, $b) {
+                        if (!isset($a['parent_id']) || $a['parent_id'] === null) {
+                            return -1;
+                        } elseif (!isset($b['parent_id']) || $b['parent_id'] === null) {
+                            return 1;
+                        }
+                        return 0;
+                    });
 
                     foreach ($data_json as $category) {
                         if (isset($category['id_1C'])) {
@@ -131,11 +132,12 @@ class ExchangeController extends Controller
                         Storage::disk('public')->put($fileName, base64_decode($image['image']));
 
                         // Поиск товара, в котором нужно обновить фотографию
-                        $items = Items::with('entity.items_stats.stats_name', 'entity.items_stats.stats_value')->find($image['parent']);
+                        $items = Items::with('entity.items_stats.stats_name', 'entity.items_stats.stats_value')
+                            ->where('id_1c', $image['id_1C'])
+                            ->first();
 
                         foreach ($items->entity as $item) {
-                            $this->updateOrCreateStats($item,$stats_names,$image,true);
-
+                            $this->updateOrCreateStats($item, $stats_names, $fileName, true);
                         }
                     }
 
