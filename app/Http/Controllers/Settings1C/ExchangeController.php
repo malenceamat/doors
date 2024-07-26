@@ -128,7 +128,7 @@ class ExchangeController extends Controller
                     foreach ($data_json as $image) {
 
                         //Сохранение фотографии
-                        $fileName = "json/" . $image['filename'] . '.' . $image['file_extension'];
+                        $fileName = "json/" . $image['filename'] . '.' . '.jpg';
                         Storage::disk('public')->put($fileName, base64_decode($image['image']));
 
                         // Поиск товара, в котором нужно обновить фотографию
