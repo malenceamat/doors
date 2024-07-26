@@ -79,7 +79,7 @@ class ExchangeController extends Controller
                             'items_id' => $itemEntity['id'],
                         ]);
 
-                        $this->updateOrCreateStats($entity_items, $stats_names, $item);
+                        $this->updateOrCreateStats($entity_items,$stats_names,$item);
                     }
 
                     return response('Товары обновлены или созданы');
@@ -87,30 +87,26 @@ class ExchangeController extends Controller
                 // Обновляем или создаем Категории
                 case 2:
 
-                    // Собираем все parent_id
-                    $parentIds = collect($data_json)->pluck('parent_id')->filter()->unique();
+                    usort($data_json, function ($a, $b) {
+                        if (!isset($a['parent_id']) || $a['parent_id'] === null) {
+                            return -1;
+                        } elseif (!isset($b['parent_id']) || $b['parent_id'] === null) {
+                            return 1;
+                        }
+                        return 0;
+                    });
 
-                    // Получаем все родительские категории
-                    $parentCategories = Category::whereIn('id_1c', $parentIds)->get()->keyBy('id_1c');
-
-                    // Обрабатываем категории
                     foreach ($data_json as $category) {
                         if (isset($category['id_1C'])) {
-                            // Создаем или обновляем категории без учета parent_id
-                            $newCategory = Category::updateOrCreate(
+                            $parent_keys[$category['id_1C']] = Category::updateOrCreate(
                                 [
                                     'id_1c' => $category['id_1C']
                                 ],
                                 [
                                     'name' => $category['namesite'],
-                                    'parent_id' => null // Изначально устанавливаем parent_id в null
+                                    'parent_id' => $parent_keys[$category['parent_id']]['id'] ?? null
                                 ]
                             );
-
-                            // Если у категории есть parent_id, обновите её
-                            if (isset($category['parent_id']) && $parentCategories->has($category['parent_id'])) {
-                                $newCategory->update(['parent_id' => $parentCategories[$category['parent_id']]->id]);
-                            }
                         }
                     }
 
@@ -128,7 +124,7 @@ class ExchangeController extends Controller
                         $items = Items::with('entity.items_stats.stats_name', 'entity.items_stats.stats_value')->find($image['parent']);
 
                         foreach ($items->entity as $item) {
-                            $this->updateOrCreateStats($item, $stats_names, $image, true);
+                            $this->updateOrCreateStats($item,$stats_names,$image,true);
 
                         }
                     }
