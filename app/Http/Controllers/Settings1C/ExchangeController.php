@@ -79,24 +79,37 @@ class ExchangeController extends Controller
                             'items_id' => $itemEntity['id'],
                         ]);
 
-                        $this->updateOrCreateStats($entity_items,$stats_names,$item);
+                        $this->updateOrCreateStats($entity_items, $stats_names, $item);
                     }
 
                     return response('Товары обновлены или созданы');
 
                 // Обновляем или создаем Категории
                 case 2:
+
+                    // Первый шаг: Создание всех категорий без учета parent_id
                     foreach ($data_json as $category) {
-                        Category::updateOrCreate(
-                            [
-                                'id_1c' => $category['id_1C']
-                            ],
-                            [
-                                'name' => $category['namesite'],
-                                'image_path' => null,
-                                'parent_id' => $category['parent_id']
-                            ]
-                        );
+                        if (isset($category['id_1C'])) {
+                            Category::updateOrCreate(
+                                [
+                                    'id_1c' => $category['id_1C']
+                                ],
+                                [
+                                    'name' => $category['namesite'],
+                                    'parent_id' => null // Создаем категории без учета parent_id
+                                ]
+                            );
+                        }
+                    }
+
+                    // Второй шаг: Обновление категорий с учетом parent_id
+                    foreach ($data_json as $category) {
+                        if (isset($category['id_1C']) && isset($category['parent_id'])) {
+                            $parentCategory = Category::where('id_1c', $category['parent_id'])->first();
+                            if ($parentCategory) {
+                                Category::where('id_1c', $category['id_1C'])->update(['parent_id' => $parentCategory->id]);
+                            }
+                        }
                     }
 
                     return response('Категории обновлены или созданы');
@@ -113,7 +126,7 @@ class ExchangeController extends Controller
                         $items = Items::with('entity.items_stats.stats_name', 'entity.items_stats.stats_value')->find($image['parent']);
 
                         foreach ($items->entity as $item) {
-                            $this->updateOrCreateStats($item,$stats_names,$image,true);
+                            $this->updateOrCreateStats($item, $stats_names, $image, true);
 
                         }
                     }

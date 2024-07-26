@@ -11,10 +11,12 @@ class Category extends Model
 
     protected $table = 'categories';
 
+    protected $fillable = ['name', 'parent_id','id_1c'];
+
 
     public function parent()
     {
-        return $this->belongsTo(Category::class, 'parent_id');
+        return $this->belongsTo(Category::class, 'parent_id','id_1c');
     }
 
     public function sub_category()
