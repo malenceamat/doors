@@ -1,101 +1,87 @@
 [
+	{
+		"infoget": [
+			{
+				"dateget": "28.06.2024 19:23:53"
+			}
+		]
+	},
+	{
+		"id_1C": "2ef2f013-345e-11ef-b75e-dc4a3e7b9096",
+		"category_id": 1,
+		"npp": 2,
+		"namesite": "Полотно глухое Vinyl Эрми",
+		"name1C": "Полотно глухое Vinyl Эрмитаж-2 700 белый",
+		"price": 12817,
+		"description": "",
+		"is_active": false,
+		"new_items": true,
+		"stock": false,
+		"popular": false
+	},
+	{
+		"id_1C": "2ef2f014-345e-11ef-b75e-dc4a3e7b9096",
+		"category_id": 2,
+		"npp": 1,
+		"namesite": "SNEGIR 20F MP (880, 2050,",
+		"name1C": "SNEGIR 20F MP (880, 2050, L, темно-серый букле графит, -, ПВХ Бьянко, S23-23, хром, НАКЛ, -, -) (без",
+		"price": 29800,
+		"description": "",
+		"is_active": false,
+		"new_items": true,
+		"stock": false,
+		"popular": false
+	},
+	{
+		"id_1C": "2ef2f014-345e-11ef-b75e-dc4a3e7b9096",
+		"category_id": 3,
+		"npp": 1,
+		"namesite": "SNEGIR 20F MP (880, 2050,",
+		"name1C": "SNEGIR 20F MP (880, 2050, L, темно-серый букле графит, -, ПВХ Бьянко, S23-23, хром, НАКЛ, -, -) (без",
+		"price": 18774,
+		"description": "",
+		"is_active": false,
+		"new_items": true,
+		"stock": false,
+		"popular": false
+	},
+	{
+		"id_1C": "d3f18b8f-352a-11ef-b75e-dc4a3e7b9096",
+		"category_id": 4,
+		"npp": 1,
+		"namesite": "СХЕМА Эмаль-1 Полотно ост",
+		"name1C": "СХЕМА Эмаль-1 Полотно остекленное Эмаль Геометрия-6 600 белый зеркало ГРЕЙ (защелка маг.)",
+		"price": 8023,
+		"description": "",
+		"is_active": false,
+		"new_items": false,
+		"stock": false,
+		"popular": true
+	},
     {
-        "infoget": [
-            {
-                "dateget": "26.07.2024 12:05:46",
-                "opc": 1
-            }
-        ]
-    },
-    {
-        "id_1C": "000000001",
-        "category_id": "000000005",
+        "id_1C": "d3f18b8f-352a-11ef-b75e-dc4a3e7b9096",
+        "category_id": 5,
         "npp": 1,
-        "namesite": "Полотно глухое Vinyl Эрми",
-        "name1C": "Полотно глухое Vinyl Эрмитаж-2 700 белый",
-        "price": 12817,
-        "description": "",
-        "is_active": false,
-        "new_items": true,
-        "stock": false,
-        "popular": false
-    },
-    {
-        "id_1C": "000000002",
-        "category_id": "000000006",
-        "npp": 1,
-        "namesite": "SNEGIR 20F MP (880, 2050,",
-        "name1C": "SNEGIR 20F MP (880, 2050, L, темно-серый букле графит, -, ПВХ Бьянко, S23-23, хром, НАКЛ, -, -) (без",
-        "price": 29800,
-        "description": "",
-        "is_active": false,
-        "new_items": false,
-        "stock": false,
-        "popular": false
-    },
-    {
-        "id_1C": "000000002",
-        "category_id": "000000006",
-        "npp": 1,
-        "namesite": "SNEGIR 20F MP (880, 2050,",
-        "name1C": "SNEGIR 20F MP (880, 2050, L, темно-серый букле графит, -, ПВХ Бьянко, S23-23, хром, НАКЛ, -, -) (без",
-        "price": 18774,
-        "description": "",
-        "is_active": false,
-        "new_items": false,
-        "stock": false,
-        "popular": false
-    },
-    {
-        "id_1C": "000000003",
-        "category_id": "000000005",
-        "npp": 2,
         "namesite": "СХЕМА Эмаль-1 Полотно ост",
         "name1C": "СХЕМА Эмаль-1 Полотно остекленное Эмаль Геометрия-6 600 белый зеркало ГРЕЙ (защелка маг.)",
-        "price": 13159,
+        "price": 57413,
         "description": "",
         "is_active": false,
         "new_items": false,
         "stock": false,
-        "popular": false
+        "popular": true
     },
     {
-        "id_1C": "000000007",
-        "category_id": "000000005",
-        "npp": 3,
-        "namesite": "Защелка бесшумная",
-        "name1C": "Защелка бесшумная сантехническая PLAST50/70 CHROME",
-        "price": 0,
-        "description": "Описание №2",
+        "id_1C": "d3f18b8f-352a-11ef-b75e-dc4a3e7b9096",
+        "category_id": 6,
+        "npp": 1,
+        "namesite": "СХЕМА Эмаль-1 Полотно ост",
+        "name1C": "СХЕМА Эмаль-1 Полотно остекленное Эмаль Геометрия-6 600 белый зеркало ГРЕЙ (защелка маг.)",
+        "price": 14234,
+        "description": "",
         "is_active": false,
         "new_items": false,
         "stock": false,
-        "popular": false
-    },
-    {
-        "id_1C": "000000007",
-        "category_id": "000000005",
-        "npp": 3,
-        "namesite": "Защелка бесшумная",
-        "name1C": "Защелка бесшумная сантехническая PLAST50/70 CHROME",
-        "price": 475,
-        "description": "Описание №2",
-        "is_active": false,
-        "new_items": false,
-        "stock": false,
-        "popular": false
-    },
-    {
-        "id_1C": "000000007",
-        "category_id": "000000005",
-        "npp": 3,
-        "namesite": "Защелка бесшумная",
-        "name1C": "Защелка бесшумная сантехническая PLAST50/70 CHROME",
-        "price": 0,
-        "description": "Описание №2",
-        "is_active": false,
-        "new_items": false,
-        "stock": false,
-        "popular": false
+        "popular": true
     }
 ]

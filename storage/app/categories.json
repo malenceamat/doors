@@ -1,31 +1,51 @@
 [
-    {
-        "infoget": [
-            {
-                "dateget": "26.07.2024 11:53:16",
-                "opc": 2
-            }
-        ]
-    },
-    {
-        "id_1C": "000000004",
-        "thisgroup": true,
-        "parent_id": null,
-        "npp": 1,
-        "namesite": "АКЦИИ"
-    },
-    {
-        "id_1C": "000000005",
-        "thisgroup": true,
-        "parent_id": "000000004",
-        "npp": 1,
-        "namesite": "АКЦИИ2"
-    },
-    {
-        "id_1C": "000000006",
-        "thisgroup": true,
-        "parent_id": "000000004",
-        "npp": 2,
-        "namesite": "АКЦИИ3"
-    }
+	{
+		"infoget": [
+			{
+				"dateget": "28.06.2024 19:23:54"
+			}
+		]
+	},
+	{
+		"id_1C": "2ef2f013-345e-11ef-b75e-dc4a3e7b9096",
+		"thisgroup": false,
+		"parent_id": null,
+		"npp": 1,
+		"namesite": "Первая категория"
+	},
+	{
+		"id_1C": "2ef2f014-345e-11ef-b75e-dc4a3e7b9096",
+		"thisgroup": false,
+		"parent_id": null,
+		"npp": 2,
+		"namesite": "Вторая категория"
+	},
+	{
+		"id_1C": "d3f18b8f-352a-11ef-b75e-dc4a3e7b9096",
+		"thisgroup": false,
+		"parent_id": null,
+		"npp": 3,
+		"namesite": "Третья категория"
+	},
+	{
+		"id_1C": "c2862de5-355c-11ef-b75e-dc4a3e7b9096",
+		"thisgroup": true,
+		"npp": 1,
+		"parent_id": 1,
+		"namesite": "Первая вложенная"
+	},
+	{
+		"id_1C": "c2862de6-355c-11ef-b75e-dc4a3e7b9096",
+		"thisgroup": true,
+		"npp": 1,
+		"parent_id": 2,
+		"namesite": "Вторая вложенная"
+	},
+	{
+		"id_1C": "c2862de7-355c-11ef-b75e-dc4a3e7b9096",
+		"thisgroup": true,
+		"parent_id": 2,
+		"npp": 2,
+		"namesite": "Третья вложенная"
+	}
 ]
