@@ -54,17 +54,45 @@ class ExchangeController extends Controller
             // Возможные характеристики сайта
             $stats_names = StatsName::pluck('id', 'stats_names')->toArray();
 
+            usort($data_json, function ($a, $b) {
+                if (!isset($a['parent_id']) || $a['parent_id'] === null) {
+                    return -1;
+                } elseif (!isset($b['parent_id']) || $b['parent_id'] === null) {
+                    return 1;
+                }
+                return 0;
+            });
+
             // Обновляем или создаем Товары
             switch ($get_info['opc']) {
                 case 1:
+
+                    // Получаем все уникальные `category_id` из JSON
+                    $unique_id = collect($data_json)->pluck('category_id');
+
+                    // Получаем все категории из базы данных по $unique_id
+                    $categories = Category::whereIn('id_1c', $unique_id)->get()->keyBy('id_1c');
+
+                    // Создаем массив `[id_1c => category_id]`
+                    $category_id= collect($data_json)
+                        ->mapWithKeys(function ($item) use ($categories) {
+                            $category = $categories->get($item['category_id']);
+                            return [
+                                $item['id_1C'] =>$category->id
+                            ];
+                        })
+                        ->toArray();
+
                     foreach ($data_json as $item) {
+
+                        // Создаем или обновляем товар
                         $itemEntity = Items::updateOrCreate(
                             [
                                 'id_1c' => $item['id_1C']
                             ],
                             [
                                 'name' => $item['namesite'],
-                                'category_id' => $item['category_id'],
+                                'category_id' => $category_id[$item['id_1C']],
                                 'description' => $item['description'],
                                 'is_popular' => $item['popular'],
                                 'is_stock' => $item['stock'],
@@ -74,11 +102,12 @@ class ExchangeController extends Controller
                             ]
                         );
 
-                        // создаем или обновляем entity товара
+                        // Создаем или обновляем entity товара
                         $entity_items = EntityItem::updateOrCreate([
                             'items_id' => $itemEntity['id'],
                         ]);
 
+                        // Создаем или обновляем характеристики товара
                         $this->updateOrCreateStats($entity_items,$stats_names,$item);
                     }
 
@@ -86,15 +115,6 @@ class ExchangeController extends Controller
 
                 // Обновляем или создаем Категории
                 case 2:
-
-                    usort($data_json, function ($a, $b) {
-                        if (!isset($a['parent_id']) || $a['parent_id'] === null) {
-                            return -1;
-                        } elseif (!isset($b['parent_id']) || $b['parent_id'] === null) {
-                            return 1;
-                        }
-                        return 0;
-                    });
 
                     foreach ($data_json as $category) {
                         if (isset($category['id_1C'])) {
