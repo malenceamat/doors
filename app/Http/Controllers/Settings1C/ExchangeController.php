@@ -87,27 +87,29 @@ class ExchangeController extends Controller
                 // Обновляем или создаем Категории
                 case 2:
 
-                    // Первый шаг: Создание всех категорий без учета parent_id
+                    // Собираем все parent_id
+                    $parentIds = collect($data_json)->pluck('parent_id')->filter()->unique();
+
+                    // Получаем все родительские категории
+                    $parentCategories = Category::whereIn('id_1c', $parentIds)->get()->keyBy('id_1c');
+
+                    // Обрабатываем категории
                     foreach ($data_json as $category) {
                         if (isset($category['id_1C'])) {
-                            Category::updateOrCreate(
+                            // Создаем или обновляем категории без учета parent_id
+                            $newCategory = Category::updateOrCreate(
                                 [
                                     'id_1c' => $category['id_1C']
                                 ],
                                 [
                                     'name' => $category['namesite'],
-                                    'parent_id' => null // Создаем категории без учета parent_id
+                                    'parent_id' => null // Изначально устанавливаем parent_id в null
                                 ]
                             );
-                        }
-                    }
 
-                    // Второй шаг: Обновление категорий с учетом parent_id
-                    foreach ($data_json as $category) {
-                        if (isset($category['id_1C']) && isset($category['parent_id'])) {
-                            $parentCategory = Category::where('id_1c', $category['parent_id'])->first();
-                            if ($parentCategory) {
-                                Category::where('id_1c', $category['id_1C'])->update(['parent_id' => $parentCategory->id]);
+                            // Если у категории есть parent_id, обновите её
+                            if (isset($category['parent_id']) && $parentCategories->has($category['parent_id'])) {
+                                $newCategory->update(['parent_id' => $parentCategories[$category['parent_id']]->id]);
                             }
                         }
                     }
