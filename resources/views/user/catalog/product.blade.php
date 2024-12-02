@@ -154,7 +154,9 @@
                         <div class="push60 hidden-xs hidden-sm"></div>
                         <div class="push30 visible-xs visible-sm"></div>
                         <input type="hidden" name="id" value="{{$item->id}}"/>
+                        @if (Auth::user())
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}"/>
+                        @endif
                     </form>
                     <div class="section">
                         <div class="mobile-tab-header">Характеристики</div>
