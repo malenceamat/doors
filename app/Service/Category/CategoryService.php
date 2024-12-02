@@ -13,6 +13,6 @@ class CategoryService
     }
     public function getCurrentCategory(string $name): ?Category
     {
-        return Category::with('sub_category', 'items')->where('name', $name)->first();
+        return Category::with('sub_category', 'items.favorites')->where('name', $name)->first();
     }
 }

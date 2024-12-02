@@ -15,7 +15,7 @@ class StatsValues extends Migration
     {
         Schema::create('stats_values', function (Blueprint $table) {
             $table->id();
-            $table->string('value');
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }

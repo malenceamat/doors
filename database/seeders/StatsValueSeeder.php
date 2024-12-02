@@ -75,7 +75,7 @@ class StatsValueSeeder extends Seeder
         ]);
 
         StatsValue::create([
-            'value' => '190'
+            'value' => '150'
         ]);
 
         StatsValue::create([
@@ -234,7 +234,7 @@ class StatsValueSeeder extends Seeder
         ]);
 
         StatsValue::create([
-            'value' => '190'
+            'value' => '160'
         ]);
 
         StatsValue::create([
@@ -274,7 +274,7 @@ class StatsValueSeeder extends Seeder
         ]);
 
         StatsValue::create([
-            'value' => '190'
+            'value' => '180'
         ]);
 
         StatsValue::create([
@@ -314,7 +314,7 @@ class StatsValueSeeder extends Seeder
         ]);
 
         StatsValue::create([
-            'value' => '190'
+            'value' => '170'
         ]);
 
         StatsValue::create([
@@ -354,7 +354,7 @@ class StatsValueSeeder extends Seeder
         ]);
 
         StatsValue::create([
-            'value' => '190'
+            'value' => '170'
         ]);
 
         StatsValue::create([
@@ -394,7 +394,7 @@ class StatsValueSeeder extends Seeder
         ]);
 
         StatsValue::create([
-            'value' => '190'
+            'value' => '180'
         ]);
 
         StatsValue::create([
@@ -434,7 +434,7 @@ class StatsValueSeeder extends Seeder
         ]);
 
         StatsValue::create([
-            'value' => '190'
+            'value' => '180'
         ]);
 
         StatsValue::create([
@@ -474,7 +474,7 @@ class StatsValueSeeder extends Seeder
         ]);
 
         StatsValue::create([
-            'value' => '190'
+            'value' => '180'
         ]);
 
         StatsValue::create([

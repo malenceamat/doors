@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Helpers;
 
 use App\Http\Controllers\Controller;
-use http\Env\Request;
 use Illuminate\Support\Facades\Storage;
-use Str;
+use Illuminate\Support\Str;
 
 class BaseHelperController extends Controller
 {

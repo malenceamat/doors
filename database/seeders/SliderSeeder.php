@@ -19,7 +19,7 @@ class SliderSeeder extends Seeder
             'subtitle' => 'Двери и не только',
             'image' => 'image/slider1.jpg',
             'button_text' => 'Просмотреть',
-            'button_link' => '#',
+            'type' => 'multiple'
         ]);
 
         Slider::create([
@@ -27,7 +27,7 @@ class SliderSeeder extends Seeder
             'subtitle' => 'Магазин дверей и не только',
             'image' => 'image/slider2.jpg',
             'button_text' => 'Узнать подробнее',
-            'button_link' => '#',
+            'type' => 'multiple'
         ]);
 
         Slider::create([
@@ -35,7 +35,7 @@ class SliderSeeder extends Seeder
             'subtitle' => 'Покупать здесь',
             'image' => 'image/slider3.jpg',
             'button_text' => 'Купить',
-            'button_link' => '#',
+            'type' => 'solo'
         ]);
     }
 }

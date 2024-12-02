@@ -11,6 +11,8 @@ class StatsName extends Model
 
     protected $table = 'stats_names';
 
+    protected $fillable = ['stats_names'];
+
     public function stats_name_items()
     {
         return $this->belongsTo(ItemsStats::class);

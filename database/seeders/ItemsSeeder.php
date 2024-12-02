@@ -67,7 +67,7 @@ class ItemsSeeder extends Seeder
             'description' => 'Описание',
             'is_popular' => true,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -78,7 +78,7 @@ class ItemsSeeder extends Seeder
             'description' => 'Описание',
             'is_popular' => true,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -89,7 +89,7 @@ class ItemsSeeder extends Seeder
             'description' => 'Описание',
             'is_popular' => true,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -98,9 +98,9 @@ class ItemsSeeder extends Seeder
             'category_id' => 11,
             'id_1c' => '1',
             'description' => 'Описание',
-            'is_popular' => true,
+            'is_popular' => false,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -111,7 +111,7 @@ class ItemsSeeder extends Seeder
             'description' => 'Описание',
             'is_popular' => true,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -120,9 +120,9 @@ class ItemsSeeder extends Seeder
             'category_id' => 14,
             'id_1c' => '1',
             'description' => 'Описание',
-            'is_popular' => true,
+            'is_popular' => false,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -131,9 +131,9 @@ class ItemsSeeder extends Seeder
             'category_id' => 15,
             'id_1c' => '1',
             'description' => 'Описание',
-            'is_popular' => true,
+            'is_popular' => false,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -144,7 +144,7 @@ class ItemsSeeder extends Seeder
             'description' => 'Описание',
             'is_popular' => true,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -153,9 +153,9 @@ class ItemsSeeder extends Seeder
             'category_id' => 4,
             'id_1c' => '1',
             'description' => 'Описание',
-            'is_popular' => true,
+            'is_popular' => false,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -164,9 +164,9 @@ class ItemsSeeder extends Seeder
             'category_id' => 4,
             'id_1c' => '1',
             'description' => 'Описание',
-            'is_popular' => true,
+            'is_popular' => false,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -175,9 +175,9 @@ class ItemsSeeder extends Seeder
             'category_id' => 4,
             'id_1c' => '1',
             'description' => 'Описание',
-            'is_popular' => true,
+            'is_popular' => false,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -186,9 +186,9 @@ class ItemsSeeder extends Seeder
             'category_id' => 4,
             'id_1c' => '1',
             'description' => 'Описание',
-            'is_popular' => true,
+            'is_popular' => false,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -199,7 +199,7 @@ class ItemsSeeder extends Seeder
             'description' => 'Описание',
             'is_popular' => true,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
 
@@ -210,7 +210,7 @@ class ItemsSeeder extends Seeder
             'description' => 'Описание',
             'is_popular' => true,
             'is_stock' => true,
-            'is_new_items' => true,
+            'is_new_items' => false,
             'is_active' => true
         ]);
     }

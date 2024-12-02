@@ -15,12 +15,11 @@ class ItemsStats extends Migration
     {
         Schema::create('items_stats', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('entity_item_id');
+            $table->unsignedBigInteger('entity_item_id')->index();
             $table->foreign('entity_item_id')->references('id')->on('entity_items');
             $table->unsignedBigInteger('stats_name_id');
             $table->foreign('stats_name_id')->references('id')->on('stats_names');
-            $table->unsignedBigInteger('stats_value_id');
-            $table->foreign('stats_value_id')->references('id')->on('stats_values');
+            $table->unsignedBigInteger('stats_value_id')->nullable();
             $table->timestamps();
         });
     }

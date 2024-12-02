@@ -23,6 +23,6 @@ class ItemsStats extends Model
     }
     public function stats_value()
     {
-        return $this->belongsTo(StatsValue::class);
+        return $this->belongsTo(StatsValue::class,'stats_value_id','id');
     }
 }

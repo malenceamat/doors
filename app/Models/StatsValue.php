@@ -11,8 +11,10 @@ class StatsValue extends Model
 
     protected $table = 'stats_values';
 
+    protected $fillable = ['value'];
+
     public function stats_value_items()
     {
-        return $this->belongsTo(ItemsStats::class);
+        return $this->belongsTo(ItemsStats::class,'id','stats_value_id');
     }
 }

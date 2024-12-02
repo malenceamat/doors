@@ -17,28 +17,24 @@ class CategoriesSeeder extends Seeder
     {
         Category::create([
             'name' => 'Входные двери',
-            'image_path' => 'image/vhodnie_dveri.jpg',
             'id_1c' => '84394900',
             'parent_id' => null
         ]);
 
         Category::create([
             'name' => 'Межкомнатные двери',
-            'image_path' => 'image/mejcomnatnie_dveri.jpg',
             'id_1c' => '84394912',
             'parent_id' => null
         ]);
 
         Category::create([
             'name' => 'Дверные коробки, наличники и доборы',
-            'image_path' => 'image/dvernie_korobki.jpg',
             'id_1c' => '84394934',
             'parent_id' => null
         ]);
 
         Category::create([
             'name' => 'Прочее',
-            'image_path' => 'image/other.jpg',
             'id_1c' => '84394965',
             'parent_id' => null
         ]);

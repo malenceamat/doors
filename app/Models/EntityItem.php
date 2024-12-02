@@ -11,6 +11,8 @@ class EntityItem extends Model
 
     protected $table = 'entity_items';
 
+    protected $fillable = ['items_id'];
+
     public function etity_items()
     {
         return $this->belongsTo(Items::class);
@@ -18,5 +20,9 @@ class EntityItem extends Model
     public function items_stats()
     {
         return $this->hasMany(ItemsStats::class);
+    }
+    public function order()
+    {
+        return $this->hasMany(Order::class,'entity_item_id','id');
     }
 }

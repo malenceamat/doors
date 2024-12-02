@@ -42,14 +42,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    /*public function favorites()
+
+    public function favorites_cart()
     {
-        return $this->hasMany(Favorites::class);
-    }*/
-    public function favorites()
-    {
-        return $this->hasMany(Favorites::class);
+        return $this->hasMany(Favorites::class,'user_id','id');
     }
-
-
+    public function order_cart()
+    {
+        return $this->hasMany(Order::class,'user_id','id');
+    }
 }
