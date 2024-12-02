@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('1c_verify')->group(function () {
+    Route::post('/1c/exchange',[ExchangeController::class,'update_create'])->name('update_create');
+});
